@@ -1,10 +1,673 @@
-body {
-    margin: 0%;
+
+/* Importe de estilos Kanit y Noto Sans */
+
+/* Definición para el peso Regular de Kanit (400) */
+@font-face {
+    font-family: 'Kanit';
+    src: url('/assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype'); /* Ruta a Kanit Regular */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
-header {
-    background-color: blue;
-    padding: 15px;
+/* Definición para el peso Bold de Kanit (700) */
+@font-face {
+    font-family: 'Kanit';
+    src: url('/assets/fonts/Kanit/Kanit-Bold.ttf') format('truetype'); /* Ruta a Kanit Bold */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Definición para el peso Regular de Noto Sans (400) */
+@font-face {
+    font-family: 'Noto Sans'; /* Nuevo nombre de familia para Noto Sans */
+    src: url('/assets/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype'); /* Ruta a Noto Sans Regular */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Definición para el peso Bold de Noto Sans (700) */
+@font-face {
+    font-family: 'Noto Sans'; /* Usa el mismo nombre de familia */
+    src: url('/assets/fonts/NotoSans/NotoSans-Bold.ttf') format('truetype'); /* Ruta a Noto Sans Bold */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+/* Estilos generales */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Kanit', sans-serif; /* Puedes cambiar la fuente */
+    /* margin: 0; <-- Esta línea ya no es necesaria aquí si la pones en html, body */
+    /* padding: 0; <-- Esta línea ya no es necesaria aquí si la pones en html, body */
+    box-sizing: border-box; /* Asegura que el padding y border no aumenten el tamaño de los elementos */
+    background-color: #F7FAFF; /* Color de fondo general, puedes cambiarlo */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700; /* Generalmente los títulos son negritas */
+    color: #333333; /* Color general para los títulos */
+}
+/* Estilos para la barra de navegación (Navbar) */
+.navbar {
+    background-color: #86BBD8; /* Color de fondo de la barra de navegación */
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 60px; /* O el alto que desees para tu logo */
+    width: auto; /* Mantiene la proporción de la imagen */
+    max-height: 70px; /* Asegura que no sea demasiado alto */
+}
+
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar nav ul li {
+    margin-left: 25px; /* Espaciado entre los elementos del menú */
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    font-family: 'Noto Sans', sans-serif; /* Asegura Noto Sans */
+}
+
+.navbar nav ul li a:hover {
+    color: #DAF7DC; /* Color al pasar el mouse por los enlaces */
+}
+
+/* Estilos para el banner principal (Hero Banner) */
+.hero-banner {
+    position: relative;
+    width: 100%; /* Make the banner take up the full width of its parent */
+    height: 70vh; /* **Crucial:** Define a fixed height for your banner. Adjust this as needed (e.g., 600px, 70vh for viewport height). */
+    /* If you set height: auto; the banner's height will be determined by its content, which might not be what you want for a hero section. */
+    overflow: hidden; /* Important to hide any parts of the image that go beyond the banner's boundaries */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Remove any potential padding/margin on the .hero-banner itself that might create unwanted space */
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),url("/assets/img/LandingPage1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-banner .overlay-text {
+    /*position: absolute; /* Keep this if you want it truly on top of the image */
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    left: 50%; /* <-- ADD THIS! This centers the text within the overlay-text div */
+    color: #FFFFFF;
+
+    z-index: 1; /* Make sure the overlay text takes full width to allow text-align: center to work properly */
+}
+
+.Rectangle {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 150px;
+    padding: 20px;
+    margin: 30px auto 0;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column; /* This is KEY: Stacks children vertically */
+    justify-content: center; /* Centers the group of h2 and p vertically */
+    align-items: center; /* Centers the h2 and p horizontally */
+    text-align: center; /* Ensures text inside h2 and p is centered if it wraps */
+
+    color: #FFFFFF;
+}
+
+.Rectangle h2 {
+    font-size: 36px;
     color: white;
-    font-size: large;
+    margin: 0; /* Remove default margin */
+    /* If you want h2 to be slightly higher than center, you could add a negative margin-top */
+    /* margin-top: -10px; */
+}
+
+.Rectangle p {
+    font-size: 20px;
+    margin: 0; /* Remove default margin */
+    /* Add some spacing between h2 and p if needed */
+    margin-top: 5px; /* Adjust as needed */
+}
+/* Estilos para la sección de testimonios */
+.testimonials {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #FFFFFF;
+    margin-top: 40px;
+}
+
+/* El título general de la sección de testimonios */
+.testimonials h3 {
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 40px;
+    font-family: 'Kanit', sans-serif; /* Asegúrate de que Kanit esté aplicado */
+    font-weight: 700;
+}
+
+.testimonial-grid {
+    display: grid;
+    /* --- CAMBIO CLAVE AQUÍ PARA EL LAYOUT DE LA CUADRÍCULA --- */
+    /* Define 2 columnas de igual ancho para pantallas grandes */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px; /* Espacio entre las tarjetas de testimonios */
+    /* Asegura que la cuadrícula esté centrada */
+    max-width: 900px; /* Ajusta este ancho máximo si necesitas más o menos espacio */
+   
+    margin: 0 auto; /* Centra la cuadrícula en la página */
+    justify-items: stretch; /* Centra los ítems dentro de sus celdas de cuadrícula si son más pequeños */
+    /*align-items: stretch; /* Hace que todas las tarjetas tengan la misma altura dentro de una fila */
+}
+
+.testimonial-card {
+    background-color: #F8F8F8;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    /* --- CAMBIO CLAVE AQUÍ PARA LA ALINEACIÓN INTERNA DE LA TARJETA --- */
+    display: flex; /* Mantiene la imagen y el contenido en una fila */
+    align-items: flex-start; /* Alinea la imagen y el texto al inicio (arriba) */
+    text-align: left; /* Asegura que el texto dentro de la tarjeta se alinee a la izquierda */
+    width: 100%; /* Asegura que la tarjeta ocupe todo el ancho de su celda de cuadrícula */
+    /*height: 70%; /* Asegura que la tarjeta estire su altura para igualar otras en la fila */
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+    border: 3px solid #4CAF50;
+    flex-shrink: 0; /* Evita que la imagen se encoja en pantallas pequeñas */
+}
+
+.testimonial-card .testimonial-content {
+    flex-grow: 1; /* Permite que el contenido del texto ocupe el espacio restante */
+}
+
+.testimonial-card .testimonial-content h4 {
+    font-size: 18px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    font-family: 'Kanit', sans-serif; /* Asegúrate de que Kanit esté aplicado */
+    font-weight: 700;
+}
+
+.testimonial-card .testimonial-content p {
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.6;
+    font-family: 'Noto Sans', sans-serif; /* Asegúrate de que Noto Sans esté aplicado */
+}
+
+/* Media Queries para responsividad (ajustes para pantallas más pequeñas) */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .navbar nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero-banner {
+        height: 400px;
+    }
+
+    .hero-banner .overlay-text h2 {
+        font-size: 36px;
+    }
+
+    .hero-banner .overlay-text p {
+        font-size: 20px;
+    }
+
+    .testimonial-grid {
+        /* Para tabletas y móviles, las tarjetas se apilan en una sola columna */
+        grid-template-columns: 1fr; /* Una sola columna */
+        max-width: 500px; /* Limita el ancho en pantallas más pequeñas */
+    }
+
+    .testimonial-card {
+        flex-direction: column; /* Apila la imagen y el texto en pantallas pequeñas */
+        align-items: center; /* Centra la imagen y el texto en la tarjeta */
+        text-align: center; /* Centra el texto de la tarjeta */
+    }
+
+    .testimonial-card img {
+        margin-right: 0; /* Elimina el margen derecho si se apila */
+        margin-bottom: 15px; /* Añade margen inferior para separar la imagen del texto */
+    }
+
+    .testimonial-card .testimonial-content {
+        text-align: center; /* Asegura que el contenido del texto esté centrado en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        height: 300px;
+    }
+
+    .hero-banner .overlay-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-banner .overlay-text p {
+        font-size: 18px;
+    }
+
+    .testimonials h3 {
+        font-size: 26px;
+    }
+}
+
+/* Estilos para la sección de Preguntas Frecuentes (FAQ) */
+.faq-section {
+    background-color: #E6F7E1; /* Color de fondo verde claro de la sección */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.faq-section h3 {
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 60px;
+}
+
+.faq-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea los elementos al inicio del eje cruzado */
+    gap: 40px; /* Espacio entre los signos de interrogación y el acordeón */
+    position: relative; /* Para posicionar los signos de interrogación si es necesario */
+    max-width: 1000px; /* Limita el ancho del contenido FAQ */
+    margin: 0 auto; /* Centra el contenido FAQ */
+}
+
+.question-mark {
+    font-family: Arial, sans-serif; /* Puedes usar una fuente más impactante */
+    font-size: 300px; /* Tamaño del signo de interrogación */
+    color: #000000; /* Color del signo de interrogación (negro) */
+    opacity: 1; /* Ligera transparencia para que sea decorativo */
+    line-height: 1; /* Ajusta el espacio de línea */
+    /* Posicionamiento absoluto para controlar su ubicación precisa */
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%);
+    user-select: none; /* Evita que se pueda seleccionar el texto */
+    pointer-events: none; /* Permite hacer clic a través del elemento */
+}
+
+.question-mark.left {
+    left: -80px; /* Ajusta la posición izquierda */
+    transform: translateY(-50%) scaleX(-1) scaleY(-1); /* Voltear el signo de interrogación para el de la izquierda */
+}
+
+.question-mark.right {
+    right: -80px; /* Ajusta la posición derecha */
+}
+
+.faq-accordion {
+    flex-grow: 1; /* Permite que el acordeón ocupe el espacio disponible */
+    max-width: 600px; /* Ancho máximo para el acordeón en el centro */
+    z-index: 1; /* Asegura que el acordeón esté por encima de los signos de interrogación */
+}
+
+.accordion-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Importante para que el contenido oculto no se desborde */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    background-color: #D4EDDA; /* Color de fondo del encabezado de la pregunta */
+    color: #333333;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #C3E6CB; /* Color al pasar el mouse */
+}
+
+.accordion-header .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333333"><path d="M7 10l5 5 5-5z"/></svg>'); /* Flecha hacia abajo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active .icon {
+    transform: rotate(180deg); /* Gira la flecha cuando está activo */
+}
+
+.accordion-body {
+    background-color: #F0FBF0; /* Color de fondo del cuerpo de la respuesta */
+    padding: 0 20px; /* Padding horizontal, vertical se ajustará con la altura */
+    max-height: 0; /* Por defecto, oculto */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Transición suave */
+}
+
+.accordion-body.show {
+    max-height: 200px; /* Altura máxima para mostrar el contenido. Ajusta según sea necesario */
+    padding: 15px 20px; /* Padding cuando se muestra */
+}
+
+.accordion-body p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0; /* Elimina el margen por defecto del párrafo */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 900px) {
+    .question-mark {
+        font-size: 200px; /* Reduce el tamaño de los signos de interrogación */
+        opacity: 0.07; /* Reduce la opacidad */
+    }
+
+    .question-mark.left {
+        left: -40px;
+    }
+
+    .question-mark.right {
+        right: -40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-content {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+        align-items: center; /* Centra los elementos apilados */
+        gap: 20px;
+    }
+
+    .question-mark {
+        position: static; /* Quita el posicionamiento absoluto para que no interfieran */
+        transform: none; /* Elimina la transformación */
+        margin: 20px 0; /* Añade margen si los quieres arriba y abajo */
+        font-size: 150px;
+        opacity: 0.05;
+    }
+
+    .question-mark.left {
+        order: -1; /* Mueve el signo izquierdo arriba */
+    }
+
+    .faq-accordion {
+        width: 100%;
+        max-width: 500px; /* Ajusta el ancho máximo del acordeón */
+    }
+
+    .faq-section h3 {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section {
+        padding: 50px 0;
+    }
+
+    .faq-section h3 {
+        font-size: 28px;
+    }
+
+    .accordion-header {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    .accordion-body.show {
+        padding: 12px 15px;
+    }
+}
+
+
+/* Estilos para la sección de Universidades Aliadas */
+.universities-section {
+    background-color: #FFFFFF; /* Fondo blanco para esta sección */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.universities-section h3 {
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 60px;
+    font-family: 'Kanit', sans-serif; /* Si quieres Kanit también aquí */
+    font-weight: 700;
+}
+
+.university-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 4 columnas por defecto, ajustables */
+    gap: 40px; /* Espacio entre los logos */
+    justify-items: center; /* Centra los logos dentro de sus celdas */
+    align-items: center; /* Centra verticalmente los logos */
+    max-width: 1000px; /* Ancho máximo para la cuadrícula de logos */
+    margin: 0 auto; /* Centra la cuadrícula */
+}
+
+.logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid #EEEEEE; Opcional: si quieres un borde alrededor de cada logo */
+    border-radius: 5px;
+}
+
+.logo-item img {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    height: auto; /* Mantiene la proporción */
+    max-height: 80px; /* Ajusta la altura máxima de los logos */
+    filter: grayscale(100%); /* Desaturar logos para que se vean uniformes */
+    opacity: 0.7; /* Ligeramente transparentes */
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%); /* Color al pasar el mouse */
+    opacity: 1; /* Opacidad completa al pasar el mouse */
+}
+
+
+/* Estilos para el Footer */
+.main-footer {
+    background-color: #86BBD8; /* Color de fondo del footer (el mismo que tu navbar) */
+    color: #FFFFFF; /* Color de texto general para el footer */
+    padding: 60px 0;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+    justify-content: space-between; /* Espacio entre las columnas */
+    gap: 30px; /* Espacio entre columnas cuando se envuelven */
+}
+
+.footer-column {
+    flex: 1; /* Permite que las columnas crezcan y se encojan */
+    min-width: 200px; /* Ancho mínimo para cada columna */
+    padding: 10px; /* Pequeño padding interno para las columnas */
+}
+
+.footer-column h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* Color de los títulos de las columnas */
+    font-family: 'Kanit', sans-serif; /* Si quieres Kanit también aquí */
+    font-weight: 700;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #E0E0E0; /* Color al pasar el mouse por los enlaces del footer */
+}
+
+.contact-info p {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+    display: flex; /* Para que los iconos estén en línea */
+    gap: 15px; /* Espacio entre los iconos */
+}
+
+.social-icons img {
+    width: 30px; /* Tamaño de los iconos de redes sociales */
+    height: 30px;
+    filter: grayscale(100%) brightness(0) invert(1); /* Pone los iconos en blanco */
+    transition: filter 0.3s ease;
+}
+
+.social-icons img:hover {
+    filter: grayscale(0%) brightness(1) invert(0); /* Quita el filtro al pasar el mouse */
+}
+
+
+/* Media Queries para responsividad (ajustes para pantallas más pequeñas) */
+
+@media (max-width: 768px) {
+    .universities-section h3 {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .university-logos {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Menos columnas en tabletas */
+        gap: 20px;
+    }
+
+    .logo-item img {
+        max-height: 60px;
+    }
+
+    .main-footer .container {
+        flex-direction: column; /* Apila las columnas del footer en móviles */
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-column {
+        min-width: unset; /* Reinicia el min-width */
+        width: 100%; /* Ocupa todo el ancho */
+        padding: 0;
+    }
+
+    .social-icons {
+        justify-content: center; /* Centra los iconos sociales */
+    }
+
+    .footer-column ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los elementos de la lista */
+    }
+}
+
+@media (max-width: 480px) {
+    .universities-section {
+        padding: 50px 0;
+    }
+
+    .universities-section h3 {
+        font-size: 24px;
+    }
+
+    .university-logos {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Más pequeñas en móviles */
+    }
+
+    .main-footer {
+        padding: 40px 0;
+    }
+
+    .footer-column h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
 }
