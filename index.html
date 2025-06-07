@@ -1,13 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Hola</title>
+    <title>Unego - Buscar productos</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>Hola Mundo</header>
-    <h1>Prueba</h1>
+    <header>
+        <div>
+            <a href="index.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <img src="assets/img/perfil.jpg" alt="User Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="page-content-wrapper">
+        <aside class="filters-sidebar">
+            <h3>Filtros</h3>
+            <div class="filter-group">
+                <h4>Ordenar por</h4>
+                <div class="sort-by-section">
+                    <select id="sort-order">
+                        <option value="default">Por defecto</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="rating-desc">Puntuación: Mayor a Menor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h4>Precio</h4>
+                <div class="price-filter">
+                    <label for="min-price">Mín:</label>
+                    <input type="number" id="min-price" placeholder="0" min="0">
+                    <label for="max-price">Máx:</label>
+                    <input type="number" id="max-price" placeholder="1000" min="0">
+                </div>
+                <p id="price-alert" class="alert-message hidden">El precio mínimo no puede ser mayor que el máximo.</p>
+            </div>
+
+            <div class="filter-group">
+                <h4>Calificación (Estrellas)</h4>
+                <div class="rating-filter">
+                    <label>
+                        <input type="radio" name="rating-filter" value="0" checked> Todas
+                    </label>
+                    <label>
+                        <input type="radio" name="rating-filter" value="4"> 4 estrellas o más
+                    </label>
+                    <label>
+                        <input type="radio" name="rating-filter" value="3"> 3 estrellas o más
+                    </label>
+                    <label>
+                        <input type="radio" name="rating-filter" value="2"> 2 estrellas o más
+                    </label>
+                    <label>
+                        <input type="radio" name="rating-filter" value="1"> 1 estrella o más
+                    </label>
+                </div>
+            </div>
+            <button id="apply-filters">Aplicar Filtros</button>
+        </aside>
+
+        <main class="main-content">
+            <a href="productos.html?id=mochila-roja-1" class="product-link">
+                <div class="product-card" id="mochila-roja-1">
+                    <div class="product-image">
+                        <img src="assets/img/mochila.png" alt="Mochila roja">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Vendo está mochila con portalaptop y gran espacio</h3>
+                        <p class="product-seller">Por Jorge Guimenez</p>
+                        <div class="product-price" data-price="20">S/.20</div>
+                        <div class="product-rating" data-rating="3.5">
+                            <span class="rating-value">3.5</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="productos.html?id=polo-negro-1" class="product-link">
+                <div class="product-card" id="polo-negro-1">
+                    <div class="product-image">
+                        <img src="assets/img/polo.png" alt="Polo negro">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Polo negro en difentes tallas, combina estilo y es de gran comodidad .</h3>
+                        <p class="product-seller">Por Ivan Ruben</p>
+                        <div class="product-price" data-price="12">S/.12</div>
+                        <div class="product-rating" data-rating="3.9">
+                            <span class="rating-value">3.9</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="productos.html?id=zapatillas-deportivas-1" class="product-link">
+                <div class="product-card" id="zapatillas-deportivas-1">
+                    <div class="product-image">
+                        <img src="assets/img/some_other_product_1.png" alt="Zapatillas deportivas">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Zapatillas deportivas ultraligeras</h3>
+                        <p class="product-seller">Por Luis Perez</p>
+                        <div class="product-price" data-price="85">S/.85</div>
+                        <div class="product-rating" data-rating="4.2">
+                            <span class="rating-value">4.2</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="productos.html?id=acuarelas-profesionales-1" class="product-link">
+                <div class="product-card" id="acuarelas-profesionales-1">
+                    <div class="product-image">
+                        <img src="assets/img/some_other_product_2.png" alt="Set de acuarelas">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Set de acuarelas profesionales 24 colores</h3>
+                        <p class="product-seller">Por Carla Ruiz</p>
+                        <div class="product-price" data-price="35">S/.35</div>
+                        <div class="product-rating" data-rating="4.9">
+                            <span class="rating-value">4.9</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="productos.html?id=reloj-inteligente-1" class="product-link">
+                <div class="product-card" id="reloj-inteligente-1">
+                    <div class="product-image">
+                        <img src="assets/img/some_other_product_3.png" alt="Reloj inteligente">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Reloj inteligente con monitor de ritmo cardíaco</h3>
+                        <p class="product-seller">Por Sofia Castro</p>
+                        <div class="product-price" data-price="150">S/.150</div>
+                        <div class="product-rating" data-rating="4.0">
+                            <span class="rating-value">4.0</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="productos.html?id=libro-cocina-vegana-1" class="product-link">
+                <div class="product-card" id="libro-cocina-vegana-1">
+                    <div class="product-image">
+                        <img src="assets/img/some_other_product_4.png" alt="Libro de cocina vegana">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Libro de cocina vegana para principiantes</h3>
+                        <p class="product-seller">Por David Morales</p>
+                        <div class="product-price" data-price="15">S/.15</div>
+                        <div class="product-rating" data-rating="4.5">
+                            <span class="rating-value">4.5</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+        </main>
+    </div>
+
+    <script src="assets/js/script_productos.js"></script>
 </body>
 </html>
