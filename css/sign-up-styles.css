@@ -1,4 +1,4 @@
-.bg-image-login {
+.bg-image-signup {
     background-image: url('/assets/img/backgroundImage.png');
     background-size: cover;
     background-position: center;
@@ -6,11 +6,11 @@
     width: 100%;
 }
 
-.login-form-container {
-    background: rgba(66, 114, 60, 0.1333);
+.signup-form-container {
+    background: #e9f3ee;
     border-radius: 16px;
-    padding: 32px 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 32px 24px;
 }
 
 /* Botón Google: fondo blanco, borde y texto gris */
