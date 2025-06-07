@@ -1,0 +1,36 @@
+.bg-image-signup {
+    background-image: url('/Unego_oficial/assets/img/backgroundImage.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.signup-form-container {
+    background: #e9f3ee;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 32px 24px;
+}
+
+/* Botón Google: fondo blanco, borde y texto gris */
+.btn-outline-secondary,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:active {
+    background-color: #fff !important;
+    color: #6c757d !important;
+    border-color: #6c757d !important;
+    box-shadow: none !important;
+}
+
+/* Botón Outlook: fondo blanco, borde y texto azul */
+.btn-outline-primary,
+.btn-outline-primary:focus,
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+    background-color: #fff !important;
+    color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    box-shadow: none !important;
+}
