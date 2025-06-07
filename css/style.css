@@ -119,7 +119,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
     /* Remove any potential padding/margin on the .hero-banner itself that might create unwanted space */
     padding: 0;
     margin: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),url("/assets/img/LandingPage1.png");
+    background-image: linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),url("/Unego_oficial/assets/img/LandingPage1.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
