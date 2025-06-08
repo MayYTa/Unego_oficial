@@ -284,3 +284,50 @@ body {
     padding: 0;
   }
 }
+.tab-nueva {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #222;
+  padding: 0;
+  background: none;
+  border: none;
+}
+.perfil-tabs {
+  display: flex;
+  align-items: center;
+  background: #dde3df;
+  padding: 18px 40px;
+  border-bottom: 2px solid #cfd3d1;
+  font-size: 1.3rem;
+  gap: 32px;
+  position: relative;
+}
+.contenedor-boton-abajo {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.btn-atras-abajo {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background: #dbdbdb;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 44px;
+  font-size: 1.3rem;
+  font-family: 'Kanit', Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 100;
+}
+.btn-atras-abajo:hover {
+  background: #c7c7c7;
+}

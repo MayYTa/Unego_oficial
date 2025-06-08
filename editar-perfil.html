@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Perfil - Unego</title>
+  <link rel="stylesheet" href="css/ft04.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/editar-perfil.css">
+</head>
+<body>
+  <div class="editar-header">
+    <button class="atras-btn" onclick="window.location.href='perfil-ivan.html'">Atras</button>
+    <div class="perfil-icono">
+      <img src="assets/icons/imagen_perfil.png" alt="Foto de Perfil">
+      <button class="foto-btn">Foto de Perfil</button>
+    </div>
+    <div class="logo-estadisticas">
+      <img src="assets/img/unego_logo.png" alt="Unego Logo" class="logo-grande">
+      <div class="estadisticas">
+        <span>3 publicaciones</span>
+        <span>500 seguidores</span>
+        <span>10 seguidos</span>
+      </div>
+    </div>
+  </div>
+  <div class="editar-contenido">
+    <form class="editar-form">
+      <label for="nombre">Nombres y Apellidos</label>
+      <input type="text" id="nombre" name="nombre">
+
+      <label for="descripcion">Descripción</label>
+      <input type="text" id="descripcion" name="descripcion">
+
+      <label for="correo">Correo Vinculado</label>
+      <input type="email" id="correo" name="correo">
+
+      <label for="numero">Número</label>
+      <input type="text" id="numero" name="numero">
+
+      <button type="button" class="btn-cambiar">Cambiar Contraseña</button>
+    <button type="submit" class="btn-verificar" onclick="event.preventDefault(); window.location.href='editar-perfil-verificar.html';">Verificar</button>
+    </form>
+  </div>
+</body>
+</html>
