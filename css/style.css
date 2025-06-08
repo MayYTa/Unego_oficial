@@ -50,7 +50,7 @@ body {
     /* margin: 0; <-- Esta línea ya no es necesaria aquí si la pones en html, body */
     /* padding: 0; <-- Esta línea ya no es necesaria aquí si la pones en html, body */
     box-sizing: border-box; /* Asegura que el padding y border no aumenten el tamaño de los elementos */
-    background-color: #F7FAFF; /* Color de fondo general, puedes cambiarlo */
+    background-color: #F8F8F8; /* Color de fondo general, puedes cambiarlo */
 }
 
 .container {
@@ -170,7 +170,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
 .testimonials {
     padding: 60px 0;
     text-align: center;
-    background-color: #FFFFFF;
+    background-color: #F8F8F8;
     margin-top: 40px;
 }
 
@@ -490,7 +490,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
 
 /* Estilos para la sección de Universidades Aliadas */
 .universities-section {
-    background-color: #FFFFFF; /* Fondo blanco para esta sección */
+    background-color: #F8F8F8; /* Fondo blanco para esta sección */
     padding: 80px 0;
     text-align: center;
 }
@@ -669,5 +669,298 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
     .footer-column h4 {
         font-size: 18px;
         margin-bottom: 15px;
+    }
+}
+
+/* Estilos para about_us.html */
+
+.about-hero {
+    background-color: #f0f8ff; /* Color de fondo suave */
+    padding: 80px 20px;
+    text-align: center;
+    color: #333;
+}
+
+.about-hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.our-story {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.story-content {
+    display: flex;
+    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+    align-items: center;
+    gap: 40px;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.story-text {
+    flex: 1; /* Ocupa el espacio disponible */
+    min-width: 400px; /* Ancho mínimo para el texto */
+}
+
+.story-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.mission-values {
+    padding: 60px 20px;
+    background-color: #e6f7ff; /* Otro color de fondo suave */
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.value-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.value-item h3 {
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.value-item ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.value-item ul li {
+    margin-bottom: 5px;
+}
+
+.value-item ul li strong {
+    color: #333;
+}
+
+.team-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #007bff;
+}
+
+.team-member h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.team-member p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.team-member .team-bio {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+}
+
+.cta-section {
+    background-color: #256bdb;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.cta-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #28a745; /* Un verde para el botón */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+
+/* Estilos generales para banners de página, puedes adaptar */
+.page-hero {
+    background-color: #e6f7ff; /* Un color de fondo suave, similar al azul de tu logo */
+    padding: 80px 20px;
+    text-align: center;
+    color: #333;
+}
+
+.page-hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #4273C2; /* Color que combine con tu marca */
+}
+
+.page-hero p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Puedes ajustar el padding o el background-color de universities-list-section si quieres */
+.universities-list-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9; /* Un fondo ligeramente diferente al hero */
+    text-align: center;
+}
+
+/* Mantén esto como está o ajústalo a tu preferencia de cuántas columnas por defecto */
+.university-grid {
+    display: grid; /* O display: flex; y flex-wrap: wrap; */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 60px; /* Espacio entre las tarjetas */
+    justify-content: center; /* Centra los items si no llenan una fila completa */
+}
+
+.university-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    /* text-align: center; Quítalo, ya no centraremos todo el contenido de la tarjeta */
+    
+    display: flex; /* ¡IMPORTANTE! Convierte la tarjeta en un flex container */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 20px; /* Espacio entre la imagen y la info */
+    
+    transition: transform 0.2s ease-in-out;
+    width: 100%; /* Asegúrate de que la tarjeta ocupe todo el ancho disponible si está en una sola columna */
+    max-width: 900px; /* Limita el ancho de la tarjeta para que no sea demasiado grande */
+    margin: 0 auto; /* Centra la tarjeta horizontalmente */
+    margin-bottom: 30px; /* Espacio entre las tarjetas */
+}
+
+.university-card:hover {
+    transform: translateY(-5px);
+}
+
+.university-card img {
+    width: 150px; /* Aumenta el tamaño del logo para que se vea bien */
+    height: 150px;
+    object-fit: contain;
+    /* margin-bottom: 15px; Quítalo, ya que flexbox manejará el espaciado */
+    flex-shrink: 0; /* Evita que la imagen se encoja si no hay espacio */
+}
+
+.university-info {
+    flex-grow: 1; /* Permite que el contenedor de info ocupe el espacio restante */
+    text-align: left; /* Alinea el texto a la izquierda dentro del div */
+}
+
+/* Mantén los estilos internos de university-info como los tenías */
+.university-info h4 {
+    font-size: 1.4em;
+    color: #39576A;
+    margin-bottom: 10px;
+}
+
+.university-info p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.university-info .description {
+    font-size: 0.9em;
+    color: #777;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* Para pantallas más pequeñas, apilar los elementos verticalmente */
+@media (max-width: 768px) { /* Por ejemplo, para tablets y móviles grandes */
+    .university-card {
+        flex-direction: column; /* Apila imagen y texto verticalmente */
+        text-align: center; /* Centra el texto cuando está apilado */
+    }
+
+    /* Resetea la inversión para las tarjetas pares, ya que ahora todas son columna */
+    .university-card:nth-child(even) {
+        flex-direction: column; 
+    }
+
+    .university-card img {
+        margin-bottom: 15px; /* Añade espacio debajo de la imagen apilada */
+    }
+
+    .university-info {
+        text-align: center; /* Centra el texto */
+    }
+}
+
+/* Opcional: Ajustar el grid en general si university-grid también usa display: grid */
+@media (max-width: 992px) { /* Por ejemplo, si quieres que cada tarjeta ocupe más ancho en una fila */
+    .university-grid {
+        grid-template-columns: 1fr; /* Una sola columna para que las tarjetas se apilen */
     }
 }
