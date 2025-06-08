@@ -1,13 +1,11 @@
-body, button, input, textarea, select, .perfil-header, .perfil-info, .perfil-nombre, .perfil-estadisticas, .btn, .perfil-tabs, .tab-activo, .tab-nueva, .publicacion-card, .publicacion-info, .publicacion-titulo, .publicacion-precio, .publicacion-stock, .publicacion-acciones, .publicacion-editar, .publicacion-vendidos {
-  font-family: 'Kanit', Arial, sans-serif;
-}
-
+/* Fuente y fondo base */
 body {
   margin: 0;
   font-family: 'Kanit', Arial, sans-serif;
   background: #dde3df;
 }
 
+/* Header de perfil */
 .perfil-header {
   display: flex;
   align-items: center;
@@ -49,71 +47,60 @@ body {
   gap: 12px;
 }
 
+/* Sobrescribe el tamaño de los botones solo en editar-publicacion.html */
 .btn {
   background: #dbdbdb;
   border: none;
   border-radius: 8px;
-  padding: 10px 22px;
-  font-size: 1.1rem;
+  padding: 14px 44px;
+  font-size: 1.3rem;
   font-family: 'Kanit', Arial, sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .btn:hover {
-  background: #d1d1d1;
+  background: #c7c7c7;
 }
 
+/* Tabs */
 .perfil-tabs {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background: #dde3df;
   padding: 18px 40px;
   border-bottom: 2px solid #cfd3d1;
   font-size: 1.3rem;
+  gap: 32px;
 }
 
-.tab-activo, .tab-nueva {
+.tab-activo{
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 200;
+  font-weight: 500;
   cursor: pointer;
+  color: #222;
+  text-decoration: none;
+}
+
+.tab-nueva {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #222;
+  padding: 0;
+  background: none;
+  border: none;
 }
 
 .tab-activo span,
 .tab-nueva span {
-  font-weight: 400; /* Quita la negrita */
-}
-
-.tab-activo,
-.tab-nueva > a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 200;
-  color: #111;
-  text-decoration: none;
-}
-
-.tab-activo {
-  color: #222;
-}
-
-.tab-nueva {
-  color: #222;
-}
-
-.perfil-contenido {
-  min-height: 300px;
-  background: #dde3df;
-  padding: 32px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  align-items: flex-start;
+  font-weight: 400;
 }
 
 .icono-ojo {
@@ -129,27 +116,24 @@ body {
   vertical-align: middle;
   margin-right: 8px;
 }
-.tab-nueva {
-  background: none;
-  border: none;
+
+/* Contenido principal */
+.perfil-contenido {
+  min-height: 300px;
+  background: #dde3df;
+  padding: 32px 40px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 1.3rem;
-  color: #222;
-  padding: 0;
-}
-.tab-nueva:focus {
-  outline: 2px solid #aaa;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
 }
 
+/* Tarjeta de publicación */
 .publicacion-card {
   background: #fff;
-  border-radius: 0; /* 12 esquinas curvas */
+  border-radius: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  width: 240px;     /* Más angosta */
+  width: 240px;
   padding: 28px 18px 22px 18px;
   display: flex;
   flex-direction: column;
@@ -176,25 +160,21 @@ body {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 4px;
+  text-align: center;
+  width: 100%;
 }
 
-.publicacion-precio {
+.publicacion-precio,
+.publicacion-stock {
   color: #888;
   font-size: 1.1rem;
   margin-bottom: 4px;
-}
-
-.publicacion-stock {
-  color: #888;
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-}
-
-.publicacion-titulo,
-.publicacion-precio,
-.publicacion-stock {
   text-align: center;
   width: 100%;
+}
+
+.publicacion-stock {
+  margin-bottom: 12px;
 }
 
 .publicacion-acciones {
@@ -222,6 +202,7 @@ body {
   gap: 4px;
 }
 
+/* Botón flotante abajo */
 .contenedor-boton-abajo {
   position: fixed;
   right: 32px;
@@ -229,66 +210,23 @@ body {
   z-index: 100;
 }
 
-.btn-atras-abajo {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  background: #dbdbdb;
-  border: none;
-  border-radius: 8px;
-  padding: 14px 44px;
-  font-size: 1.3rem;
-  font-family: 'Kanit', Arial, sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-  z-index: 100;
-}
-.btn-atras-abajo:hover {
-  background: #c7c7c7;
-}
 
-.btn {
-  background: #dbdbdb;
-  border: none;
-  border-radius: 8px;
-  padding: 14px 44px;
-  font-size: 1.3rem;
+/* Si tienes inputs personalizados, iguala también */
+input, .form-input {
   font-family: 'Kanit', Arial, sans-serif;
-  font-weight: 400; /* Quita la negrita */
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-header {
-  padding: 10px 32px;
   font-size: 1.1rem;
-  font-weight: 400;
-  background: #e3e3e3;
-  margin-left: 12px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.btn-header:first-child {
-  margin-left: 0;
+/* Formulario de edición */
+.form-section {
+  background: #dde3df;
+  padding: 40px 0 60px 0;
+  min-height: 350px;
 }
 
-.btn-atras-abajo {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  font-size: 1.3rem;
-  font-weight: 400; /* Quita la negrita */
-}
-
-.btn:hover, .btn-header:hover, .btn-atras-abajo:hover {
-  background: #c7c7c7;
-}
-
-body {
-  font-family: 'Kanit', Arial, sans-serif;
-  margin: 0;
-  background: #f3f5f7;
-}
 .preview-header {
   background: #f3f5f7;
   padding: 32px 0 24px 0;
@@ -297,6 +235,7 @@ body {
   align-items: center;
   border-bottom: 2px solid #bfc5c2;
 }
+
 .preview-row {
   display: flex;
   align-items: center;
@@ -304,6 +243,7 @@ body {
   margin-top: 18px;
   gap: 32px;
 }
+
 .preview-img {
   width: 180px;
   height: 120px;
@@ -313,17 +253,20 @@ body {
   border: 4px solid #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
+
 .preview-title {
   font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 18px;
   text-align: center;
 }
+
 .preview-label {
   font-size: 1.2rem;
   margin-right: 12px;
   font-weight: 400;
 }
+
 .preview-product-name {
   font-size: 1.5rem;
   background: #fff;
@@ -336,20 +279,18 @@ body {
   min-width: 260px;
   text-align: left;
 }
-.form-section {
-  background: #dde3df;
-  padding: 40px 0 60px 0;
-  min-height: 350px;
-}
+
 .form-table {
   margin: 0 auto;
   display: table;
 }
+
 .form-row {
   display: table-row;
   margin-bottom: 18px;
   height: 60px;
 }
+
 .form-label {
   display: table-cell;
   font-size: 1.3rem;
@@ -358,13 +299,15 @@ body {
   font-weight: 400;
   min-width: 140px;
 }
+
 .form-input-cell {
   display: table-cell;
   vertical-align: middle;
 }
+
 .form-input, .form-select {
   font-family: 'Kanit', Arial, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   background: #e7ece7;
   border: none;
   border-radius: 0;
@@ -374,16 +317,20 @@ body {
   outline: none;
   box-sizing: border-box;
 }
+
 .form-input.short {
   width: 120px;
 }
+
 .form-select {
   width: 320px;
 }
+
 .form-input[readonly] {
   background: #e7ece7;
   color: #222;
 }
+
 .form-actions {
   width: 100%;
   display: flex;
@@ -392,6 +339,7 @@ body {
   padding: 0 48px;
   box-sizing: border-box;
 }
+
 .btn-form {
   background: #dbdbdb;
   border: none;
@@ -403,10 +351,34 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .btn-form:hover {
   background: #c7c7c7;
 }
+
 @media (max-width: 900px) {
+  .perfil-header, .perfil-tabs, .perfil-contenido, .form-section {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
   .form-input, .form-select { width: 100%; }
   .form-actions { flex-direction: column; gap: 18px; padding: 0 12px; }
+}
+.btn-atras-abajo {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background: #dbdbdb;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 44px;
+  font-size: 1.3rem;
+  font-family: 'Kanit', Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 100;
+}
+#tarjeta-publicacion {
+  transition: all 0.3s;
 }
