@@ -505,7 +505,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
 
 .university-logos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 4 columnas por defecto, ajustables */
+    grid-template-columns: repeat(4,1fr); /* 4 columnas por defecto, ajustables */
     gap: 40px; /* Espacio entre los logos */
     justify-items: center; /* Centra los logos dentro de sus celdas */
     align-items: center; /* Centra verticalmente los logos */
@@ -525,7 +525,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
 .logo-item img {
     max-width: 100%; /* Asegura que la imagen no se desborde */
     height: auto; /* Mantiene la proporción */
-    max-height: 80px; /* Ajusta la altura máxima de los logos */
+    max-height: 120px; /* Ajusta la altura máxima de los logos */
     filter: grayscale(100%); /* Desaturar logos para que se vean uniformes */
     opacity: 0.7; /* Ligeramente transparentes */
     transition: filter 0.3s ease, opacity 0.3s ease;
@@ -815,7 +815,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
 }
 
 .cta-section {
-    background-color: #256bdb;
+    background-color: #3874d6;
     color: #fff;
     text-align: center;
     padding: 60px 20px;
