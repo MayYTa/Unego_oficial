@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil - Pastelería de Valeria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      background-color:rgba(66, 114, 60, 0.1333);
+    }
+
+    .header-bg {
+      width: 100vw;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-bottom: 2px solid #ccc;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .header-bg + .container {
+      margin-top: 60px; /* Adds space only between header and publicaciones */
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 2200px;
+      margin: 10px auto 0 auto; /* Add 40px space above the publicaciones */
+      padding: 0px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 0%;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .publicacion {
+      display: flex;
+      flex-direction: column;         /* Stack content vertically */
+      align-items: center;
+      justify-content: flex-start;
+      width: 220px;                   /* Make it narrower */
+      min-height: 340px;              /* Make it taller */
+      background-color: #ccc;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      position: relative;
+      margin-right: 20px;             /* Space between cards if multiple per row */
+      padding: 18px 12px;
+      box-sizing: border-box;
+    }
+
+    .publicacion img {
+      width: 120px;                   /* Larger image for vertical card */
+      height: 120px;
+      border-radius: 8px;
+      margin: 0 0 18px 0;             /* Margin below image */
+      object-fit: cover;
+    }
+
+    .publicacion-info {
+      flex-grow: 1;
+      width: 100%;
+      text-align: center;
+    }
+
+    .publicacion-info h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .publicacion-info p {
+      margin: 0;
+      color: #555;
+    }
+
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      margin: 0;
+    }
+
+    .popup {
+      position: absolute;
+      top: 60px;
+      right: 30px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      display: none;
+      z-index: 100;
+    }
+
+    .popup button {
+      display: block;
+      width: 100%;
+      padding: 8px 12px;
+      margin-bottom: 5px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    .popup button:hover {
+      background-color: #ddd;
+    }
+
+    #undo-message {
+      display: none;
+      margin-top: 30px;
+      padding: 14px 18px;
+      background-color: #42723C;
+      color: white;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    #undo-message button {
+      background-color: #fff;
+      color: #42723C;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    #undo-message button:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header full width -->
+  <div class="header-bg">
+    <div class="container">
+      <div class="profile-header">
+        <img src="assets/img/pasteleriaDeValeria.png" alt="Perfil de Valeria" />
+        <div class="profile-info">
+          <h2>Pastelería de Valeria</h2>
+          <p>3 publicaciones</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Publicaciones -->
+    <div class="publicacion">
+      <img src="assets/img/pastelDeChocolate.png" alt="Pastel de Chocolate" />
+      <div class="publicacion-info">
+        <h3>Pastel de Chocolate</h3>
+        <p>Desde S/ 8</p>
+      </div>
+      <img src="assets/img/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+
+    <div class="publicacion">
+      <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" />
+      <div class="publicacion-info">
+        <h3>Pastel de Fresa</h3>
+        <p>Desde S/ 10</p>
+      </div>
+      <img src="assets/img/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+
+    <div class="publicacion">
+      <img src="assets/img/tortaConDecoracion.png" alt="Torta decorada" />
+      <div class="publicacion-info">
+        <h3>Torta con decoración</h3>
+        <p>Desde S/ 25</p>
+      </div>
+      <img src="assets/img/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+
+    <!-- Mensaje para deshacer -->
+    <div id="undo-message">
+      Publicación eliminada. <button onclick="deshacerBorrado()">Deshacer</button>
+    </div>
+  </div>
+
+  <script>
+    let publicacionEliminada = null;
+    let publicacionPadre = null;
+
+    function togglePopup(icon) {
+      const popup = icon.nextElementSibling;
+      document.querySelectorAll(".popup").forEach(p => {
+        if (p !== popup) p.style.display = "none";
+      });
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+
+    function borrarPublicacion(btn) {
+      publicacionEliminada = btn.closest(".publicacion").cloneNode(true);
+      publicacionPadre = btn.closest(".publicacion").parentNode;
+      btn.closest(".publicacion").remove();
+      document.getElementById("undo-message").style.display = "block";
+    }
+
+    function editarPublicacion(btn) {
+      borrarPublicacion(btn); // temporal: actúa igual que borrar
+    }
+
+    function deshacerBorrado() {
+      if (publicacionEliminada && publicacionPadre) {
+        publicacionPadre.appendChild(publicacionEliminada);
+        document.getElementById("undo-message").style.display = "none";
+        publicacionEliminada = null;
+        publicacionPadre = null;
+      }
+    }
+
+    // Ocultar popup al hacer clic fuera
+    document.addEventListener("click", function (e) {
+      if (!e.target.classList.contains("menu-icon") && !e.target.closest(".popup")) {
+        document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
+      }
+    });
+  </script>
+</body>
+</html>
