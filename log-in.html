@@ -41,6 +41,11 @@
                         <div class="text-center my-2">o</div>
                         <button type="button" class="btn btn-outline-secondary w-100 mb-2 d-flex align-items-center justify-content-center gap-2">
                             <img src="assets/icons/google_icono.png" alt="Google" width="24"> CONTINUAR CON GOOGLE
+                            <script>
+                                document.currentScript.parentElement.onclick = function() {
+                                    window.location.href = 'tienda.html';
+                                };
+                            </script>
                         </button>
                         <button type="button" class="btn btn-outline-primary w-100 mb-2 d-flex align-items-center justify-content-center gap-2">
                             <img src="assets/icons/outlook_icono.png" alt="Outlook" width="24"> CONTINUAR CON OUTLOOK

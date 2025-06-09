@@ -331,3 +331,43 @@ body {
 .btn-atras-abajo:hover {
   background: #c7c7c7;
 }
+.btn-atras-salir {
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
+  background: #dbdbdb;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 44px;
+  font-size: 1.3rem;
+  font-family: 'Kanit', Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 100;
+}
+.btn-atras-salir:hover {
+  background: #c7c7c7;
+}
+
+.perfil-acciones {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    position: relative; /* Agrega esto para que el cuadro se posicione relativo a este contenedor */
+}
+.resena-box {
+    width: 320px;
+    min-height: 120px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    left: 0; /* Alineado con el botón */
+    top: 100%; /* Justo debajo del botón */
+    margin-top: 8px; /* Separación opcional */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    z-index: 10;
+    padding: 18px 20px;
+    border-radius: 10px;
+}
