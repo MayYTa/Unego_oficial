@@ -15,7 +15,7 @@
     {
         "id": "polo-negro-1",
         "imagen": "assets/img/polo.png",
-        "titulo": "Polo negro en diferentes tallas, combina estilo y es de gran comodidad.",
+        "titulo": "Polo negro en diferentes tallas",
         "precio": 12,
         "calificacion": 3.9,
         "descripcion": [
@@ -25,48 +25,49 @@
         ]
     },
     {
-        "id": "zapatillas-deportivas-1",
-        "imagen": "assets/img/some_other_product_1.png",
-        "titulo": "Zapatillas deportivas ultraligeras",
-        "precio": 85,
-        "calificacion": 4.2,
-        "descripcion": [
-            "Zapatillas ideales para correr y entrenar.",
-            "Diseño ergonómico y suela de alta tracción para un rendimiento óptimo."
-        ]
-    },
-    {
-        "id": "acuarelas-profesionales-1",
-        "imagen": "assets/img/some_other_product_2.png",
-        "titulo": "Set de acuarelas profesionales 24 colores",
-        "precio": 35,
-        "calificacion": 4.9,
-        "descripcion": [
-            "Set completo de acuarelas de alta pigmentación.",
-            "Incluye 24 colores vibrantes y un pincel, ideal para artistas."
-        ]
-    },
-    {
-        "id": "reloj-inteligente-1",
-        "imagen": "assets/img/some_other_product_3.png",
-        "titulo": "Reloj inteligente con monitor de ritmo cardíaco",
-        "precio": 150,
+        "id": "PastelChocolate-1",
+        "imagen": "assets/img/pastelChocolate.png",
+        "titulo": "Pastel de Chocolate",
+        "precio": 8,
         "calificacion": 4.0,
         "descripcion": [
-            "Reloj inteligente multifunción con monitor de ritmo cardíaco.",
-            "Contador de pasos y notificaciones de smartphone.",
-            "Compatible con iOS y Android."
+            "Pastel de chocolate húmedo y esponjoso.",
+            "Cubierto con una rica ganache de chocolate."
         ]
     },
     {
-        "id": "libro-cocina-vegana-1",
-        "imagen": "assets/img/some_other_product_4.png",
-        "titulo": "Libro de cocina vegana para principiantes",
-        "precio": 15,
+        "id": "PastelFresa-1",
+        "imagen": "assets/img/pastelFresa.png",
+        "titulo": "Pastel de Fresa",
+        "precio": 10,
         "calificacion": 4.5,
         "descripcion": [
-            "Un libro esencial con recetas fáciles y deliciosas para quienes se inician en la cocina vegana.",
-            "Incluye consejos y trucos."
+            "Pastel de fresa fresco y ligero.",
+            "Cubierto con una suave crema de fresa."
+        ]
+    },
+    {
+        "id": "MochilaPorta-1",
+        "imagen": "assets/img/mochilaPorta.png",
+        "titulo": "Mochila porta",
+        "precio": 35,
+        "calificacion": 3.8,
+        "descripcion": [
+            "Color:Negro",
+            "Medidas:47 cm alto / 35.5 cm ancho / 19 cm prof.",
+            "Compartimiento acolchado para laptop."
+        ]
+    },
+    {
+        "id": "audifonos-1",
+        "imagen": "assets/img/audifonos.png",
+        "titulo": "Audífonos Inalámbricos",
+        "precio": 30,
+        "calificacion": 4.1,
+        "descripcion": [
+            "Audífonos inalámbricos con cancelación de ruido.",
+            "batería con una capacidad de 250 mAh y se carga con una conexión USB-C.",
+            "Hasta 12 horas de batería."
         ]
     }
 ]

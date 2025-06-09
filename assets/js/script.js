@@ -4,34 +4,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxPriceInput = document.getElementById('max-price');
     const applyFiltersButton = document.getElementById('apply-filters');
     const ratingFilterRadios = document.querySelectorAll('input[name="rating-filter"]');
-    const sortOrderSelect = document.getElementById('sort-order'); // Nuevo: Selector de ordenamiento
-    const productContainer = document.querySelector('.main-content'); // Contenedor de las tarjetas
-    let productCards = Array.from(document.querySelectorAll('.product-card')); // Convertir a array para ordenar
+    const sortOrderSelect = document.getElementById('sort-order'); 
+    const productContainer = document.querySelector('.main-content'); 
+    let productCards = Array.from(document.querySelectorAll('.product-card')); 
     const priceAlert = document.getElementById('price-alert');
 
-    const filterAndSortProducts = () => { // Renombrado para reflejar ambas acciones
+    const filterAndSortProducts = () => { 
         const searchTerm = searchInput.value.toLowerCase().trim();
         let minPrice = parseFloat(minPriceInput.value);
         let maxPrice = parseFloat(maxPriceInput.value);
         let selectedRating = parseFloat(document.querySelector('input[name="rating-filter"]:checked').value);
-        const sortOrder = sortOrderSelect.value; // Nuevo: Obtener el tipo de ordenamiento
+        const sortOrder = sortOrderSelect.value; 
 
-        // VALIDACIÓN DE PRECIOS
         if (!isNaN(minPrice) && !isNaN(maxPrice) && minPrice > maxPrice) {
             priceAlert.textContent = "El precio mínimo no puede ser mayor que el máximo.";
             priceAlert.classList.remove('hidden');
             
-            // OCULTAR TODOS LOS PRODUCTOS CUANDO LA VALIDACIÓN FALLA
             productCards.forEach(card => {
                 card.classList.add('hidden');
             });
             
-            return; // Detiene la ejecución si hay un error de validación
+            return; 
         } else {
-            priceAlert.classList.add('hidden'); // Oculta la alerta si la validación es correcta
+            priceAlert.classList.add('hidden'); 
         }
 
-        let visibleProducts = []; // Array para almacenar solo los productos visibles
+        let visibleProducts = []; 
 
         productCards.forEach(card => {
             const title = card.querySelector('.product-title').textContent.toLowerCase();
@@ -41,40 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let isVisible = true;
 
-            // 1. Filtrar por texto de búsqueda
             if (searchTerm) {
                 if (!title.includes(searchTerm) && !seller.includes(searchTerm)) {
                     isVisible = false;
                 }
             }
 
-            // 2. Filtrar por precio mínimo
             if (!isNaN(minPrice) && price < minPrice) {
                 isVisible = false;
             }
 
-            // 3. Filtrar por precio máximo
             if (!isNaN(maxPrice) && price > maxPrice) {
                 isVisible = false;
             }
 
-            // 4. Filtrar por calificación (estrellas)
             if (selectedRating > 0) {
                 if (rating < selectedRating) {
                     isVisible = false;
                 }
             }
 
-            // Mostrar u ocultar la tarjeta
             if (isVisible) {
                 card.classList.remove('hidden');
-                visibleProducts.push(card); // Añadir a los productos visibles
+                visibleProducts.push(card); 
             } else {
                 card.classList.add('hidden');
             }
         });
 
-        // ORDENAR LOS PRODUCTOS VISIBLES
         if (sortOrder !== 'default') {
             visibleProducts.sort((a, b) => {
                 const aPrice = parseFloat(a.querySelector('.product-price').dataset.price);
@@ -83,25 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bRating = parseFloat(b.querySelector('.product-rating').dataset.rating);
 
                 if (sortOrder === 'price-asc') {
-                    return aPrice - bPrice; // Menor a Mayor Precio
+                    return aPrice - bPrice;
                 } else if (sortOrder === 'price-desc') {
-                    return bPrice - aPrice; // Mayor a Menor Precio
+                    return bPrice - aPrice; 
                 } else if (sortOrder === 'rating-desc') {
-                    return bRating - aRating; // Mayor a Menor Puntuación
+                    return bRating - aRating; 
                 }
-                return 0; // No debería llegar aquí si el valor es válido
+                return 0;
             });
         }
 
-        // Reinsertar los productos ordenados en el DOM
-        // Primero, limpia el contenedor para evitar duplicados si los productos ya estaban ahí
         productContainer.innerHTML = ''; 
         visibleProducts.forEach(card => {
             productContainer.appendChild(card);
         });
     };
 
-    // Event Listeners
     searchInput.addEventListener('keyup', filterAndSortProducts);
     applyFiltersButton.addEventListener('click', filterAndSortProducts);
     minPriceInput.addEventListener('change', filterAndSortProducts);
@@ -109,8 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ratingFilterRadios.forEach(radio => {
         radio.addEventListener('change', filterAndSortProducts);
     });
-    sortOrderSelect.addEventListener('change', filterAndSortProducts); // Nuevo: Evento para el select de ordenamiento
-
-    // Ejecutar el filtro/ordenamiento inicial al cargar la página
+    sortOrderSelect.addEventListener('change', filterAndSortProducts); 
     filterAndSortProducts();
 });
