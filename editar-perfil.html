@@ -1,45 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Perfil - Unego</title>
-  <link rel="stylesheet" href="css/ft04.css">
-  <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/editar-perfil.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Perfil - Pastelería de Valeria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      background-color:rgba(66, 114, 60, 0.1333);
+    }
+    .header-bg {
+      width: 100vw;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-bottom: 2px solid #ccc;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 2200px;
+      margin: 10px auto 0 auto;
+      padding: 0px;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 0%;
+    }
+    .profile-info h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .profile-actions {
+      display: flex;
+      gap: 12px;
+      margin-left: auto;
+    }
+    .editar-btn, .editar-btn:visited {
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .resenas-btn {
+      background-color: #42723C;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .editar-btn:hover {
+      background-color: #b3b3b3;
+    }
+    .resenas-btn:hover {
+      background-color: #315829;
+    }
+  </style>
 </head>
 <body>
-  <div class="editar-header">
-    <button class="atras-btn" onclick="window.location.href='perfil-ivan.html'">Atras</button>
-    <div class="perfil-icono">
-      <img src="assets/icons/imagen_perfil.png" alt="Foto de Perfil">
-      <button class="foto-btn">Foto de Perfil</button>
-    </div>
-    <div class="logo-estadisticas">
-      <img src="assets/img/unego_logo.png" alt="Unego Logo" class="logo-grande">
-      <div class="estadisticas">
-        <span>3 publicaciones</span>
-        <span>500 seguidores</span>
-        <span>10 seguidos</span>
+  <!-- Header full width -->
+  <div class="header-bg">
+    <div class="container">
+      <div class="profile-header">
+        <img src="assets/img/editarPerfil.png" alt="Editar Perfil" />
+        <div class="profile-info">
+          <h2 id="display-name">Pastelería de Valeria</h2>
+          <div id="profile-description" style="color:#555; font-size:16px; margin-top:6px;"></div>
+          <p>3 publicaciones</p>
+        </div>
+        <div class="profile-actions">
+          <a href="editar-perfil.html" class="editar-btn">Editar Perfil</a>
+          <button class="resenas-btn">Reseñas</button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="editar-contenido">
-    <form class="editar-form">
-      <label for="nombre">Nombres y Apellidos</label>
-      <input type="text" id="nombre" name="nombre">
-
-      <label for="descripcion">Descripción</label>
-      <input type="text" id="descripcion" name="descripcion">
-
-      <label for="correo">Correo Vinculado</label>
-      <input type="email" id="correo" name="correo">
-
-      <label for="numero">Número</label>
-      <input type="text" id="numero" name="numero">
-
-      <button type="button" class="btn-cambiar">Cambiar Contraseña</button>
-    <button type="submit" class="btn-verificar" onclick="event.preventDefault(); window.location.href='editar-perfil-verificar.html';">Verificar</button>
+  <!-- Formulario para editar perfil -->
+  <div class="container" style="margin-top:40px; max-width:500px; flex-direction:column; align-items:flex-start;">
+    <form id="edit-profile-form" style="width:100%;">
+      <label for="nombre-perfil" style="font-weight:bold;">Nombre del perfil</label><br>
+      <input 
+        type="text" 
+        id="nombre-perfil" 
+        name="nombre-perfil" 
+        maxlength="30" 
+        style="width:100%;padding:10px;margin:10px 0 20px 0;font-size:16px;border-radius:6px;border:1px solid #ccc;"
+        placeholder="Escribe el nombre del perfil"
+        required
+      ><br>
+      <label for="descripcion-perfil" style="font-weight:bold;">Descripción</label><br>
+      <textarea 
+        id="descripcion-perfil" 
+        name="descripcion-perfil" 
+        maxlength="100" 
+        rows="3"
+        style="width:100%;padding:10px;margin:10px 0 20px 0;font-size:16px;border-radius:6px;border:1px solid #ccc;resize:none;"
+        placeholder="Escribe una descripción (máx. 100 caracteres)"
+        required
+      ></textarea><br>
+      <button 
+        type="submit" 
+        style="background-color:#42723C;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:16px;font-weight:bold;cursor:pointer;position:relative;left:0;"
+      >Aplicar cambios</button>
     </form>
   </div>
+  <script>
+    document.getElementById('edit-profile-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Get values
+      const newName = document.getElementById('nombre-perfil').value.trim();
+      const newDesc = document.getElementById('descripcion-perfil').value.trim();
+      // Update header
+      document.getElementById('display-name').textContent = newName || "Pastelería de Valeria";
+      document.getElementById('profile-description').textContent = newDesc;
+      // Optionally clear form fields
+      // this.reset();
+    });
+  </script>
 </body>
 </html>

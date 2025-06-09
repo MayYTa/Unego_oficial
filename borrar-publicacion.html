@@ -44,6 +44,8 @@
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
+      justify-content: space-between; /* Add this for spacing */
+      width: 100%;
     }
 
     .profile-header img {
@@ -55,6 +57,44 @@
     .profile-info h2 {
       margin: 0;
       font-size: 28px;
+    }
+
+    .profile-actions {
+      display: flex;
+      gap: 12px;
+      margin-left: auto; /* Push to right */
+    }
+
+    .editar-btn, .editar-btn:visited {
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none; /* Remove underline for links */
+      display: inline-block;
+    }
+
+    .resenas-btn {
+      background-color: #42723C;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .editar-btn:hover {
+      background-color: #b3b3b3;
+    }
+
+    .resenas-btn:hover {
+      background-color: #315829;
     }
 
     .publicacion {
@@ -171,6 +211,10 @@
         <div class="profile-info">
           <h2>Pastelería de Valeria</h2>
           <p>3 publicaciones</p>
+        </div>
+        <div class="profile-actions">
+          <a href="editar-perfil.html" class="editar-btn">Editar Perfil</a>
+          <button class="resenas-btn">Reseñas</button>
         </div>
       </div>
     </div>
