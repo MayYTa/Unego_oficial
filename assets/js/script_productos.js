@@ -1,6 +1,3 @@
-// script_productos.js
-
-// ----------- FILTROS Y ORDENAMIENTO -----------
 document.addEventListener('DOMContentLoaded', () => {
     const productSearchInput = document.getElementById('product-search');
     const sortOrderSelect = document.getElementById('sort-order');
@@ -81,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFiltersAndSort();
 });
 
-
-// ----------- DETALLES DE PRODUCTO -----------
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
@@ -172,14 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return starsHtml;
   }
 
-  // Siempre inicializamos rating a 0 al cargar la página
   let currentRating = 0;
 
-  // Pintamos las estrellas según rating inicial (cero)
   productStarsContainer.innerHTML = generateStarRating(currentRating);
   productRatingValue.textContent = currentRating.toFixed(1);
 
-  // Evento para pintar estrellas al clickear
   productStarsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('fa-star')) {
       currentRating = parseInt(event.target.getAttribute('data-value'));

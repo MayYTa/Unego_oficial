@@ -1,3 +1,7 @@
+* {
+    font-family: kanit, sans-serif;
+}	
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -288,6 +292,10 @@ a{
     font-size: 22px;
     color: #888;
     cursor: pointer;
+}
+
+.product-actions .fa-bookmark.saved {
+    color: #111 !important;
 }
 
 @media (max-width: 992px) {
