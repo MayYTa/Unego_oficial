@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Perfil - Unego</title>
     <link rel="stylesheet" href="css/ft04.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="perfil-header">
@@ -23,7 +24,10 @@
         </div>
         <div class="perfil-acciones">
             <button class="btn" onclick="window.location.href='editar-perfil.html'">Editar perfil</button>
-            <button class="btn">Reseñas</button>
+            <button class="btn" onclick="mostrarResena()">Reseñas</button> 
+            <div id="cuadroResena" class="resena-box" >
+                <h2 style="text-align:center; margin:0;">Reseñas</h2>
+            </div>
         </div>
     </div>
 
@@ -64,5 +68,19 @@
             </div>
         </div>
     </div>
+    <div class="contenedor-boton-abajo">
+      <button class="btn btn-atras-abajo" onclick="window.location.href='tienda.html'">Atrás</button>
+    <div class="contenedor-boton-abajo">
+      <button class="btn btn-atras-salir" onclick="window.location.href='log-in.html'">Salir</button>
+<script>
+function mostrarResena() {
+    const cuadro = document.getElementById('cuadroResena');
+    if (cuadro.style.display === 'none' || cuadro.style.display === '') {
+        cuadro.style.display = 'block';
+    } else {
+        cuadro.style.display = 'none';
+    }
+}
+</script>
 </body>
 </html>

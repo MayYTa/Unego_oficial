@@ -174,3 +174,19 @@
         font-size: 1.5em;
     }
 }
+
+
+/* Puedes agregar esto al final de tu archivo: d:\Unego_oficial\css\tienda.css */
+.stars .fa-star,
+.stars .fa-star-half-alt {
+    color: #fadb14 !important;   /* Color dorado */
+    font-size: 22px !important;  /* Tamaño igual para todas */
+    width: 22px;                 /* Fuerza el ancho para que no se vea más pequeña */
+    min-width: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.stars .fa-star:not(.filled):not(.fa-star-half-alt) {
+    color: #ccc !important;      /* Color gris para estrellas vacías */
+}
