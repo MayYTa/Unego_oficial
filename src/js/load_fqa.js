@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función asíncrona para cargar las preguntas frecuentes
     async function cargarPreguntasFrecuentes() {
         try {
-            const respuesta = await fetch('src/components/fqa.json'); 
+            const respuesta = await fetch('src/json/fqa.json'); 
             
             if (!respuesta.ok) {
                 throw new Error(`Error HTTP: ${respuesta.status}`);

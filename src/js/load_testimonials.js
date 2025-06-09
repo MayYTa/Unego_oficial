@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function cargarReseñas() {
         try {
             // Realizamos la petición para obtener el archivo JSON
-            const respuesta = await fetch('src/components/testimonials.json');
+            const respuesta = await fetch('src/json/testimonials.json');
             
             // Verificamos si la respuesta fue exitosa
             if (!respuesta.ok) {

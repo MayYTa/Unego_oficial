@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // **¡Asegúrate que esta ruta sea correcta!**
             // Si universidades.json está en la raíz: 'universidades.json'
             // Si universidades.json está en src/components/: 'src/components/universidades.json'
-            const respuesta = await fetch('src/components/universities.json'); 
+            const respuesta = await fetch('src/json/universities.json'); 
             
             if (!respuesta.ok) {
                 throw new Error(`Error HTTP: ${respuesta.status}`);

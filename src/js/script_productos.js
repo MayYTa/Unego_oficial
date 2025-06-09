@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('assets/json/productos.json');
+        const response = await fetch('src/json/productos.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const products = await response.json();
         const product = products.find(p => p.id === productId);
