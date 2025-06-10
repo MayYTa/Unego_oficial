@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil - Pastelería de Valeria</title>
+  <link rel="stylesheet" href="css/ft04.css">
+  <link rel="stylesheet" href="css/borrar-publicacion.css">
+</head>
+<body>
+  <!-- Header -->
+  <div class="perfil-header">
+    <div class="perfil-img">
+      <img src="assets/img/pasteleriaDeValeria.png" alt="Perfil de Valeria" />
+    </div>
+    <div class="perfil-info">
+      <div class="perfil-nombre">Pastelería de Valeria</div>
+      <div class="perfil-estadisticas">
+        <span id="pub-count"><span id="num-publicaciones">3</span> publicaciones</span>
+        <span>300 seguidores</span>
+        <span>10 seguidos</span>
+      </div>
+    </div>
+    <div class="perfil-acciones">
+    <button class="btn">Editar perfil</button>
+      <button class="btn">Reseñas</button>
+    </div>
+  </div>
+
+  <!-- ...código anterior... -->
+
+<div class="perfil-tabs">
+  <a href="javascript:void(0);" class="tab-activo" style="text-decoration:none; color:inherit; display:flex; align-items:center;" onclick="toggleTarjeta()">
+    <img src="assets/icons/icono-ojo.png" alt="Ojo" class="icono-ojo" style="cursor:pointer;">
+    <span style="cursor:pointer;">Publicaciones activas</span>
+  </a>
+  <div class="tab-nueva">
+    <a style="text-decoration:none; color:inherit; display:inline-block; vertical-align:middle; margin-left:16px;"></a>
+      <img src="assets/icons/icono-calendario.png" alt="Calendario" class="icono-calendario">
+      <span style="margin-left:-5px;">Nueva Publicación</span>
+    </a>
+  </div>
+</div>
+
+<div class="perfil-contenido">
+  <div style="display:flex; gap:32px; flex-wrap:wrap;">
+    <!-- Producto 1 -->
+    <div style="background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:18px 18px 12px 18px; width:210px; display:flex; flex-direction:column; align-items:center; position:relative;">
+      <img src="assets/img/pastelDeChocolate.png" alt="Pastel de Chocolate" style="width:140px; height:140px; object-fit:cover; border-radius:8px;">
+      <div style="margin-top:12px; font-size:1.15rem; font-weight:500; text-align:center;">Pastel de Chocolate</div>
+      <div style="font-size:1.1rem; margin-top:4px; text-align:center;">Desde S/ 8</div>
+      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" style="position:absolute; top:12px; right:12px; width:18px; height:18px; cursor:pointer;">
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+    <!-- Producto 2 -->
+    <div style="background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:18px 18px 12px 18px; width:210px; display:flex; flex-direction:column; align-items:center; position:relative;">
+      <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" style="width:140px; height:140px; object-fit:cover; border-radius:8px;">
+      <div style="margin-top:12px; font-size:1.15rem; font-weight:500; text-align:center;">Pastel de Fresa</div>
+      <div style="font-size:1.1rem; margin-top:4px; text-align:center;">Desde S/ 10</div>
+      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" style="position:absolute; top:12px; right:12px; width:18px; height:18px; cursor:pointer;">
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+    <!-- Producto 3 -->
+    <div style="background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:18px 18px 12px 18px; width:210px; display:flex; flex-direction:column; align-items:center; position:relative;">
+      <img src="assets/img/tortaConDecoracion.png" alt="Torta decorada" style="width:140px; height:140px; object-fit:cover; border-radius:8px;">
+      <div style="margin-top:12px; font-size:1.15rem; font-weight:500; text-align:center;">Torta con decoración</div>
+      <div style="font-size:1.1rem; margin-top:4px; text-align:center;">Desde S/ 25</div>
+      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" style="position:absolute; top:12px; right:12px; width:18px; height:18px; cursor:pointer;">
+      <div class="popup">
+        <button onclick="editarPublicacion(this)">Editar publicación</button>
+        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+      </div>
+    </div>
+  </div>
+  <!-- Mensaje para deshacer -->
+  <div id="undo-message" style="margin-top:30px; padding:14px 18px; background:#fff; color:#222; border-radius:10px; font-size:1.1rem; box-shadow:0 2px 8px rgba(0,0,0,0.07); align-items:center; display:none;">
+    Publicación eliminada.
+    <img src="assets/icons/botonRegresar.png" alt="Deshacer" onclick="deshacerBorrado()" title="Deshacer" style="width:32px; height:32px; margin-left:20px; cursor:pointer; vertical-align:middle; border-radius:6px; background:#fff; border:1px solid #cfd3d1;">
+  </div>
+</div>
+<!-- ...código posterior... -->
+
+    <div class="contenedor-boton-abajo">
+        <button class="btn btn-atras-abajo">Atrás</button>
+     <div class="contenedor-boton-abajo">
+          <button class="btn btn-atras-salir" onclick="window.location.href='log-in.html'">Salir</button>
+    <script>
+    let publicacionEliminada = null;
+    let publicacionPadre = null;
+
+    function togglePopup(icon) {
+      const popup = icon.nextElementSibling;
+      document.querySelectorAll(".popup").forEach(p => {
+        if (p !== popup) p.style.display = "none";
+      });
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+
+    function actualizarNumeroPublicaciones() {
+      const count = document.querySelectorAll('.publicacion').length;
+      document.getElementById('num-publicaciones').textContent = count;
+    }
+
+    function borrarPublicacion(btn) {
+      publicacionEliminada = btn.closest(".publicacion").cloneNode(true);
+      publicacionPadre = btn.closest(".publicacion").parentNode;
+      btn.closest(".publicacion").remove();
+      document.getElementById("undo-message").style.display = "block";
+      actualizarNumeroPublicaciones();
+    }
+
+    function editarPublicacion(btn) {
+      // Aquí puedes agregar la lógica para editar en el futuro
+    }
+
+    function deshacerBorrado() {
+      if (publicacionEliminada && publicacionPadre) {
+        publicacionPadre.appendChild(publicacionEliminada);
+        document.getElementById("undo-message").style.display = "none";
+        publicacionEliminada = null;
+        publicacionPadre = null;
+        actualizarNumeroPublicaciones();
+      }
+    }
+
+    // Ocultar popup al hacer clic fuera
+    document.addEventListener("click", function (e) {
+      if (!e.target.classList.contains("menu-icon") && !e.target.closest(".popup")) {
+        document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
+      }
+    });
+
+    // Al cargar la página, actualiza el nombre y la descripción si existen en localStorage
+    window.addEventListener('DOMContentLoaded', function() {
+      const nombre = localStorage.getItem('perfil_nombre');
+      const descripcion = localStorage.getItem('perfil_descripcion');
+      if (nombre) {
+        const nombreElem = document.querySelector('.perfil-nombre');
+        if (nombreElem) nombreElem.textContent = nombre;
+      }
+      if (descripcion) {
+        let descElem = document.getElementById('profile-description');
+        if (!descElem) {
+          const nombreDiv = document.querySelector('.perfil-nombre');
+          descElem = document.createElement('div');
+          descElem.id = 'profile-description';
+          descElem.style.color = '#555';
+          descElem.style.fontSize = '1.1rem';
+          descElem.style.marginTop = '6px';
+          nombreDiv.insertAdjacentElement('afterend', descElem);
+        }
+        descElem.textContent = descripcion;
+      }
+    });
+  </script>
+</body>
+</html>
