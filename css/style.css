@@ -1031,13 +1031,7 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
     margin: 0 auto;
 }
 
-.question-mark {
-    font-size: 4em;
-    color: #007bff;
-    font-weight: bold;
-    line-height: 1;
-    padding-top: 15px;
-}
+
 
 /* --- Nuevos estilos para la lista de FAQ (reemplazan los estilos de acordeón) --- */
 .faq-list { /* Usamos esta clase para el contenedor principal de las preguntas */
@@ -1073,9 +1067,6 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
     .faq-content {
         flex-direction: column;
         align-items: center;
-    }
-    .question-mark {
-        margin-bottom: 20px;
     }
     .faq-list { /* Renombrado de faq-accordion a faq-list */
         width: 100%;
