@@ -1,0 +1,201 @@
+/* Estilos específicos para la página de chat */
+.chat-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Altura de la vista menos la altura del header */
+    background-color: #f0f2f5; /* Fondo suave para la página de chat */
+    padding: 15px;
+}
+
+.chat-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px; /* Ancho máximo para la caja de chat */
+    height: 70vh; /* Altura de la caja de chat */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Oculta el scroll si los elementos exceden */
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#seller-chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+#seller-chat-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.close-chat-btn {
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.close-chat-btn:hover {
+    color: #e9ecef;
+}
+
+.chat-messages {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 20px;
+    overflow-y: auto; /* Habilita el scroll para los mensajes */
+    background-color: #e5ddd5; /* Fondo de chat típico de WhatsApp */
+    display: flex;
+    flex-direction: column; /* Apila los mensajes */
+}
+
+.message {
+    max-width: 75%;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    font-size: 0.95em;
+}
+
+.message p {
+    margin: 0;
+    word-wrap: break-word; /* Rompe palabras largas */
+}
+
+.message-time {
+    font-size: 0.7em;
+    color: #888;
+    text-align: right;
+    margin-top: 5px;
+    display: block; /* Para que ocupe su propia línea */
+}
+
+.message.sent {
+    align-self: flex-end; /* Alinea los mensajes enviados a la derecha */
+    background-color: #dcf8c6; /* Verde claro para mensajes enviados */
+    color: #333;
+    border-bottom-right-radius: 2px; /* Pequeño ajuste para la burbuja */
+}
+
+.message.received {
+    align-self: flex-start; /* Alinea los mensajes recibidos a la izquierda */
+    background-color: #fff; /* Blanco para mensajes recibidos */
+    color: #333;
+    border-bottom-left-radius: 2px; /* Pequeño ajuste para la burbuja */
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    background-color: #f8f8f8;
+    gap: 10px;
+}
+
+#chat-message-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+}
+
+#chat-message-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+#send-message-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Botón circular */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+#send-message-btn:hover {
+    background-color: #0056b3;
+}
+
+/* ... (Tus estilos existentes para .chat-header-info, #seller-chat-avatar, #seller-chat-name) ... */
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+    display: inline-block; /* Para que esté en línea con el texto */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Borde sutil */
+}
+
+.status-indicator.active {
+    background-color: #28a745; /* Verde para activo */
+}
+
+.status-indicator.inactive {
+    background-color: #6c757d; /* Gris para inactivo */
+}
+
+/* ... (El resto de tus estilos de chat.css) ... */
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .chat-box {
+        width: 95%;
+        height: 80vh; /* Más alto en móviles */
+    }
+    .chat-header {
+        padding: 12px 15px;
+    }
+    #seller-chat-name {
+        font-size: 1.1em;
+    }
+    .chat-messages {
+        padding: 15px;
+    }
+    .message {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+    .chat-input-area {
+        padding: 10px 15px;
+    }
+    #chat-message-input {
+        padding: 8px 12px;
+    }
+    #send-message-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+}
