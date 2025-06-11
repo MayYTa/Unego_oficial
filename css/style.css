@@ -1,3 +1,50 @@
+
+/* Importe de estilos Kanit y Noto Sans */
+
+/* Definición para el peso Regular de Kanit (400) */
+@font-face {
+    font-family: 'Kanit';
+    src: url('/assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype'); /* Ruta a Kanit Regular */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Definición para el peso Bold de Kanit (700) */
+@font-face {
+    font-family: 'Kanit';
+    src: url('/assets/fonts/Kanit/Kanit-Bold.ttf') format('truetype'); /* Ruta a Kanit Bold */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Definición para el peso Regular de Noto Sans (400) */
+@font-face {
+    font-family: 'Noto Sans'; /* Nuevo nombre de familia para Noto Sans */
+    src: url('/assets/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype'); /* Ruta a Noto Sans Regular */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Definición para el peso Bold de Noto Sans (700) */
+@font-face {
+    font-family: 'Noto Sans'; /* Usa el mismo nombre de familia */
+    src: url('/assets/fonts/NotoSans/NotoSans-Bold.ttf') format('truetype'); /* Ruta a Noto Sans Bold */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+/* Estilos generales */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+}
+
+/* Estilos generales */
 body {
     font-family: 'Kanit', sans-serif; /* Puedes cambiar la fuente */
     /* margin: 0; <-- Esta línea ya no es necesaria aquí si la pones en html, body */
@@ -41,12 +88,72 @@ h1, h2, h3, h4 { /* <-- NUEVA REGLA: Aplica Kanit a todos los encabezados */
     margin: 0;
     padding: 0;
     display: flex;
-
 }
 
-header {
-    background-color: blue;
-    padding: 15px;
+.navbar nav ul li {
+    margin-left: 25px; /* Espaciado entre los elementos del menú */
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    font-family: 'Noto Sans', sans-serif; /* Asegura Noto Sans */
+}
+
+.navbar nav ul li a:hover {
+    color: #DAF7DC; /* Color al pasar el mouse por los enlaces */
+}
+
+/* Estilos para el banner principal (Hero Banner) */
+.hero-banner {
+    position: relative;
+    width: 100%; /* Make the banner take up the full width of its parent */
+    height: 70vh; /* **Crucial:** Define a fixed height for your banner. Adjust this as needed (e.g., 600px, 70vh for viewport height). */
+    /* If you set height: auto; the banner's height will be determined by its content, which might not be what you want for a hero section. */
+    overflow: hidden; /* Important to hide any parts of the image that go beyond the banner's boundaries */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Remove any potential padding/margin on the .hero-banner itself that might create unwanted space */
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),url("/assets/img/LandingPage1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-banner .overlay-text {
+    /*position: absolute; /* Keep this if you want it truly on top of the image */
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    left: 50%; /* <-- ADD THIS! This centers the text within the overlay-text div */
+    color: #FFFFFF;
+
+    z-index: 1; /* Make sure the overlay text takes full width to allow text-align: center to work properly */
+}
+
+.Rectangle {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 150px;
+    padding: 20px;
+    margin: 30px auto 0;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column; /* This is KEY: Stacks children vertically */
+    justify-content: center; /* Centers the group of h2 and p vertically */
+    align-items: center; /* Centers the h2 and p horizontally */
+    text-align: center; /* Ensures text inside h2 and p is centered if it wraps */
+
+    color: #FFFFFF;
+}
+
+.Rectangle h2 {
+    font-size: 36px;
     color: white;
     margin: 0; /* Remove default margin */
     /* If you want h2 to be slightly higher than center, you could add a negative margin-top */
@@ -984,5 +1091,4 @@ header {
         border-left: none;
         padding: 10px 15px;
     }
-
 }
