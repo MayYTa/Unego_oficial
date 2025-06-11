@@ -1,192 +1,328 @@
-/* General Product Detail Styles */
-.main-content-product {
-    flex-grow: 1;
+/* Contenedor principal del detalle del producto */
+.page-content-wrapper {
+    max-width: 1200px; /* Ancho máximo general para el contenido */
+    margin: 20px auto; /* Centrar el wrapper */
+    padding: 0 20px; /* Espaciado lateral */
+}
+
+/* Flexbox para el layout de dos columnas */
+.product-detail-layout {
+    display: flex; /* Habilitar Flexbox para las columnas */
+    gap: 40px; /* Espacio entre las columnas */
+    padding: 30px;
+    background-color: #e0f0ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 20px auto; /* Centrar el contenedor del producto */
+    max-width: 900px; /* Ancho máximo para el layout del producto */
+    align-items: flex-start; /* Alinear las columnas en la parte superior */
+}
+
+/* Columna Izquierda: Visuales (Imagen, Título Principal, Botón) */
+.product-visuals {
+    flex-basis: 350px; /* Ancho base para la columna izquierda */
+    flex-shrink: 0; /* Evita que la columna se encoja */
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto */
     padding: 20px;
     border-radius: 8px;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    background-color: #fcfcfc; /* Fondo suave para esta columna */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.product-detail-card {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 900px;
+.seller-name-top {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
     width: 100%;
-    align-items: center;
 }
 
-@media (min-width: 768px) {
-    .product-detail-card {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+.product-image-container {
+    width: 100%;
+    max-width: 300px; /* Tamaño máximo para la imagen dentro de su contenedor */
+    margin-bottom: 20px;
 }
 
-.product-image-large {
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
-    text-align: center;
-}
-
-.product-image-large img {
-    max-width: 100%;
+.product-image-container img {
+    width: 100%;
     height: auto;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.product-info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-info h1 {
-    font-size: 2.2em;
-    color: #333;
-}
-
-.product-seller {
-    font-size: 1.1em;
-    color: #666;
-}
-
-.product-price-detail {
+.product-main-title {
     font-size: 1.8em;
-    color: #000000;
-    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.product-rating-detail {
+#buy-button {
+    width: 90%; /* Ancho del botón */
+    padding: 15px 30px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#buy-button:hover {
+    background-color: #333;
+}
+
+/* Columna Derecha: Panel de Información */
+.product-info-panel {
+    flex-grow: 1; /* Permite que ocupe el espacio restante */
+    padding: 20px;
     display: flex;
-    flex-direction: row; /* Organiza en una fila */
-    justify-content: space-between; /* Espacio entre elementos */
-    align-items: flex-start; /* Alinear al inicio */
-    width: 100%;
+    flex-direction: column; /* Apila el contenido verticalmente */
+}
+
+.product-info-title {
+    font-size: 2.2em;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+#product-name-info {
+    font-weight: normal; /* El "Nombre del Producto:" será bold, el span no tanto */
+    color: #000;
+}
+
+.product-info-category,
+.product-info-seller {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.product-info-price {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000000; /* Color distintivo para el precio */
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-top: 1px solid #eee;
     padding-top: 20px;
 }
 
-.description-info {
-    flex: 1; /* Ocupa espacio a la izquierda */
+.product-info-description {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.product-info-description h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-info-description ul { /* Estilo para la lista de descripción */
+    list-style: disc inside; /* Viñetas */
+    padding-left: 0; /* Asegura que no haya padding extra */
+    margin: 0;
+}
+
+.product-info-description ul li {
     font-size: 1em;
+    color: #555;
     line-height: 1.6;
-    color: #444;
-    margin-right: 20px; /* Espacio entre descripción y calificación */
+    margin-bottom: 5px;
 }
 
-.rating-info {
-    flex: 1; /* Ocupa espacio a la derecha */
+
+/* Sección de Calificación */
+.product-info-rating {
     display: flex;
-    flex-direction: column; /* Organiza en columna */
-    align-items: flex-start; /* Alinear elementos a la izquierda */
-    margin-left: 100px;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
 }
 
-
-.product-description{
-    padding: 0;
-    margin: 0;
-}
-
-.detail{
-    padding: 0;
-    margin: 0;
-}
-
-
-/* Estilos para las estrellas */
-#product-stars .fa-star {
-    font-size: 30px;
-    color: #ccc;
-    cursor: pointer;
-    margin-right: 5px;
-    transition: color 0.2s ease-in-out;
-}
-
-#product-stars .fa-star.filled {
-    color: #ffc107;
+.rating-label {
+    font-size: 1.3em;
+    color: #333;
+    margin-right: 15px;
 }
 
 #product-rating-value {
     font-weight: bold;
-    margin-left: 50px;
-    font-size: 20px;
+    font-size: 1.3em;
+    color: #000;
+    margin-right: 10px;
 }
 
-.title-container {
+.stars {
     display: flex;
-    align-items: center; 
-    gap: 100px; 
-    width: 100%;
-}
-
-#buy-button {
-    width: 120px;
-    height: 45px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    position: relative; 
-    top: 50px; 
-}
-
-#buy-button:hover {
-    background-color: #3a3c3b;
-}
-
-
-.product-container {
-    display: flex;
-    justify-content: center; /* Centra el botón */
     align-items: center;
-    margin-top: 20px; /* Espaciado superior */
 }
 
-#product-title {
-    width: 8em;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .main-content-product {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    .product-info h1 {
-        font-size: 1.8em;
-    }
-
-    .product-price-detail {
-        font-size: 1.5em;
-    }
-}
-
-
-/* Puedes agregar esto al final de tu archivo: d:\Unego_oficial\css\tienda.css */
 .stars .fa-star,
 .stars .fa-star-half-alt {
-    color: #fadb14 !important;   /* Color dorado */
-    font-size: 22px !important;  /* Tamaño igual para todas */
-    width: 22px;                 /* Fuerza el ancho para que no se vea más pequeña */
-    min-width: 22px;
-    display: inline-block;
-    vertical-align: middle;
+    color: #fadb14; /* Color dorado para las estrellas */
+    font-size: 24px;
+    margin-right: 3px;
 }
 
 .stars .fa-star:not(.filled):not(.fa-star-half-alt) {
-    color: #ccc !important;      /* Color gris para estrellas vacías */
+    color: #ccc; /* Color para estrellas vacías */
+}
+
+/* Módulo de Chat con el Vendedor (el que ya existía, ahora dentro de la columna derecha) */
+.seller-chat-module {
+    background-color: #e0f0ff; /* Fondo azul claro para el chat */
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.seller-chat-module h4 {
+    font-size: 1.1em;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.chat-prompt-button {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #a8d5ff;
+    border-radius: 25px; /* Bordes redondeados como burbuja de chat */
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-family: inherit; /* Hereda la fuente del cuerpo */
+}
+
+.chat-prompt-button:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+}
+
+.chat-prompt-button:active {
+    transform: translateY(0); /* Al hacer clic, vuelve a su posición normal */
+}
+
+.chat-prompt-button img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+.chat-prompt-button p {
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio restante */
+    color: #333;
+    font-style: italic;
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+.send-icon {
+    font-size: 1.2em;
+    color: #007bff; /* Color azul para el icono de envío */
+    margin-left: 10px;
+    flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.chat-disclaimer {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 850px) {
+    .product-detail-layout {
+        flex-direction: column; /* Apila las columnas en pantallas más pequeñas */
+        align-items: center; /* Centra los elementos apilados */
+        gap: 30px;
+        padding: 25px;
+    }
+    .product-visuals {
+        width: 100%;
+        max-width: 400px; /* Limita el ancho de la imagen */
+    }
+    .product-info-panel {
+        width: 100%;
+        padding: 15px;
+    }
+    .product-main-title {
+        font-size: 1.6em;
+    }
+    .product-info-title {
+        font-size: 1.8em;
+    }
+    #buy-button {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .product-detail-layout {
+        padding: 15px;
+        gap: 20px;
+    }
+    .product-visuals,
+    .product-info-panel {
+        padding: 10px;
+    }
+    .product-main-title {
+        font-size: 1.4em;
+    }
+    .product-info-title {
+        font-size: 1.5em;
+    }
+    .product-info-price {
+        font-size: 1.6em;
+    }
+    .product-info-description h3,
+    .product-info-rating .rating-label {
+        font-size: 1.1em;
+    }
+    .stars .fa-star,
+    .stars .fa-star-half-alt {
+        font-size: 20px;
+    }
+    .chat-prompt p {
+        font-size: 0.9em;
+    }
+    .chat-prompt img {
+        width: 30px;
+        height: 30px;
+    }
+    /* Media queries para el chat flotante */
+    .floating-chat-container {
+        bottom: 10px;
+        left: 10px;
+        max-width: calc(100% - 40px); /* Ocupa casi todo el ancho con márgenes */
+        right: 10px;
+        margin: 0;
+    }
 }
