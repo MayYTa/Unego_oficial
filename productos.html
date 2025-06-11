@@ -8,6 +8,58 @@
     <link rel="stylesheet" href="css/productos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    // Obtener el id del producto desde la URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) return;
+
+    // Cargar los productos desde el JSON
+    const response = await fetch('src/json/productos.json');
+    const productos = await response.json();
+
+    // Buscar el producto por id
+    const producto = productos.find(p => p.id === id);
+    if (!producto) return;
+
+    // Llenar los datos en la página
+    document.getElementById('product-img').src = producto.imagen;
+    document.getElementById('product-title').textContent = producto.titulo;
+    document.getElementById('product-seller-name').textContent = producto.vendedor || '';
+    document.getElementById('product-price').textContent = 'S/ ' + producto.precio;
+    document.getElementById('product-rating-value').textContent = producto.calificacion;
+
+    // Mostrar estrellas (opcional)
+    const starsContainer = document.getElementById('product-stars');
+    if (starsContainer) {
+        starsContainer.innerHTML = '';
+        const fullStars = Math.floor(producto.calificacion);
+        const halfStar = producto.calificacion % 1 >= 0.5;
+        for (let i = 0; i < fullStars; i++) {
+            starsContainer.innerHTML += '<i class="fas fa-star filled"></i>';
+}
+        if (halfStar) {
+            starsContainer.innerHTML += '<i class="fas fa-star-half-alt filled"></i>';
+}
+        for (let i = fullStars + halfStar; i < 5; i++) {
+             starsContainer.innerHTML += '<i class="far fa-star"></i>';
+}
+    }
+
+    // Mostrar la descripción
+    const descContainer = document.getElementById('product-description');
+    if (descContainer && Array.isArray(producto.descripcion)) {
+        descContainer.innerHTML = '';
+        producto.descripcion.forEach(linea => {
+            const li = document.createElement('li');
+            li.textContent = linea;
+            descContainer.appendChild(li);
+        });
+    }
+});
+
+</script>
 <body>
     <header>
         <div>

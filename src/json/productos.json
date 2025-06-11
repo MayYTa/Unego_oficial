@@ -6,6 +6,7 @@
         "precio": 20,
         "calificacion": 3.5,
         "category": "mochilas",
+        "vendedor": "Juan Rodriguez",
         "descripcion": [
             "Para laptops de hasta 17”",
             "Capacidad de mochila: 20L",
@@ -19,7 +20,8 @@
         "titulo": "Polo negro en diferentes tallas",
         "precio": 12,
         "calificacion": 3.9,
-        "category": "ropa",  
+        "category": "ropa",
+        "vendedor": "Matias Lazo",
         "descripcion": [
             "Polo básico negro de algodón 100%.",
             "Disponible en tallas S, M, L, XL.",
@@ -32,7 +34,8 @@
         "titulo": "Pastel de Chocolate",
         "precio": 8,
         "calificacion": 4.5,
-        "category": "pasteles", 
+        "category": "pasteles",
+        "vendedor": "Pasteleria de Valeria",
         "descripcion": [
             "Pastel de chocolate húmedo y esponjoso.",
             "Cubierto con una rica ganache de chocolate."
@@ -44,7 +47,8 @@
         "titulo": "Pastel de Fresa",
         "precio": 10,
         "calificacion": 4.5,
-        "category": "pasteles",  
+        "category": "pasteles",
+        "vendedor": "Pasteleria de Valeria",
         "descripcion": [
             "Pastel de fresa fresco y ligero.",
             "Cubierto con una suave crema de fresa."
@@ -57,6 +61,7 @@
         "precio": 35,
         "calificacion": 3.8,
         "category": "mochilas",
+        "vendedor": "Matias Lazo",
         "descripcion": [
             "Color:Negro",
             "Medidas:47 cm alto / 35.5 cm ancho / 19 cm prof.",
@@ -69,7 +74,8 @@
         "titulo": "Audífonos Inalámbricos",
         "precio": 30,
         "calificacion": 4.1,
-        "category": "electronicos", 
+        "category": "electronicos",
+        "vendedor": "Juan Rodriguez",
         "descripcion": [
             "Audífonos inalámbricos con cancelación de ruido.",
             "batería con una capacidad de 250 mAh y se carga con una conexión USB-C.",
