@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil de Usuario</title>
+  <link rel="stylesheet" href="css/stock-styles.css">
+  <script>
+    function toggleTarjeta() {
+      const tarjeta = document.getElementById('tarjeta-publicacion');
+      tarjeta.style.display = (tarjeta.style.display === 'none' || tarjeta.style.display === '') ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+  <div class="perfil-header">
+    <div class="perfil-img">
+      <img src="assets/img/foto-perfil1-png.png" alt="Foto de perfil">
+    </div>
+    <div class="perfil-info">
+      <div class="perfil-nombre">Ivan Ruben</div>
+      <div class="perfil-estadisticas">
+        <span>0 publicaciones</span>
+        <span>2 seguidores</span>
+        <span>67 seguidos</span>
+      </div>
+    </div>
+    <div class="perfil-acciones">
+      <button class="btn" onclick="window.location.href='editar-perfil.html'">Editar perfil</button>
+      <button class="btn">Reseñas</button>
+    </div>
+  </div>
+  <div class="perfil-tabs">
+    <a href="javascript:void(0);" class="tab-activo" style="text-decoration:none; color:inherit; display:flex; align-items:center;" onclick="toggleTarjeta()">
+      <img src="assets/icons/icono-ojo.png" alt="Ojo" class="icono-ojo" style="cursor:pointer;">
+      <span style="cursor:pointer;">Publicaciones activas</span>
+    </a>
+    <div class="tab-nueva">
+      <a href="publicar-producto-basico-forms.html" style="text-decoration:none; color:inherit; display:inline-block; vertical-align:middle; margin-left:16px;">
+        <img src="assets/icons/icono-calendario.png" alt="Calendario" class="icono-calendario">
+        <span style="margin-left:-5px;">Nueva Publicación</span>
+      </a>
+    </div>
+  </div>
+  <div class="perfil-contenido">
+    <!-- Tarjeta de publicación activa -->
+    <div id="tarjeta-publicacion" style="display:block;">
+      <div class="publicacion-card">
+        <img src="assets/img/cartuchera-negra.png" alt="Cartuchera Negra" class="publicacion-img publicacion-img-grande">
+        <div class="publicacion-info">
+          <div class="publicacion-titulo" style="font-size:1.4rem; font-weight:500; margin-bottom:8px;">Cartuchera Negra</div>
+          <div class="publicacion-precio" style="color:#b1b1b1; font-size:1.2rem; margin-bottom:2px;">S/.28</div>
+          <div class="publicacion-stock" style="color:#b1b1b1; font-size:1.2rem; margin-bottom:18px;">Stock: 15</div>
+          <div class="publicacion-acciones" style="display:flex; justify-content:space-between; align-items:center; width:90%; margin:0 auto;">
+          <a href="editar-publicacion-forms.html" style="color:#b1b1b1; font-size:1.1rem; text-decoration:none;">Editar</a>
+          <a href="stock.html" style="font-weight:600; color:#111; font-size:1.2rem; display:flex; align-items:center; text-decoration:none;">
+            <img src="assets/icons/icono-vendidos.png" alt="Vendidos" style="width:22px;vertical-align:middle;margin-right:4px;">
+              Vendidos
+            </a>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="contenedor-boton-abajo">
+      <button class="btn btn-atras-abajo" onclick="window.location.href='perfil-ivan.html'">Atrás</button>
+    </div>
+  </div>
+</body>
+</html>

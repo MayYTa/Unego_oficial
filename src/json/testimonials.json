@@ -1,0 +1,30 @@
+[
+  {
+    "imagen": "assets/img/carlos_perez_estudiante.jpg",
+    "alt_imagen": "Carlos Pérez",
+    "nombre_completo": "Carlos Pérez",
+    "universidad_carrera": "estudiante de Ingeniería Industrial en la UNMSM",
+    "texto_reseña": "Unego nos ayudó a promocionar nuestro negocio de preparación de exámenes dentro de la UNMSM. La comunicación directa y segura es excelente para emprender en la universidad. ¡Muy recomendable!"
+  },
+  {
+    "imagen": "assets/img/estudiante2.jpg",
+    "alt_imagen": "Ana Sofía",
+    "nombre_completo": "Ana Sofía",
+    "universidad_carrera": "estudiante de Diseño Gráfico en la PUCP",
+    "texto_reseña": "Unego facilitó mucho ofrecer mis diseños a compañeros de la PUCP. Conseguí varios proyectos gracias a la plataforma intuitiva y organizada por campus. ¡Ideal para estudiantes creativos que buscan ingresos extra!"
+  },
+  {
+    "imagen": "assets/img/LandingPage4.png",
+    "alt_imagen": "Valeria Gómez",
+    "nombre_completa": "Valeria Gómez",
+    "universidad_carrera": "estudiante de Comunicaciones en la UPC",
+    "texto_reseña": "Encontré un libro urgente y barato en Unego de un compañero de la UPC. La transacción fue rápida y segura en el campus. ¡Definitivamente la usaré para más materiales y servicios!"
+  },
+  {
+    "imagen": "assets/img/LandingPage5.png",
+    "alt_imagen": "Javier Torres",
+    "nombre_completo": "Javier Torres",
+    "universidad_carrera": "estudiante de Derecho en la USIL",
+    "texto_reseña": "Busqué clases de inglés y encontré una estudiante de la USIL con clases online accesibles. Me gusta conectar con otros estudiantes para mis necesidades académicas de forma sencilla."
+  }
+]

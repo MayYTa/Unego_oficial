@@ -1,0 +1,30 @@
+[
+  {
+    "pregunta": "¿Puedo usar la plataforma si no soy estudiante universitario?",
+    "respuesta": "Sí, la plataforma está diseñada para ser flexible. Aunque muchos de nuestros usuarios son estudiantes universitarios, no es un requisito excluyente. Puedes usarla para aprender, vender o conectar sin ser estudiante activo."
+  },
+  {
+    "pregunta": "¿Tengo que pagar para empezar a vender?",
+    "respuesta": "No, puedes empezar a vender tus productos o servicios de forma gratuita. Ofrecemos opciones premium con características adicionales, pero no son obligatorias para iniciar tu negocio en la plataforma."
+  },
+  {
+    "pregunta": "¿Si no soy de Lima Metropolitana, puedo registrarme?",
+    "respuesta": "¡Sí, por supuesto! Nuestra plataforma es accesible a nivel nacional. No importa si resides fuera de Lima Metropolitana, puedes registrarte y aprovechar todas las funcionalidades que ofrecemos."
+  },
+  {
+    "pregunta": "¿Puedo registrarme usando mi correo institucional?",
+    "respuesta": "Sí, puedes registrarte usando tu correo institucional si lo deseas. Esto incluso podría ofrecerte acceso a ciertos beneficios o comunidades exclusivas dentro de la plataforma, si los hay."
+  },
+  {
+    "pregunta": "¿Unego es solo para compra-venta de productos?",
+    "respuesta": "Unego va más allá de la compra-venta. Puedes ofrecer o buscar servicios, tutorías, o incluso intercambiar materiales de estudio. La plataforma es un ecosistema para diversas transacciones entre estudiantes."
+  },
+  {
+    "pregunta": "¿Cómo garantizan la seguridad de las transacciones?",
+    "respuesta": "Priorizamos tu seguridad. Implementamos perfiles verificados y ofrecemos opciones de pago seguras dentro de la plataforma. Además, contamos con un sistema de reportes para cualquier incidente."
+  },
+  {
+    "pregunta": "¿Puedo comunicarme directamente con el vendedor/comprador?",
+    "respuesta": "Sí, Unego cuenta con un sistema de mensajería interna que te permite comunicarte de forma directa y segura con la otra parte interesada, facilitando la coordinación de encuentros o entregas."
+  }
+]

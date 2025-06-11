@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <a href="perfil-ivan.html">
+                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-content-wrapper">
+        <main class="product-detail-layout">
+            
+            <div class="product-visuals">
+                <p class="seller-name-top">Por: <span id="product-seller-name-top"></span></p> 
+                <div class="product-image-container">
+                    <img id="product-img" src="" alt="Imagen del producto">
+                </div>
+                <h1 class="product-main-title" id="product-main-title"></h1> 
+                <button id="buy-button">Comprar</button>
+            </div>
+
+            <div class="product-info-panel">
+                <h2 class="product-info-title">Nombre del Producto: <span id="product-name-info">Cargando...</span></h2>
+                <p class="product-info-category">Categorías: <span id="product-categories"></span></p>
+                <p class="product-info-seller">Vendido por: <span id="product-seller-name-info"></span></p>
+                
+                <div class="product-info-price">Precio: <span id="product-price"></span></div>
+
+                <div class="product-info-description">
+                    <h3>Descripción del Producto:</h3>
+                    <ul id="product-description-list"></ul> </div>
+
+                <div class="product-info-rating">
+                    <h3 class="rating-label">Calificación:</h3> 
+                    <span id="product-rating-value"></span>
+                    <div class="stars" id="product-stars"></div>
+                </div>
+
+                <div class="product-info">
+                    <div class="seller-chat-module">
+                    <h4>¿Tiene otra consulta acerca del producto?</h4>
+        
+                    <button class="chat-prompt-button" id="chat-with-seller-button">
+                        <img src="assets/img/foto-perfil1-png.png" alt="Avatar Vendedor"> 
+                        <p>Hola, tengo una duda acerca de este producto.</p>
+                         <i class="fas fa-paper-plane send-icon"></i> </button>
+        
+                        <p class="chat-disclaimer">Al hacer clic se abrirá una conversación privada con el vendedor.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+
+    <script src="src/js/load_productos.js"></script>
+</body>
+</html>

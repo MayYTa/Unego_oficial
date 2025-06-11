@@ -1,0 +1,85 @@
+[
+    {
+        "id": "mochila-roja-1",
+        "imagen": "assets/img/mochila.png",
+        "titulo": "Mochila roja con portalaptop",
+        "precio": 20,
+        "calificacion": 3.5,
+        "category": "mochilas",
+        "vendedor": "Juan Rodriguez",
+        "descripcion": [
+            "Para laptops de hasta 17”",
+            "Capacidad de mochila: 20L",
+            "Ancho: 28 cm",
+            "Largo: 44 cm"
+        ]
+    },
+    {
+        "id": "polo-negro-1",
+        "imagen": "assets/img/polo.png",
+        "titulo": "Polo negro en diferentes tallas",
+        "precio": 12,
+        "calificacion": 3.9,
+        "category": "ropa",
+        "vendedor": "Matias Lazo",
+        "descripcion": [
+            "Polo básico negro de algodón 100%.",
+            "Disponible en tallas S, M, L, XL.",
+            "Perfecto para cualquier ocasión."
+        ]
+    },
+    {
+        "id": "PastelChocolate-1",
+        "imagen": "assets/img/pastelChocolate.png",
+        "titulo": "Pastel de Chocolate",
+        "precio": 8,
+        "calificacion": 4.5,
+        "category": "pasteles",
+        "vendedor": "Pasteleria de Valeria",
+        "descripcion": [
+            "Pastel de chocolate húmedo y esponjoso.",
+            "Cubierto con una rica ganache de chocolate."
+        ]
+    },
+    {
+        "id": "PastelFresa-1",
+        "imagen": "assets/img/pastelFresa.png",
+        "titulo": "Pastel de Fresa",
+        "precio": 10,
+        "calificacion": 4.5,
+        "category": "pasteles",
+        "vendedor": "Pasteleria de Valeria",
+        "descripcion": [
+            "Pastel de fresa fresco y ligero.",
+            "Cubierto con una suave crema de fresa."
+        ]
+    },
+    {
+        "id": "MochilaPorta-1",
+        "imagen": "assets/img/mochilaPorta.png",
+        "titulo": "Mochila porta",
+        "precio": 35,
+        "calificacion": 3.8,
+        "category": "mochilas",
+        "vendedor": "Matias Lazo",
+        "descripcion": [
+            "Color:Negro",
+            "Medidas:47 cm alto / 35.5 cm ancho / 19 cm prof.",
+            "Compartimiento acolchado para laptop."
+        ]
+    },
+    {
+        "id": "audifonos-1",
+        "imagen": "assets/img/audifonos.png",
+        "titulo": "Audífonos Inalámbricos",
+        "precio": 30,
+        "calificacion": 4.1,
+        "category": "electronicos",
+        "vendedor": "Juan Rodriguez",
+        "descripcion": [
+            "Audífonos inalámbricos con cancelación de ruido.",
+            "batería con una capacidad de 250 mAh y se carga con una conexión USB-C.",
+            "Hasta 12 horas de batería."
+        ]
+    }
+]
