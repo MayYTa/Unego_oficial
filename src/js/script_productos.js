@@ -181,5 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.bookmark-icon').forEach(icon => {
+        icon.addEventListener('click', (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            icon.classList.toggle('fas');
+            icon.classList.toggle('far');
+            icon.classList.toggle('bookmarked');
+        });
+    });
+});
 
 
