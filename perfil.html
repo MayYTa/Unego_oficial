@@ -1,62 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/tienda.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Perfil de Usuario - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css"> <link rel="stylesheet" href="css/perfil.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="profile">
-<div class="profile-header">
-    <img src="assets/img/perfil.jpg" alt="Foto de perfil" class="profile-pic">
-    <div class="profile-info">
-        <h2>Jorge Guimenez</h2>
-        <button class="edit-profile">Editar perfil</button>
-    <button class="reviews" onclick="mostrarResena()">Reseñas</button>
-    <div id="cuadroResena" class="resena-box" style="display: none;">
-        <h2>Reseñas</h2>
-    </div>
-    </div>
-</div>
-    <div class="profile-stats">
-        <span>1 publicación</span>
-        <span>50 seguidores</span>
-        <span>67 seguidos</span>
-    </div>
-<div class="profile-content">
-    <div class="section-titles">
-        <div class="publicaciones">
-            <img src="assets/img/ojo.png">
-            <h3>Publicaciones</h3>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
         </div>
-        <div class="saved">
-            <img src="assets/img/guardar.png">
-            <h3>Guardado</h3>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-page-content-wrapper">
+        <div class="perfil-header">
+            <div class="perfil-img">
+                <img src="assets/img/foto-perfil1-png.png" alt="Foto de Perfil">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-nombre">Ivan Ruben Cunyas Ramos</div>
+                <div class="perfil-estadisticas">
+                    <span><span id="num-publicaciones">2</span> publicaciones</span>
+                    <span>300 seguidores</span>
+                    <span>10 seguidos</span>
+                </div>
+            </div>
+            <div class="perfil-acciones">
+                <a href="#" class="btn btn-perfil-primary">Editar Perfil</a>
+            </div>
+        </div>
+
+        <div class="perfil-tabs">
+            <a href="#" class="tab-item tab-activo">Publicaciones</a>
+            <a href="#" class="tab-item">Favoritos</a>
+            <a href="#" class="tab-item">Reseñas</a>
+            <a href="#" class="tab-item">Historial de Pedidos</a>
+        </div>
+
+        <div class="profile-products-grid">
+            <a href="" class="add-product-link">
+                <div class="add-product-card">
+                    <i class="fas fa-plus-circle"></i>
+                    <p>Añadir nueva publicación</p>
+                </div>
+            </a>
+        
+            <a class="product-link">
+
+                <div class="product-card" id="polo-negro-1">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+
+                    <div class="product-image">
+                        <img src="assets/img/polo.png" alt="Polo Negro" />
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Polo Negro</h3>
+                        <p class="product-seller">Por Ivan Ruben</p>
+                        <div class="product-price" data-price="12">S/.12</div>
+                        <div class="product-rating" data-rating="3.9">
+                            <span class="rating-value">3.9</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            <a class="product-link">
+
+                <div class="product-card" id="mochila-1">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+
+                    <div class="product-image">
+                        <img src="assets/img/mochila.png" alt="Mochila" />
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Mochila</h3>
+                        <p class="product-seller">Por Ivan Ruben</p>
+                        <div class="product-price" data-price="35">S/.35</div>
+                        <div class="product-rating" data-rating="3.8">
+                            <span class="rating-value">3.8</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            
+
         </div>
     </div>
 
-    <div class="publication-list">
-        <div class="publication-item">
-            <img src="assets/img/mochila.png" alt="Mochila" class="publication-img">
-            <h2>Mochila</h2>
-            <h2>S/.50</h2>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</div>
-
-<script>
-function mostrarResena() {
-    let cuadro = document.getElementById("cuadroResena");
-    cuadro.style.display = cuadro.style.display === "none" ? "block" : "none";
-}
-
-
-
-
-</script>
-
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
+        </div>
+    </footer>
 </body>
 </html>
