@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css"> 
+    <link rel="stylesheet" href="css/editar-perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <a href="perfil.html">
+                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="edit-profile-wrapper">
+        <h2>Editar Perfil</h2>
+        
+        <form class="profile-edit-form" action="#" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h3>Información General</h3>
+                
+                <div class="form-group avatar-upload">
+                    <label for="profilePicture">Foto de Perfil</label>
+                    <div class="avatar-preview">
+                        <img id="currentProfilePic" src="assets/img/foto-perfil1-png.png" alt="Foto de Perfil Actual">
+                    </div>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                    <label for="profilePicture" class="upload-button"><i class="fas fa-camera"></i> Cambiar foto</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre de Usuario:</label>
+                    <input type="text" id="nombreUsuario" name="nombreUsuario" value="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcionPerfil">Descripción del Perfil:</label>
+                    <textarea id="descripcionPerfil" name="descripcionPerfil" rows="4" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" value="" placeholder="" required>
+                </div>
+
+                <div class="form-group password-change">
+                    <button type="button" class="btn-secondary">Cambiar Contraseña</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Contacto y Ubicación</h3>
+                
+                <div class="form-group">
+                    <label for="telefono">Número de Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" value="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="universidad">Universidad:</label>
+                    <input type="text" id="universidad" name="universidad" placeholder="Ej: Universidad Nacional Mayor de San Marcos">
+                </div>
+
+                <div class="form-group">
+                    <label for="sede">Sede: (opcional)</label>
+                    <input type="text" id="sede" name="sede" placeholder="Ej: Ciudad Universitaria / San Isidro">
+                </div>
+
+                <div class="form-group">
+                    <label for="redesSociales">Enlaces de Redes Sociales (Facebook):</label>
+                    <input type="url" id="redesSociales" name="redesSociales" placeholder="https://facebook.com/tupagina">
+                </div>
+            </div>
+
+            <div class="form-section verification-section">
+                <h3>Verificación de Perfil <i class="fas fa-check-circle verified-icon"></i></h3>
+                <p>Verifica tu perfil subiendo una copia de tu carnet universitario. Esto ayuda a confirmar tu identidad y te otorga mayor credibilidad en la plataforma.</p>
+                
+                <div class="verification-status">
+                    <i class="fas fa-info-circle"></i>
+                    <span id="verificationStatusText">Tu perfil no está verificado actualmente.</span>
+                </div>
+
+                <div class="form-group id-upload-group">
+                    <label>Carnet Universitario:</label>
+                    <div class="carnet-upload-previews">
+                        <div class="carnet-side">
+                            <label for="carnetFront">Adverso del Carnet</label>
+                            <img src="assets/img/carnet_frontal.png" alt="Ejemplo Carnet Frontal" class="carnet-example">
+                            <input type="file" id="carnetFront" name="carnetFront" accept="image/*">
+                            <label for="carnetFront" class="upload-button-small"><i class="fas fa-upload"></i> Subir Adverso</label>
+                        </div>
+                        <div class="carnet-side">
+                            <label for="carnetBack">Reverso del Carnet</label>
+                            <img src="assets/img/carnet_reversa.png" alt="Ejemplo Carnet Reverso" class="carnet-example">
+                            <input type="file" id="carnetBack" name="carnetBack" accept="image/*">
+                            <label for="carnetBack" class="upload-button-small"><i class="fas fa-upload"></i> Subir Reverso</label>
+                        </div>
+                    </div>
+                    <small>Se requieren imágenes claras del adverso y reverso de tu carnet universitario. Formatos aceptados: JPG, PNG.</small>
+                </div>
+                
+                <button type="submit" class="btn-verify">Solicitar Verificación</button>
+                <div class="verification-message loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Solicitando verificación...
+                </div>
+                <div class="verification-message success" style="display: none;">
+                    <i class="fas fa-check-circle"></i> ¡Solicitud enviada! Revisaremos tus documentos pronto.
+                </div>
+                <div class="verification-message error" style="display: none;">
+                    <i class="fas fa-times-circle"></i> Error al enviar la solicitud. Inténtalo de nuevo.
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Guardar Cambios</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='perfil.html';">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Sobre Unego</h4>
+                <p>Conectamos emprendedores con clientes, ofreciendo una plataforma segura y eficiente para la compra y venta de productos únicos.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>
