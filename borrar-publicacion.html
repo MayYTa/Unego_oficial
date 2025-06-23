@@ -10,14 +10,14 @@
       font-size: 18px;
       margin: 0;
       padding: 0;
-      background-color:rgba(66, 114, 60, 0.1333);
+      background-color: #F7F9FD; /* Cambiado a gris claro */
     }
 
     .header-bg {
       width: 100vw;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      border-bottom: 2px solid #ccc;
+      background: #F7F9FD; /* Cambiado a azul grisáceo claro */
+      box-shadow: none;     /* Elimina sombra */
+      border-bottom: none;  /* Elimina divisor */
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       padding-top: 30px;
@@ -33,25 +33,40 @@
       flex-wrap: wrap;
       gap: 20px;
       max-width: 2200px;
-      margin: 10px auto 0 auto; /* Add 40px space above the publicaciones */
+      margin: 10px 0 0 px; /* Solo mueve publicaciones 100px a la derecha */
       padding: 0px;
     }
 
     .profile-header {
       display: flex;
       align-items: center;
-      gap: 24px; /* Menos espacio entre imagen, info y botones */
-      margin-bottom: 0;
+      gap: 32px;
+      margin-bottom: 40px; /* Añade espacio vertical debajo de Pastelería de Valeria */
       padding-bottom: 0;
       border-bottom: none;
-      width: 100%;
+      width: auto;
+      position: relative;
+      margin-top: 30px;
+      margin-left: 0;         /* Pegado a la izquierda del rectángulo celeste */
+      transition: none;
+      justify-content: flex-start;
     }
 
     .profile-header img {
       width: 100px;
       height: 100px;
-      border-radius: 0%;
+      border-radius: 50%;    /* Hace la imagen completamente circular */
+      object-fit: cover;     /* Recorta la imagen para que llene el círculo */
       margin-left: 50px; /* Mueve la imagen 10px a la derecha */
+    }
+
+    .logo-unego {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-left: 10px;
+      margin-right: 0;
+      display: block;
     }
 
     .profile-info h2 {
@@ -70,7 +85,11 @@
     .profile-actions {
       display: flex;
       gap: 12px;
-      margin-left: 800px; /* Espacio opcional desde la info */
+      position: static;
+      margin-left: 0;
+      margin-right: 20px; /* Deja un espacio de 20px entre "Reseñas" y el borde derecho */
+      top: auto;
+      right: auto;
     }
 
     .editar-btn, .editar-btn:visited {
@@ -120,6 +139,8 @@
       margin-right: 20px;
       padding: 18px 12px;
       box-sizing: border-box;
+      /* Solo la PRIMERA publicación se mueve a la derecha */
+      margin-left: 0;
     }
 
     /* Solo la primera publicación */
@@ -197,10 +218,16 @@
       color: rgb(0, 0, 0);
       border-radius: 10px;
       font-size: 18px;
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
 
     #undo-message button {
-      background-color: #f7f7f7;
+      background-color: #e2ecf1;
       color: #fcfcfc;
       border: none;
       padding: 8px 14px;
@@ -221,76 +248,123 @@
       cursor: pointer;
       align-self: center;
     }
+
+    @media (max-width: 900px) {
+      .profile-header {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profile-actions {
+        position: static;
+        margin-top: 16px;
+        align-self: flex-end;
+      }
+    }
+
+    /* Estilos para el recuadro de fondo azul claro */
+    .main-section-bg {
+      background: #DEF0FF;
+      border-radius: 24px;
+      margin: 0 auto;
+      margin-top: 32px;
+      padding: 40px 0 40px 0;
+      width: 98%;
+      max-width: 800px;
+      box-sizing: border-box;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: relative;
+    }
   </style>
 </head>
 <body>
   <!-- Header full width -->
   <div class="header-bg">
-    <div class="container">
-      <div class="profile-header">
-        <img src="assets/img/pasteleriaDeValeria.png" alt="Perfil de Valeria" />
-        <div class="profile-info">
-          <h2>Pastelería de Valeria</h2>
-          <div style="display: flex; gap: 24px; align-items: center; font-size:16px; color:#555;">
-            <span id="pub-count"><span id="num-publicaciones">3</span> publicaciones</span>
-            <span>300 seguidores</span>
-            <span>10 seguidos</span>
-          </div>
+    <div class="container" style="display: flex; flex-direction: column; align-items: stretch;">
+      <!-- Header superior: logo a la izquierda, searchbar al centro, botones a la derecha, todos alineados horizontalmente -->
+      <div style="width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; gap: 0;">
+        <!-- Logo Unego a la izquierda -->
+        <div style="flex:0 0 auto;">
+          <img src="assets/img/unego_logo.png" alt="Logo Unego" class="logo-unego"
+               style="margin-left: 40px; margin-right: 0; display: block; width: 120px; height: 120px; object-fit: contain;" />
         </div>
-        <div class="profile-actions">
+        <!-- Searchbar centrada, más larga -->
+        <div style="flex:1 1 auto; display: flex; justify-content: center;">
+          <input type="search" placeholder="Buscar productos"
+                 style="width: 600px; max-width: 100%; padding: 10px 18px; border-radius: 24px; border: 1px solid #ccc; font-size: 16px; outline: none;">
+        </div>
+        <!-- Acciones de perfil a la derecha -->
+        <div class="profile-actions" style="align-items: center;">
+          <img src="assets/icons/campana.png" alt="Notificaciones" class="campana-icon" />
           <a href="editar-perfil.html" class="editar-btn">Editar Perfil</a>
           <button class="resenas-btn">Reseñas</button>
-          <img src="assets/icons/campana.png" alt="Notificaciones" class="campana-icon" />
         </div>
       </div>
-    </div>
-  </div>
+      <!-- Recuadro de fondo azul claro para la sección principal -->
+      <div class="main-section-bg">
+        <!-- Bloque de perfil desplazado hacia la derecha -->
+        <div class="profile-header">
+          <img src="assets/img/pasteleriaDeValeria.png" alt="Perfil de Valeria" />
+          <div class="profile-info">
+            <h2>Pastelería de Valeria</h2>
+            <div style="display: flex; gap: 24px; align-items: center; font-size:16px; color:#555;">
+              <span id="pub-count"><span id="num-publicaciones">3</span> publicaciones</span>
+              <span>300 seguidores</span>
+              <span>10 seguidos</span>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <!-- Publicaciones -->
+          <div class="publicacion">
+            <img src="assets/img/pastelDeChocolate.png" alt="Pastel de Chocolate" />
+            <div class="publicacion-info">
+              <h3>Pastel de Chocolate</h3>
+              <p>Desde S/ 8</p>
+            </div>
+            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+            <div class="popup">
+              <button onclick="editarPublicacion(this)">Editar publicación</button>
+              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+            </div>
+          </div>
 
-  <div class="container">
-    <!-- Publicaciones -->
-    <div class="publicacion">
-      <img src="assets/img/pastelDeChocolate.png" alt="Pastel de Chocolate" />
-      <div class="publicacion-info">
-        <h3>Pastel de Chocolate</h3>
-        <p>Desde S/ 8</p>
-      </div>
-      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-      <div class="popup">
-        <button onclick="editarPublicacion(this)">Editar publicación</button>
-        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-      </div>
-    </div>
+          <div class="publicacion">
+            <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" />
+            <div class="publicacion-info">
+              <h3>Pastel de Fresa</h3>
+              <p>Desde S/ 10</p>
+            </div>
+            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+            <div class="popup">
+              <button onclick="editarPublicacion(this)">Editar publicación</button>
+              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+            </div>
+          </div>
 
-    <div class="publicacion">
-      <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" />
-      <div class="publicacion-info">
-        <h3>Pastel de Fresa</h3>
-        <p>Desde S/ 10</p>
-      </div>
-      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-      <div class="popup">
-        <button onclick="editarPublicacion(this)">Editar publicación</button>
-        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-      </div>
-    </div>
+          <div class="publicacion">
+            <img src="assets/img/tortaConDecoracion.png" alt="Torta decorada" />
+            <div class="publicacion-info">
+              <h3>Torta con decoración</h3>
+              <p>Desde S/ 25</p>
+            </div>
+            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
+            <div class="popup">
+              <button onclick="editarPublicacion(this)">Editar publicación</button>
+              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+            </div>
+          </div>
 
-    <div class="publicacion">
-      <img src="assets/img/tortaConDecoracion.png" alt="Torta decorada" />
-      <div class="publicacion-info">
-        <h3>Torta con decoración</h3>
-        <p>Desde S/ 25</p>
+          <!-- Mensaje para deshacer -->
+          <div id="undo-message">
+            Publicación eliminada.
+            <img src="assets/icons/botonRegresar.png" alt="Deshacer" onclick="deshacerBorrado()" style="width:32px; height:32px; margin-left:20px; cursor:pointer; vertical-align:middle; border-radius:6px; background:#fff;">
+          </div>
+        </div>
       </div>
-      <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-      <div class="popup">
-        <button onclick="editarPublicacion(this)">Editar publicación</button>
-        <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-      </div>
-    </div>
-
-    <!-- Mensaje para deshacer -->
-    <div id="undo-message">
-      Publicación eliminada.
-      <img src="assets/icons/botonRegresar.png" alt="Deshacer" onclick="deshacerBorrado()" style="width:32px; height:32px; margin-left:20px; cursor:pointer; vertical-align:middle; border-radius:6px; background:#fff;">
     </div>
   </div>
 
