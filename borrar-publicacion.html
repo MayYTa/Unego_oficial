@@ -1,443 +1,287 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perfil - Pastelería de Valeria</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      margin: 0;
-      padding: 0;
-      background-color: #F7F9FD; /* Cambiado a gris claro */
-    }
-
-    .header-bg {
-      width: 100vw;
-      background: #F7F9FD; /* Cambiado a azul grisáceo claro */
-      box-shadow: none;     /* Elimina sombra */
-      border-bottom: none;  /* Elimina divisor */
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      padding-top: 30px;
-      padding-bottom: 30px;
-    }
-
-    .header-bg + .container {
-      margin-top: 80px; /* Adds space only between header and publicaciones */
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      max-width: 2200px;
-      margin: 10px 0 0 px; /* Solo mueve publicaciones 100px a la derecha */
-      padding: 0px;
-    }
-
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      margin-bottom: 40px; /* Añade espacio vertical debajo de Pastelería de Valeria */
-      padding-bottom: 0;
-      border-bottom: none;
-      width: auto;
-      position: relative;
-      margin-top: 30px;
-      margin-left: 0;         /* Pegado a la izquierda del rectángulo celeste */
-      transition: none;
-      justify-content: flex-start;
-    }
-
-    .profile-header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;    /* Hace la imagen completamente circular */
-      object-fit: cover;     /* Recorta la imagen para que llene el círculo */
-      margin-left: 50px; /* Mueve la imagen 10px a la derecha */
-    }
-
-    .logo-unego {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-      margin-left: 10px;
-      margin-right: 0;
-      display: block;
-    }
-
-    .profile-info h2 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .profile-info div {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      font-size: 16px;
-      color: #555;
-    }
-
-    .profile-actions {
-      display: flex;
-      gap: 12px;
-      position: static;
-      margin-left: 0;
-      margin-right: 20px; /* Deja un espacio de 20px entre "Reseñas" y el borde derecho */
-      top: auto;
-      right: auto;
-    }
-
-    .editar-btn, .editar-btn:visited {
-      background-color: #ccc;
-      color: #333;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none; /* Remove underline for links */
-      display: inline-block;
-    }
-
-    .resenas-btn {
-        background-color: #ccc;
-      color: #333;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .editar-btn:hover {
-      background-color: #b3b3b3;
-    }
-
-    .resenas-btn:hover {
-      background-color: #b3b3b3;
-    }
-
-    .publicacion {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      width: 220px;
-      min-height: 240px;
-      background-color: #fff; /* Cambiado a blanco */
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      margin-bottom: 20px;
-      position: relative;
-      margin-right: 20px;
-      padding: 18px 12px;
-      box-sizing: border-box;
-      /* Solo la PRIMERA publicación se mueve a la derecha */
-      margin-left: 0;
-    }
-
-    /* Solo la primera publicación */
-    .publicacion:first-child {
-      margin-left: 20px;
-    }
-
-    .publicacion img:not(.menu-icon) {
-      width: 120px;
-      height: 120px;
-      border-radius: 8px;
-      margin: 0 0 18px 0;
-      object-fit: cover;
-    }
-
-    .menu-icon {
-      width: 14px;
-      height: 28px;
-      cursor: pointer;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      margin: 0;
-    }
-
-    .publicacion-info {
-      flex-grow: 1;
-      width: 100%;
-      text-align: center;
-    }
-
-    .publicacion-info h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-    }
-
-    .publicacion-info p {
-      margin: 0;
-      color: #555;
-    }
-
-    .popup {
-      position: absolute;
-      top: 60px;
-      right: 30px;
-      background-color: #f2f2f2;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      display: none;
-      z-index: 100;
-    }
-
-    .popup button {
-      display: block;
-      width: 100%;
-      padding: 8px 12px;
-      margin-bottom: 5px;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      text-align: left;
-      font-size: 16px;
-    }
-
-    .popup button:hover {
-      background-color: #ddd;
-    }
-
-    #undo-message {
-      display: none;
-      margin-top: 30px;
-      padding: 14px 18px;
-      background-color: #ffffff;
-      color: rgb(0, 0, 0);
-      border-radius: 10px;
-      font-size: 18px;
-      position: absolute;
-      left: 50%;
-      bottom: 40px;
-      transform: translateX(-50%);
-      z-index: 200;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    }
-
-    #undo-message button {
-      background-color: #e2ecf1;
-      color: #fcfcfc;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-left: 20px;
-    }
-
-    #undo-message button:hover {
-      background-color: #e0e0e0;
-    }
-
-    .campana-icon {
-      width: 24px !important;
-      height: 24px !important;
-      margin-left: 10px; /* O prueba con 0 si quieres que esté pegada */
-      cursor: pointer;
-      align-self: center;
-    }
-
-    @media (max-width: 900px) {
-      .profile-header {
-        margin-left: 0;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .profile-actions {
-        position: static;
-        margin-top: 16px;
-        align-self: flex-end;
-      }
-    }
-
-    /* Estilos para el recuadro de fondo azul claro */
-    .main-section-bg {
-      background: #DEF0FF;
-      border-radius: 24px;
-      margin: 0 auto;
-      margin-top: 32px;
-      padding: 40px 0 40px 0;
-      width: 98%;
-      max-width: 800px;
-      box-sizing: border-box;
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      position: relative;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/borrar-publicacion.css"> <!-- Vinculación del CSS personalizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <!-- Header full width -->
-  <div class="header-bg">
-    <div class="container" style="display: flex; flex-direction: column; align-items: stretch;">
-      <!-- Header superior: logo a la izquierda, searchbar al centro, botones a la derecha, todos alineados horizontalmente -->
-      <div style="width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; gap: 0;">
-        <!-- Logo Unego a la izquierda -->
-        <div style="flex:0 0 auto;">
-          <img src="assets/img/unego_logo.png" alt="Logo Unego" class="logo-unego"
-               style="margin-left: 40px; margin-right: 0; display: block; width: 120px; height: 120px; object-fit: contain;" />
+    <header style="background: #F7F9FD; box-shadow: 0 2px 8px rgba(0,0,0,0.03); padding: 0;">
+    <div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; width: 100%; position: relative; min-height: 110px;">
+        <!-- Logo Unego -->
+        <div style="flex: 0 0 auto; margin-left: 100px; display: flex; align-items: center; height: 110px;">
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo" style="height: 70px;">
+            </a>
         </div>
-        <!-- Searchbar centrada, más larga -->
-        <div style="flex:1 1 auto; display: flex; justify-content: center;">
-          <input type="search" placeholder="Buscar productos"
-                 style="width: 600px; max-width: 100%; padding: 10px 18px; border-radius: 24px; border: 1px solid #ccc; font-size: 16px; outline: none;">
+        <!-- Barra de búsqueda centrada arriba -->
+        <div style="position: absolute; left: 50%; top: 20px; transform: translateX(-50%); width: 40%; min-width: 280px; max-width: 500px;">
+            <div class="search-bar" style="width: 100%;">
+                <input type="search" id="product-search" placeholder="Buscar productos" style="width: 100%; padding: 10px 18px; border-radius: 24px; border: 1px solid #ccc; font-size: 16px; outline: none;">
+                <i class="fas fa-search" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #888;"></i>
+            </div>
         </div>
-        <!-- Acciones de perfil a la derecha -->
-        <div class="profile-actions" style="align-items: center;">
-          <img src="assets/icons/campana.png" alt="Notificaciones" class="campana-icon" />
-          <a href="editar-perfil.html" class="editar-btn">Editar Perfil</a>
-          <button class="resenas-btn">Reseñas</button>
+        <!-- Iconos derecha -->
+        <div style="flex: 0 0 auto; display: flex; align-items: center; position: absolute; right: 100px; top: 30px;">
+            <!-- Campana -->
+            <i class="fas fa-bell" style="font-size: 1.7rem; color: #555; margin-right: 50px; cursor: pointer;"></i>
+            <!-- Perfil Pastelería de Valeria -->
+            <div class="user-profile" style="display: flex; align-items: center;">
+                <a href="perfil.html">
+                    <img src="assets/img/pasteleriaDeValeria.png" alt="User Profile" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid #F7FAFF; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+                </a>
+            </div>
         </div>
-      </div>
-      <!-- Recuadro de fondo azul claro para la sección principal -->
-      <div class="main-section-bg">
-        <!-- Bloque de perfil desplazado hacia la derecha -->
-        <div class="profile-header">
-          <img src="assets/img/pasteleriaDeValeria.png" alt="Perfil de Valeria" />
-          <div class="profile-info">
-            <h2>Pastelería de Valeria</h2>
-            <div style="display: flex; gap: 24px; align-items: center; font-size:16px; color:#555;">
-              <span id="pub-count"><span id="num-publicaciones">3</span> publicaciones</span>
-              <span>300 seguidores</span>
-              <span>10 seguidos</span>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <!-- Publicaciones -->
-          <div class="publicacion">
-            <img src="assets/img/pastelDeChocolate.png" alt="Pastel de Chocolate" />
-            <div class="publicacion-info">
-              <h3>Pastel de Chocolate</h3>
-              <p>Desde S/ 8</p>
-            </div>
-            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-            <div class="popup">
-              <button onclick="editarPublicacion(this)">Editar publicación</button>
-              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-            </div>
-          </div>
-
-          <div class="publicacion">
-            <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" />
-            <div class="publicacion-info">
-              <h3>Pastel de Fresa</h3>
-              <p>Desde S/ 10</p>
-            </div>
-            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-            <div class="popup">
-              <button onclick="editarPublicacion(this)">Editar publicación</button>
-              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-            </div>
-          </div>
-
-          <div class="publicacion">
-            <img src="assets/img/tortaConDecoracion.png" alt="Torta decorada" />
-            <div class="publicacion-info">
-              <h3>Torta con decoración</h3>
-              <p>Desde S/ 25</p>
-            </div>
-            <img src="assets/icons/3Puntos.png" class="menu-icon" onclick="togglePopup(this)" />
-            <div class="popup">
-              <button onclick="editarPublicacion(this)">Editar publicación</button>
-              <button onclick="borrarPublicacion(this)">Borrar publicación</button>
-            </div>
-          </div>
-
-          <!-- Mensaje para deshacer -->
-          <div id="undo-message">
-            Publicación eliminada.
-            <img src="assets/icons/botonRegresar.png" alt="Deshacer" onclick="deshacerBorrado()" style="width:32px; height:32px; margin-left:20px; cursor:pointer; vertical-align:middle; border-radius:6px; background:#fff;">
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</header>
 
-  <script>
-    let publicacionEliminada = null;
-    let publicacionPadre = null;
+    <div class="profile-page-content-wrapper">
+        <div class="perfil-header">
+            <div class="perfil-img">
+                <img src="assets/img/foto-perfil1-png.png" alt="Foto de Perfil">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-nombre">Pastelería de Valeria</div>
+                <div class="perfil-estadisticas">
+                    <span><span id="num-publicaciones">2</span> publicaciones</span>
+                    <span>500 seguidores</span>
+                    <span>10 seguidos</span>
+                </div>
+            </div>
+            <div class="perfil-acciones">
+                <a href="editar-perfil.html" class="btn btn-perfil-primary">Editar Perfil</a>
+            </div>
+        </div>
 
-    function togglePopup(icon) {
-      const popup = icon.nextElementSibling;
-      document.querySelectorAll(".popup").forEach(p => {
-        if (p !== popup) p.style.display = "none";
-      });
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
-    }
+        <div class="perfil-tabs">
+            <a href="#" class="tab-item tab-activo">Publicaciones</a>
+            <a href="#" class="tab-item">Favoritos</a>
+            <a href="#" class="tab-item">Reseñas</a>
+            <a href="#" class="tab-item">Historial de Pedidos</a>
+        </div>
 
-    function actualizarNumeroPublicaciones() {
-      const count = document.querySelectorAll('.publicacion').length;
-      document.getElementById('num-publicaciones').textContent = count;
-    }
+        <div class="profile-products-grid" id="publicaciones-grid">
+            <!-- Publicación Pastel de Fresa -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa" style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Pastel de Fresa</h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="10">Desde S/ 10</div>
+                        <div class="product-rating" data-rating="4.9">
+                            <span class="rating-value">4.9</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- Publicación Pastel de Chocolate -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/pastelDechocolate.png" alt="Pastel de Chocolate" style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Pastel de<br>Chocolate</h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="8">Desde S/ 8</div>
+                        <div class="product-rating" data-rating="4.7">
+                            <span class="rating-value">4.7</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- Publicación Torta con Decoración -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/tortaConDecoracion.png" alt="Torta con decoración" style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Torta con decoración</h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="25">Desde S/ 25</div>
+                        <div class="product-rating" data-rating="4.7">
+                            <span class="rating-value">4.7</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
 
-    function borrarPublicacion(btn) {
-      publicacionEliminada = btn.closest(".publicacion").cloneNode(true);
-      publicacionPadre = btn.closest(".publicacion").parentNode;
-      btn.closest(".publicacion").remove();
-      document.getElementById("undo-message").style.display = "block";
-      actualizarNumeroPublicaciones();
-    }
+        <div id="undo-message" style="display:none; position:fixed; left:50%; bottom:40px; transform:translateX(-50%); background:#fff; color:#222; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.07); padding:16px 24px; font-size:1.1rem; z-index:9999; align-items:center; gap:16px; display:flex;">
+            Publicación eliminada. 
+            <button onclick="deshacerBorrado()" style="margin-left:20px; background:#3498db; color:#fff; border:none; border-radius:6px; padding:8px 16px; font-weight:bold; cursor:pointer;">Deshacer cambios</button>
+        </div>
+    </div>
 
-    function editarPublicacion(btn) {
-      // Aquí puedes agregar la lógica para editar en el futuro
-      // Por ahora, no hace nada
-    }
+    <footer style="background: #fff; border-top: 1px solid #e0e0e0; margin-top: 40px;">
+    <div class="footer-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 40px 20px 20px 20px; gap: 30px;">
+        <!-- Logo y frase motivacional -->
+        <div class="footer-section" style="flex: 1 1 200px; min-width: 180px; display: flex; flex-direction: column; align-items: flex-start;">
+            <img src="assets/img/unego_logo.png" alt="Unego Logo" style="width: 120px; margin-bottom: 16px;">
+            <div class="footer-celeste" style="font-size: 1.15rem; font-weight: 600; color: #3498db; line-height: 1.3;">
+                Nunca es tarde para emprender<br>¡Empieza desde hoy!
+            </div>
+        </div>
+        <!-- Empresa -->
+        <div class="footer-section" style="flex: 1 1 200px; min-width: 180px;">
+            <h4 class="footer-celeste" style="margin-bottom: 18px; color: #3498db;">Empresa</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><a href="about_us.html">Sobre Nosotros</a></li>
+                <li><a href="universities.html">Universidades Aliadas</a></li>
+                <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+            </ul>
+        </div>
+        <!-- Producto -->
+        <div class="footer-section" style="flex: 1 1 200px; min-width: 180px;">
+            <h4 class="footer-celeste" style="margin-bottom: 18px; color: #3498db;">Producto</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><a href="#">Catálogo</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Ofertas del Mes</a></li>
+            </ul>
+        </div>
+        <!-- Contáctanos -->
+        <div class="footer-section" style="flex: 1 1 240px; min-width: 220px;">
+            <h4 class="footer-celeste" style="margin-bottom: 18px; color: #3498db;">Contáctanos</h4>
+            <p style="margin: 0 0 8px 0;"><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+            <p style="margin: 0 0 8px 0;"><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+            <p style="margin: 0 0 12px 0;"><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+            <div class="social-links" style="display: flex; gap: 12px;">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <!-- Políticas (más a la derecha) -->
+        <div class="footer-section" style="flex: 1 1 200px; min-width: 180px; margin-left: 40px;">
+            <h4 class="footer-celeste" style="margin-bottom: 18px; color: #3498db;">Políticas</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><a href="#">Condiciones</a></li>
+                <li><a href="#">Privacidad</a></li>
+                <li><a href="#">Configuración de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Línea horizontal gris delgada -->
+    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 10px 0 0 0; width: 100%;">
+    <div class="footer-bottom" style="text-align: center; padding: 18px 0 8px 0; color: #888; font-size: 1rem;">
+        &copy; 2025 Unego | Todos los derechos reservados.
+    </div>
+</footer>
 
-    function deshacerBorrado() {
-      if (publicacionEliminada && publicacionPadre) {
+    <script>
+let publicacionEliminada = null;
+let publicacionPadre = null;
+
+function togglePopup(icon) {
+    const popup = icon.nextElementSibling;
+    // Cierra otros popups
+    document.querySelectorAll(".popup").forEach(p => {
+        if (p !== popup) p.classList.remove("show");
+    });
+    popup.classList.toggle("show");
+}
+
+function borrarPublicacion(btn) {
+    const card = btn.closest(".publicacion");
+    publicacionEliminada = card.cloneNode(true);
+    publicacionPadre = card.parentNode;
+    card.remove();
+    document.getElementById("undo-message").style.display = "flex";
+    actualizarNumeroPublicaciones();
+}
+
+function editarPublicacion(btn) {
+    // Aquí puedes agregar la lógica para editar en el futuro
+}
+
+function deshacerBorrado() {
+    if (publicacionEliminada && publicacionPadre) {
         publicacionPadre.appendChild(publicacionEliminada);
         document.getElementById("undo-message").style.display = "none";
         publicacionEliminada = null;
         publicacionPadre = null;
         actualizarNumeroPublicaciones();
-      }
     }
+}
 
-    // Ocultar popup al hacer clic fuera
-    document.addEventListener("click", function (e) {
-      if (!e.target.classList.contains("menu-icon") && !e.target.closest(".popup")) {
-        document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
-      }
-    });
+function actualizarNumeroPublicaciones() {
+    const count = document.querySelectorAll('.publicacion').length;
+    const numElem = document.getElementById('num-publicaciones');
+    if(numElem) numElem.textContent = count;
+}
 
-    // Al cargar la página, actualiza el nombre y la descripción si existen en localStorage
-    window.addEventListener('DOMContentLoaded', function() {
-      const nombre = localStorage.getItem('perfil_nombre');
-      const descripcion = localStorage.getItem('perfil_descripcion');
-      if (nombre) {
-        const nombreElem = document.querySelector('.profile-info h2');
-        if (nombreElem) nombreElem.textContent = nombre;
-      }
-      if (descripcion) {
-        let descElem = document.getElementById('profile-description');
-        if (!descElem) {
-          // Si no existe, lo creamos debajo del nombre
-          const h2 = document.querySelector('.profile-info h2');
-          descElem = document.createElement('div');
-          descElem.id = 'profile-description';
-          descElem.style.color = '#555';
-          descElem.style.fontSize = '16px';
-          descElem.style.marginTop = '6px';
-          h2.insertAdjacentElement('afterend', descElem);
-        }
-        descElem.textContent = descripcion;
-      }
-    });
-  </script>
+// Ocultar popup al hacer clic fuera
+document.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("fas") && !e.target.closest(".popup")) {
+        document.querySelectorAll(".popup").forEach(p => p.classList.remove("show"));
+    }
+});
+
+// Oculta el mensaje de deshacer al cargar
+window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("undo-message").style.display = "none";
+    actualizarNumeroPublicaciones();
+});
+</script>
 </body>
 </html>
