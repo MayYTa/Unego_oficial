@@ -139,180 +139,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Estilo para el botón "Cambiar Contraseña" */
-.password-change .btn-secondary {
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    width: auto; /* Ancho automático, no 100% */
-    display: inline-block; /* Para que no ocupe todo el ancho */
-}
-
-.password-change .btn-secondary:hover {
-    background-color: #e0e0e0;
-    border-color: #b3b3b3;
-}
-
-
-/* SECCIÓN DE VERIFICACIÓN DE PERFIL (CARNET UNIVERSITARIO) */
-.verification-section {
-    position: relative;
-    padding-top: 30px; /* Más espacio arriba para el ícono */
-}
-
-.verification-section h3 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-}
-
-.verification-section .verified-icon {
-    color: #28a745; /* Verde para verificación */
-    font-size: 1.4rem;
-}
-
-.verification-status {
-    background-color: #f8d7da; /* Fondo rojo claro, similar a .verification-message.error */
-    border: 1px solid #f5c6cb; /* Borde rojo claro, similar a .verification-message.error */
-    color: #721c24; /* Color de texto rojo oscuro, similar a .verification-message.error */
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-}
-
-.verification-status i {
-    font-size: 1.2rem;
-    color: #721c24; /* Asegura que el ícono también sea rojo oscuro */
-}
-
-.verification-section small {
-    display: block;
-    color: #888;
-    font-size: 0.85rem;
-    margin-top: 5px;
-}
-
-/* Estilos para la carga de carnet universitario */
-.id-upload-group {
-    margin-bottom: 20px;
-}
-
-.carnet-upload-previews {
-    display: flex;
-    justify-content: center;
-    gap: 25px; /* Espacio entre las dos imágenes de carnet */
-    margin-top: 15px;
-    flex-wrap: wrap; /* Permite que las imágenes bajen en pantallas pequeñas */
-}
-
-.carnet-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 180px; /* Ancho fijo para cada lado del carnet */
-}
-
-.carnet-side label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.carnet-example {
-    width: 100%;
-    height: auto; /* Mantener proporción */
-    max-height: 120px; /* Limitar altura para mantener consistencia */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    object-fit: contain; /* Asegura que la imagen completa sea visible */
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.carnet-side input[type="file"] {
-    display: none; /* Ocultar input original */
-}
-
-.upload-button-small {
-    background-color: #3498db; /* Un color diferente para el botón de subir carnet */
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.upload-button-small:hover {
-    background-color: #2980b9;
-}
-
-
-.btn-verify {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 15px;
-    width: auto; /* Ancho automático */
-    display: block; /* Para que ocupe su propia línea */
-    margin-left: 0; /* Asegura que no se centre automáticamente si hay flexbox */
-}
-
-.btn-verify:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.verification-message {
-    margin-top: 20px;
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.verification-message.loading {
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-    color: #856404;
-}
-
-.verification-message.success {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
-}
-
-.verification-message.error {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-}
-
-
 /* Botones de acción del formulario */
 .form-actions {
     display: flex;
@@ -333,12 +159,12 @@ body {
 }
 
 .btn-primary {
-    background-color: #28a745; /* Verde para guardar */
+    background-color: #007bff; /* Azul para guardar */
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 .btn-cancel {
@@ -347,6 +173,106 @@ body {
 }
 
 .btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+/* Container for inline form actions like 'Change Password' and 'Verify Profile' */
+.form-row-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.form-row-actions .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: auto;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.form-row-actions .btn-secondary:hover {
+    background-color: #e0e0e0;
+    border-color: #b3b3b3;
+}
+
+/* Specific style for verify profile to make it distinct but not primary */
+.form-row-actions .btn-verify-profile {
+    background-color: #28a745; /* Verde para verificar */
+    color: white;
+    border-color: #28a745;
+}
+
+.form-row-actions .btn-verify-profile:hover {
+    background-color: #218838; /* Verde más oscuro */
+    border-color: #1e7e34;
+}
+
+/* Estilos para la sección de Redes Sociales Dinámicas */
+.social-links-group {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link-item input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.remove-social-link {
+    margin-left: auto;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.remove-social-link:hover {
+    background-color: #c82333;
+}
+
+.add-social-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.add-social-btn:hover {
     background-color: #5a6268;
 }
 
@@ -411,5 +337,31 @@ body {
 
     .carnet-side {
         width: 150px; /* Ajusta el ancho para móvil */
+    }
+
+    .form-row-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch; /* Make buttons full width */
+    }
+
+    .form-row-actions .btn-secondary {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .social-link-item {
+        flex-wrap: wrap;
+    }
+
+    .social-link-item .social-platform {
+        flex-basis: 100%;
+    }
+    .social-link-item .social-url {
+        flex-grow: 1;
+    }
+    .social-link-item .remove-social-link {
+        margin-left: 0;
+        flex-shrink: 0;
     }
 }
