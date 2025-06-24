@@ -74,22 +74,44 @@
     </div>
 
     <script>
-        // Vista previa de imagen de producto
-        document.addEventListener('DOMContentLoaded', () => {
-            const productImageInput = document.getElementById('productImage');
-            const currentProductImg = document.getElementById('currentProductImg');
+// Vista previa de imagen de producto y validación de formulario
+    document.addEventListener('DOMContentLoaded', () => {
+        const productImageInput = document.getElementById('productImage');
+        const currentProductImg = document.getElementById('currentProductImg');
+        const avatarPlaceholder = document.querySelector('.avatar-placeholder');
 
-            productImageInput.addEventListener('change', function(event) {
-                if (event.target.files && event.target.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        currentProductImg.src = e.target.result;
-                    };
-                    reader.readAsDataURL(event.target.files[0]);
-                }
-            });
+        productImageInput.addEventListener('change', function(event) {
+            if (event.target.files && event.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentProductImg.src = e.target.result;
+                    currentProductImg.style.display = 'block';
+                    if (avatarPlaceholder) avatarPlaceholder.style.display = 'none';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                currentProductImg.style.display = 'none';
+                if (avatarPlaceholder) avatarPlaceholder.style.display = 'flex';
+            }
         });
+
+        // Validación y redirección al enviar el formulario
+        document.querySelector('.profile-edit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const descripcion = document.getElementById('descripcionProducto').value.trim();
+            const precio = document.getElementById('precioProducto').value.trim();
+            const categoria = document.getElementById('categoriaProducto').value.trim();
+            const stock = document.getElementById('stockProducto').value.trim();
+
+            if (descripcion && precio && categoria && stock) {
+                window.location.href = 'perfil.html';
+            } else {
+                alert('Por favor, completa todos los campos requeridos.');
+            }
+        });
+    });
     </script>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section about">

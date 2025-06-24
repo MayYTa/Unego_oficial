@@ -70,39 +70,28 @@
     </div>
 
     <script>
-        // Vista previa de imagen de producto
-        document.addEventListener('DOMContentLoaded', () => {
-            const productImageInput = document.getElementById('productImage');
-            const currentProductImg = document.getElementById('currentProductImg');
+// Vista previa de imagen de producto y redirección al guardar cambios
+document.addEventListener('DOMContentLoaded', function() {
+    const productImageInput = document.getElementById('productImage');
+    const currentProductImg = document.getElementById('currentProductImg');
 
-            productImageInput.addEventListener('change', function(event) {
-                if (event.target.files && event.target.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        currentProductImg.src = e.target.result;
-                    };
-                    reader.readAsDataURL(event.target.files[0]);
-                }
-            });
+    productImageInput.addEventListener('change', function(event) {
+        if (event.target.files && event.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentProductImg.src = e.target.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    });
 
-            // Cargar datos del producto a editar
-            const data = localStorage.getItem('productoEditar');
-            if (data) {
-                const producto = JSON.parse(data);
-                document.getElementById('currentProductImg').src = producto.imagen;
-                document.getElementById('descripcionProducto').value = producto.descripcion;
-                document.getElementById('precioProducto').value = producto.precio;
-                document.getElementById('categoriaProducto').value = producto.categoria;
-                document.getElementById('stockProducto').value = producto.stock;
-            }
-
-            // Redirigir a perfil.html al guardar cambios
-            document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'perfil.html';
-            });
-        });
-    </script>
+    // Redirigir a perfil.html al guardar cambios
+    document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'perfil.html';
+    });
+});
+</script>
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
