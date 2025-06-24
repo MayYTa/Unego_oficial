@@ -25,14 +25,16 @@ const productos = {
         descripcion: "Polo negro de algodón, talla M, poco uso.",
         precio: 12.00,
         categoria: "Ropa",
-        stock: 5
+        vendidos: 3,
+        stock: 15
     },
     "mochila-1": {
         imagen: "assets/img/mochila.png",
         descripcion: "Mochila resistente, color azul, varios bolsillos.",
         precio: 35.00,
         categoria: "Accesorios",
-        stock: 2
+        vendidos: 5,
+        stock: 20
     }
 };
 
@@ -60,6 +62,18 @@ document.querySelectorAll('.menu-edit').forEach(function(btn) {
         if (productos[id]) {
             localStorage.setItem('productoEditar', JSON.stringify(productos[id]));
             window.location.href = 'editar-publicacion.html';
+        }
+    });
+});
+
+//tercer feature
+
+document.querySelectorAll('.menu-stock').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const id = this.getAttribute('data-producto-id');
+        if (productos[id]) {
+            localStorage.setItem('productoStock', JSON.stringify(productos[id]));
+            window.location.href = 'stock.html';
         }
     });
 });
