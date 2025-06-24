@@ -302,3 +302,44 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.product-actions-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-width: 100px;
+}
+.product-actions-menu button {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.product-actions-menu button:hover {
+    background: #f0f4ff;
+}
+.top-right-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #888;
+    font-size: 1.2rem;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    /* Elimina display: inline-block; */
+}
