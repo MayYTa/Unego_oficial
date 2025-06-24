@@ -150,7 +150,7 @@ body {
        Calculo: Queremos que el icono esté a 15px del borde,
        y como el contenedor tiene un padding-right de 8px,
        el 'right' del contenedor debe ser 15px - 8px = 7px. */
-    right: 6px;
+    right: 7px;
     color: #888;
     font-size: 1.2rem;
     z-index: 10; /* Asegura que esté por encima de la imagen y otros elementos */
@@ -329,17 +329,4 @@ body {
 .product-actions-menu button:hover {
     background: #f0f4ff;
 }
-.top-right-actions {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: #888;
-    font-size: 1.2rem;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    padding: 5px 8px;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    /* Elimina display: inline-block; */
-}
+
