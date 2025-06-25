@@ -397,3 +397,177 @@ a{
     }
 }
 
+/* Estilos básicos para el nuevo select de categorías */
+.category-filtering select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px; /* Pequeño espacio superior */
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.category-filtering select:focus {
+    border-color: #007bff; /* Color al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Footer Styles (UPDATED) */
+footer {
+    background-color: #E9F0F4; /* Lighter background color */
+    color: #555; /* Darker text for readability */
+    padding: 40px 20px;
+    margin-top: 50px; /* Space above the footer */
+    font-family: 'Kanit', sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: #3498db; /* Blue color for headings, consistent with your button */
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #555; /* Links color for readability on light background */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #3498db;
+}
+
+.footer-section.about {
+    text-align: left; /* Aligns content (logo, text) to the left */
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+}
+
+.footer-section.about .footer-logo {
+    height: 60px; /* Adjust logo size for footer */
+    width: auto;
+    margin-bottom: 10px; /* Space between the logo and the tagline */
+    /* No need for filter: invert() on light background */
+}
+
+.footer-text {
+    width: 100%; /* Ensure the div takes full width for text alignment */
+    margin-bottom: 10px; /* Space between the logo and the tagline */
+
+}
+
+.footer-text p {
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold; /* Make the text bold */
+    color: #3498db; /* Use your accent blue color */
+    margin: 0; /* Remove default paragraph margin */
+    margin-left: -90px;
+    line-height: 1.4;
+    text-align: center; /* ADDED: Center the text within the paragraph */
+}
+
+.footer-section.contact i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start; /* Align social links to the left */
+}
+
+/* Specific styling for Font Awesome social icons */
+.social-links a {
+    color: #333; /* Darker color for icons on lighter background */
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc; /* Lighter separator line */
+    font-size: 13px;
+    color: #777; /* Adjust color for readability */
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center; /* Center main footer sections */
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .footer-section.about {
+        align-items: center; /* Center logo and text in about section on mobile */
+    }
+
+    .social-links {
+        justify-content: center; /* Center social icons on small screens */
+    }
+
+    .footer-section ul {
+        align-items: center; /* Center list items when column stacks */
+    }
+}
+.cart-icon {
+    display: inline-block;
+    width: 50px; 
+    height: 50px;
+    margin-right: 30px; /* Espacio entre carrito y campana */
+}
+
+.cart-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

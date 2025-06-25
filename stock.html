@@ -1,57 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Publicación</title>
-  <link rel="stylesheet" href="css/stock-styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock del Producto - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/stock-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="preview-header">
-    <div class="preview-row">
-      <img src="assets/img/cartuchera-negra.png" alt="Cartuchera Negra" class="preview-img">
-      <div>
-        <div class="preview-title">Pre-Visualización de Producto</div>
-        <div style="display: flex; align-items: center; margin-top: 18px;">
-          <span class="preview-label">Nombre de Producto</span>
-          <input type="text" class="preview-product-name" value="Cartuchera Negra" readonly>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
         </div>
-      </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <a href="carrito-de-compras.html" class="cart-icon">
+                <img src="assets/icons/carrito-compras.png" alt="Carrito">
+            </a>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <a href="perfil.html">
+                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="edit-profile-wrapper">
+        <h2>Stock del Producto</h2>
+        <div class="form-section">
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <img id="stockProductImg" src="assets/img/placeholder-product.png" alt="Imagen del Producto">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="stockPrecio">Precio</label>
+                <input type="number" id="stockPrecio" readonly>
+            </div>
+            <div class="form-group">
+                <label for="stockVendidos">Vendidos</label>
+                <input type="number" id="stockVendidos" min="0">
+            </div>
+            <div class="form-group">
+                <label for="stockProducto">Stock</label>
+                <input type="number" id="stockProducto" min="0">
+            </div>
+            <div class="form-group">
+                <label for="stockRestante">Stock Restante</label>
+                <input type="number" id="stockRestante" readonly>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" class="btn-primary" onclick="guardarStock()">Guardar Cambios</button>
+            <button type="button" class="btn-cancel" onclick="window.location.href='perfil.html';">Cancelar</button>
+        </div>
     </div>
-  </div>
-  <div class="form-section">
-    <form>
-      <div class="form-table">
-        <div class="form-row">
-          <div class="form-label">Precio</div>
-          <div class="form-input-cell">
-            <input type="number" class="form-input-number" value="28" min="0">
-          </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = localStorage.getItem('productoStock');
+        if (data) {
+            const producto = JSON.parse(data);
+            document.getElementById('stockProductImg').src = producto.imagen;
+            document.getElementById('stockPrecio').value = producto.precio;
+            document.getElementById('stockVendidos').value = producto.vendidos || 0;
+            document.getElementById('stockProducto').value = producto.stock;
+            document.getElementById('stockRestante').value = (producto.stock - (producto.vendidos || 0));
+        }
+        function actualizarRestante() {
+            const vendidos = parseInt(document.getElementById('stockVendidos').value) || 0;
+            const stock = parseInt(document.getElementById('stockProducto').value) || 0;
+            document.getElementById('stockRestante').value = stock - vendidos;
+        }
+        document.getElementById('stockVendidos').addEventListener('input', actualizarRestante);
+        document.getElementById('stockProducto').addEventListener('input', actualizarRestante);
+    });
+
+    function guardarStock() {
+        // Aquí puedes guardar el nuevo stock y vendidos si tienes backend o actualizar localStorage temporalmente
+        alert('¡Stock actualizado!');
+        window.location.href = 'perfil.html';
+    }
+    </script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="form-row">
-          <div class="form-label">Vendidos</div>
-          <div class="form-input-cell">
-            <input type="number" class="form-input-number" value="3" min="0">
-          </div>
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
         </div>
-        <div class="form-row">
-          <div class="form-label">Stock</div>
-          <div class="form-input-cell">
-            <input type="number" class="form-input-number" value="15" min="0">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-label">Stock Restante</div>
-          <div class="form-input-cell">
-            <input type="number" class="form-input-number" value="12" min="0">
-          </div>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="button" class="btn-form" onclick="window.location.href='editar-publicacion.html'">Atras</button>
-        <button type="submit" class="btn-form">Actualizar Stock</button>
-      </div>
-    </form>
-  </div>
+    </footer>
 </body>
 </html>
