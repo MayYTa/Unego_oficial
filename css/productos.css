@@ -178,70 +178,233 @@
     color: #ccc; /* Color para estrellas vacías */
 }
 
-/* Módulo de Chat con el Vendedor (el que ya existía, ahora dentro de la columna derecha) */
-.seller-chat-module {
-    background-color: #e0f0ff; /* Fondo azul claro para el chat */
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: inset 0 1px 5px rgba(0,0,0,0.1);
+/* --- Estilos para el botón flotante de chat --- */
+.chat-float-btn {
+    position: fixed; /* Lo fija en la pantalla */
+    bottom: 30px;    /* Distancia desde abajo */
+    right: 30px;     /* Distancia desde la derecha */
+    background-color: #007bff; /* Color de fondo */
+    color: white;    /* Color del icono */
+    border-radius: 50%; /* Lo hace circular */
+    width: 60px;     /* Ancho del círculo */
+    height: 60px;    /* Alto del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em; /* Tamaño del icono */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para que destaque */
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    transition: transform 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
-.seller-chat-module h4 {
-    font-size: 1.1em;
+.chat-float-btn:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+}
+
+/* --- Estilos para el globo de texto (tooltip) --- */
+.chat-tooltip {
+    visibility: hidden; /* Oculto por defecto */
+    width: 220px;
+    background-color: #555;
+    color: #fff;
     text-align: center;
-    color: #007bff;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Posiciona el tooltip encima del botón */
+    left: 50%;
+    margin-left: -110px; /* Centra el tooltip */
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 0.9em;
+    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Flecha del tooltip */
+.chat-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* En la parte inferior del tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Mostrar el tooltip al pasar el mouse sobre el botón flotante */
+.chat-float-btn:hover .chat-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- Estilos para la ventana modal de chat --- */
+.chat-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece en su lugar incluso al hacer scroll */
+    z-index: 1001;   /* Por encima del botón flotante */
+    left: 0;
+    top: 0;
+    width: 100%;     /* Ancho completo */
+    height: 100%;    /* Alto completo */
+    overflow: auto;  /* Habilita el scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+    display: flex; /* Usar flex para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Centra la modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo para pantallas grandes */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+}
+
+.chat-modal-content h4 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
     margin-bottom: 15px;
 }
 
-.chat-prompt-button {
+.chat-header {
     display: flex;
     align-items: center;
-    background-color: #fff;
-    border: 1px solid #a8d5ff;
-    border-radius: 25px; /* Bordes redondeados como burbuja de chat */
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    width: 100%; /* Ocupa el ancho completo del contenedor */
-    text-align: left; /* Alinea el texto a la izquierda */
-    font-family: inherit; /* Hereda la fuente del cuerpo */
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
 }
 
-.chat-prompt-button:hover {
-    background-color: #f0f8ff;
-    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+.chat-header h4 {
+    margin: 0; /* Elimina el margen por defecto del h4 */
+    flex-grow: 1; /* Permite que el título ocupe espacio, empujando seller-info */
+    text-align: right; /* Alinea el título a la derecha */
+    padding-right: 30px; /* Espacio para el botón de cerrar */
 }
 
-.chat-prompt-button:active {
-    transform: translateY(0); /* Al hacer clic, vuelve a su posición normal */
+.chat-header .seller-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre los elementos del vendedor */
 }
 
-.chat-prompt-button img {
+.seller-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 15px;
     object-fit: cover;
-    flex-shrink: 0; /* Evita que la imagen se encoja */
+    border: 1px solid #ccc;
 }
 
-.chat-prompt-button p {
-    flex-grow: 1; /* Permite que el párrafo ocupe el espacio restante */
+.seller-name {
+    font-weight: bold;
     color: #333;
-    font-style: italic;
-    margin: 0; /* Elimina márgenes por defecto */
 }
 
-.send-icon {
-    font-size: 1.2em;
-    color: #007bff; /* Color azul para el icono de envío */
-    margin-left: 10px;
-    flex-shrink: 0; /* Evita que el icono se encoja */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc; /* Color por defecto */
+    border: 1px solid white; /* Borde blanco para visibilidad */
 }
+
+.status-indicator.active {
+    background-color: #28a745; /* Verde para activo */
+}
+
+.status-indicator.inactive {
+    background-color: #dc3545; /* Rojo para inactivo */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat-messages {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 300px; /* Altura fija para el área de mensajes */
+    overflow-y: auto; /* Scroll si hay muchos mensajes */
+    margin-bottom: 10px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    flex-grow: 1; /* Permite que ocupe el espacio disponible */
+}
+
+.chat-messages .message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    word-wrap: break-word; /* Para mensajes largos */
+}
+
+.chat-messages .message.received {
+    background-color: #dcf8c6; /* Verde claro para mensajes recibidos */
+    align-self: flex-start;
+    float: left; /* Para alinear a la izquierda */
+    clear: both; /* Para asegurar que cada mensaje esté en una nueva línea */
+}
+
+.chat-messages .message.sent {
+    background-color: #007bff; /* Azul para mensajes enviados */
+    color: white;
+    align-self: flex-end;
+    float: right; /* Para alinear a la derecha */
+    clear: both;
+}
+
+
+#chatInput {
+    width: calc(100% - 22px); /* Ancho completo menos padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+#sendMessageBtn {
+    background-color: #28a745; /* Color del botón de envío */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    align-self: flex-end; /* Alinea a la derecha */
+}
+
+#sendMessageBtn:hover {
+    background-color: #218838;
+}   
 
 @keyframes blink {
     0%, 100% { opacity: 1; }

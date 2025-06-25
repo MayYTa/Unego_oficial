@@ -58,18 +58,30 @@
                     <div class="stars" id="product-stars"></div>
                 </div>
 
-                <div class="product-info">
-                    <div class="seller-chat-module">
-                    <h4>¿Tiene otra consulta acerca del producto?</h4>
-        
-                    <button class="chat-prompt-button" id="chat-with-seller-button">
-                        <img src="assets/img/foto-perfil1-png.png" alt="Avatar Vendedor"> 
-                        <p>Hola, tengo una duda acerca de este producto.</p>
-                         <i class="fas fa-paper-plane send-icon"></i> </button>
-        
-                        <p class="chat-disclaimer">Al hacer clic se abrirá una conversación privada con el vendedor.</p>
+                            <div class="chat-float-btn" id="chatFloatBtn">
+                    <i class="fas fa-comments"></i>
+                    <span class="chat-tooltip">¿Tienes otra consulta acerca de este producto?</span>
+                </div>
+
+                <div id="chatModal" class="chat-modal">
+                    <div class="chat-modal-content">
+                        <span class="close-button" id="closeChatModal">&times;</span>
+                        <div class="chat-header"> <div class="seller-info">
+                                <img id="seller-chat-avatar" src="assets/img/foto-perfil1-png.png" alt="Avatar Vendedor" class="seller-avatar">
+                                <span id="seller-chat-name" class="seller-name">Cargando vendedor...</span>
+                                <span id="seller-status-indicator" class="status-indicator"></span> </div>
+                            <h4>Chat con el Vendedor</h4>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            </div>
+                        <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+                        <button id="sendMessageBtn">Enviar</button>
                     </div>
                 </div>
+
+                <script src="src/js/load_productos.js"></script>
+                <script src="src/js/chat_page.js"></script> </body>
             </div>
         </main>
     </div>
