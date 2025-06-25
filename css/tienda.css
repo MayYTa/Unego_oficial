@@ -144,6 +144,10 @@ a{
     font-size: 14px;
 }
 
+.bookmarked {
+    color: black;
+}
+
 .rating-filter label {
     display: block;
     margin-bottom: 8px;
