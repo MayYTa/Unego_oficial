@@ -393,6 +393,24 @@ a{
     }
 }
 
+/* Estilos básicos para el nuevo select de categorías */
+.category-filtering select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px; /* Pequeño espacio superior */
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.category-filtering select:focus {
+    border-color: #007bff; /* Color al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 /* Footer Styles (UPDATED) */
 footer {
     background-color: #E9F0F4; /* Lighter background color */

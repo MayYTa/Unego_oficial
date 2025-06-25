@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const applyFiltersButton = document.getElementById('apply-filters');
     const mainContent = document.querySelector('.main-content');
 
-    // <--- CAMBIO IMPORTANTE: Ahora seleccionamos TODOS los checkboxes de categoría
-    const categoryFilterCheckboxes = document.querySelectorAll('input[name="category-filter"]');
+    // <--- CAMBIO AQUÍ: Ahora seleccionamos el elemento SELECT en lugar de los checkboxes
+    const categoryFilterSelect = document.getElementById('category-filter-select'); // Asegúrate de que el ID en tu HTML sea 'category-filter-select'
 
     let allProductsData = [];
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return starsHtml;
     }
 
-    // --- 2. Función para renderizar todos los productos en el DOM ---
+    // --- 2. Función para renderizar todos los productos en el DOM (NO CAMBIA) ---
     function renderProducts(productsToRender) {
         mainContent.innerHTML = '';
 
@@ -77,38 +77,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // <--- CAMBIO IMPORTANTE: La función populateCategoryFilter ya no es estrictamente necesaria
-    // si tus checkboxes están hardcodeados en el HTML. Sin embargo, podemos usarla para
-    // deshabilitar checkboxes de categorías que no tienen productos.
+    // <--- CAMBIO AQUÍ: La función populateCategoryFilter ahora es opcional o puede adaptar las opciones del SELECT
+    // Si tus opciones de categoría están hardcodeadas en el HTML del SELECT, esta función no necesitaría modificar opciones.
+    // Podría usarse, por ejemplo, para mostrar u ocultar el SELECT si no hay categorías disponibles, pero para este cambio,
+    // si el SELECT ya está en el HTML, podemos simplificarla o dejarla sin efecto directo en el SELECT.
+    // Si quisieras poblar dinámicamente el select con base en los productos, lo harías aquí.
     function populateCategoryFilter(products) {
-        const availableCategories = new Set();
-        products.forEach(product => {
-            if (product.category) {
-                if (Array.isArray(product.category)) {
-                    product.category.forEach(cat => availableCategories.add(cat.trim().toLowerCase()));
-                } else {
-                    availableCategories.add(product.category.trim().toLowerCase());
-                }
-            }
-        });
-
-        categoryFilterCheckboxes.forEach(checkbox => {
-            const categoryValue = checkbox.value;
-            // No deshabilites la opción "Todas"
-            if (categoryValue === 'all') {
-                checkbox.disabled = false; 
-                return;
-            }
-            // Deshabilita el checkbox si no hay productos para esa categoría
-            checkbox.disabled = !availableCategories.has(categoryValue);
-            // Opcional: desmarcar si está deshabilitado
-            if (checkbox.disabled && checkbox.checked) {
-                checkbox.checked = false;
-            }
-        });
+        // En un enfoque con SELECT hardcodeado en HTML, esta función no hace cambios al SELECT.
+        // Si quisieras que las opciones del SELECT se generaran dinámicamente,
+        // tendrías que crear los <option> elementos y añadirlos al categoryFilterSelect aquí.
+        // Por ahora, como el SELECT está en el HTML, simplemente podemos ignorar los checkboxes.
+        // Si en el futuro las categorías vinieran del JSON, aquí podrías construir las <option>
+        // basadas en 'products' y añadirlas a 'categoryFilterSelect'.
     }
 
-    // --- 3. Función para aplicar filtros y ordenar (modificada para checkboxes) ---
+
+    // --- 3. Función para aplicar filtros y ordenar (MODIFICADA para el SELECT de categoría) ---
     function applyFiltersAndSort() {
         let filteredProducts = [...allProductsData];
 
@@ -138,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-        // --- Filtrado por calificación (rating) ---
+        // --- Filtrado por calificación (rating) (NO CAMBIA) ---
         const selectedRatingElement = document.querySelector('input[name="rating-filter"]:checked');
         const selectedRating = selectedRatingElement ? parseFloat(selectedRatingElement.value) : 0;
 
@@ -146,40 +130,27 @@ document.addEventListener('DOMContentLoaded', async () => {
             filteredProducts = filteredProducts.filter(product => product.calificacion >= selectedRating);
         }
 
-        // --- CAMBIO IMPORTANTE: Filtrado por múltiples Categorías (checkboxes) ---
-        const selectedCategories = [];
-        categoryFilterCheckboxes.forEach(checkbox => {
-            if (checkbox.checked && checkbox.value !== 'all') { // Si está marcado y no es "Todas"
-                selectedCategories.push(checkbox.value);
-            }
-        });
+        // --- CAMBIO CLAVE AQUÍ: Filtrado por Categoría (usando SELECT) ---
+        const selectedCategory = categoryFilterSelect.value; // Obtiene el valor de la opción seleccionada
 
-        // Lógica para el checkbox "Todas": Si está marcado, no aplica ningún filtro de categoría.
-        // Si no está marcado o no existe, y no hay categorías seleccionadas, se filtra por nada.
-        const allCheckbox = document.querySelector('input[name="category-filter"][value="all"]');
-        const allIsChecked = allCheckbox && allCheckbox.checked;
-
-        if (!allIsChecked && selectedCategories.length > 0) {
+        if (selectedCategory !== 'all') { // Si la categoría seleccionada NO es 'Todas'
             filteredProducts = filteredProducts.filter(product => {
                 // Si el producto tiene una sola categoría (string)
                 if (typeof product.category === 'string') {
-                    return selectedCategories.includes(product.category.toLowerCase());
-                } 
+                    return product.category.toLowerCase() === selectedCategory;
+                }
                 // Si el producto tiene múltiples categorías (array)
                 else if (Array.isArray(product.category)) {
-                    // Retorna verdadero si alguna de las categorías del producto está en las seleccionadas
-                    return product.category.some(cat => selectedCategories.includes(cat.toLowerCase()));
+                    // Retorna verdadero si alguna de las categorías del producto coincide con la seleccionada
+                    return product.category.some(cat => cat.toLowerCase() === selectedCategory);
                 }
                 return false; // Si no tiene categoría o es un tipo inesperado
             });
-        } else if (!allIsChecked && selectedCategories.length === 0) {
-            // Si "Todas" no está marcado y no se selecciona ninguna otra categoría,
-            // no se muestra ningún producto por categoría.
-            filteredProducts = [];
         }
+        // Si selectedCategory es 'all', no se aplica ningún filtro de categoría, por lo que no necesitamos un 'else'.
 
 
-        // --- Ordenamiento de productos filtrados ---
+        // --- Ordenamiento de productos filtrados (NO CAMBIA) ---
         const sortOrder = sortOrderSelect.value;
         if (sortOrder === 'price-asc') {
             filteredProducts.sort((a, b) => a.precio - b.precio);
@@ -192,7 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderProducts(filteredProducts);
     }
 
-    // --- 4. Cargar los datos de los productos desde el JSON al inicio ---
+    // --- 4. Cargar los datos de los productos desde el JSON al inicio (MODIFICADO) ---
     try {
         const response = await fetch('src/json/productos.json');
         if (!response.ok) {
@@ -201,7 +172,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         allProductsData = await response.json();
 
-        // <--- CAMBIO IMPORTANTE: Poblamos/ajustamos el filtro de categorías
+        // <--- CAMBIO: populateCategoryFilter ya no necesita deshabilitar checkboxes.
+        // Si tu SELECT tiene las opciones hardcodeadas, esta llamada es menos crítica.
+        // Si el SELECT fuera dinámico, aquí se generarían las opciones.
         populateCategoryFilter(allProductsData);
         
         applyFiltersAndSort(); // Renderiza los productos y aplica filtros/ordenamiento inicial
@@ -214,10 +187,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         maxPriceInput.disabled = true;
         ratingFilters.forEach(radio => radio.disabled = true);
         applyFiltersButton.disabled = true;
-        categoryFilterCheckboxes.forEach(checkbox => checkbox.disabled = true); // <--- CAMBIO IMPORTANTE: Deshabilitar checkboxes
+        // <--- CAMBIO AQUÍ: Deshabilita el SELECT de categoría en caso de error
+        if (categoryFilterSelect) categoryFilterSelect.disabled = true;
     }
 
-    // --- 5. Escuchadores de eventos para aplicar filtros/ordenación ---
+    // --- 5. Escuchadores de eventos para aplicar filtros/ordenación (MODIFICADO) ---
     applyFiltersButton.addEventListener('click', applyFiltersAndSort);
     productSearchInput.addEventListener('input', applyFiltersAndSort);
     sortOrderSelect.addEventListener('change', applyFiltersAndSort);
@@ -227,36 +201,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         radio.addEventListener('change', applyFiltersAndSort);
     });
 
-    // <--- CAMBIO IMPORTANTE: Escucha cambios en CADA checkbox de categoría
-    categoryFilterCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', (event) => {
-            // Lógica para el checkbox "Todas":
-            // Si "Todas" se marca, desmarca las demás.
-            if (event.target.value === 'all' && event.target.checked) {
-                categoryFilterCheckboxes.forEach(otherCheckbox => {
-                    if (otherCheckbox.value !== 'all') {
-                        otherCheckbox.checked = false;
-                    }
-                });
-            } else if (event.target.value !== 'all' && event.target.checked) {
-                // Si se marca cualquier otra categoría, desmarca "Todas".
-                const allCheckbox = document.querySelector('input[name="category-filter"][value="all"]');
-                if (allCheckbox) allCheckbox.checked = false;
-            } else if (event.target.value !== 'all' && !event.target.checked) {
-                // Si una categoría se desmarca y no queda ninguna otra marcada, marca "Todas".
-                const anyOtherChecked = Array.from(categoryFilterCheckboxes).some(cb => cb.checked && cb.value !== 'all');
-                const allCheckbox = document.querySelector('input[name="category-filter"][value="all"]');
-                if (!anyOtherChecked && allCheckbox) {
-                    allCheckbox.checked = true;
-                }
-            }
-            applyFiltersAndSort(); // Aplicar filtros después del cambio
-        });
-    });
+    // <--- CAMBIO CLAVE AQUÍ: Ahora escuchamos el evento 'change' en el SELECT de categoría
+    if (categoryFilterSelect) { // Asegurarse de que el elemento exista
+        categoryFilterSelect.addEventListener('change', applyFiltersAndSort);
+    }
 
-    // El resto de tus bloques `DOMContentLoaded` para `productos.html` y rating interactivo
-    // deben ir en sus propios archivos JavaScript o ser eliminados si solo son para tienda.html
-    // y no pertenecen a esta página.
+    // ELIMINAR O MOVER ESTOS BLOQUES:
+    // Los siguientes bloques 'DOMContentLoaded' no deberían estar aquí si son para otras páginas o funciones.
+    // Si el segundo y tercer bloque 'DOMContentLoaded' son para 'productos.html' o una funcionalidad
+    // de rating interactivo que no está en 'tienda.html', DEBEN estar en sus propios archivos JS
+    // vinculados a esas páginas específicas.
+    // Tener múltiples 'DOMContentLoaded' en el mismo archivo para la misma página es redundante y puede causar problemas.
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
