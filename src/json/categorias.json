@@ -1,0 +1,31 @@
+[
+    {
+        "value": "all",
+        "text": "Todas las categorías",
+        "defaultChecked": true
+    },
+    {
+        "value": "mochilas",
+        "text": "Mochilas"
+    },
+    {
+        "value": "ropa",
+        "text": "Ropa"
+    },
+    {
+        "value": "pasteles",
+        "text": "Pasteles"
+    },
+    {
+        "value": "electronicos",
+        "text": "Electrónicos"
+    },
+    {
+        "value": "libros",
+        "text": "Libros"
+    },
+    {
+        "value": "juguetes",
+        "text": "Juguetes"
+    }
+]

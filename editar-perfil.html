@@ -63,12 +63,13 @@
                     <input type="email" id="email" name="email" value="" placeholder="" required>
                 </div>
 
-                <div class="form-group password-change">
+                <div class="form-row-actions">
                     <button type="button" class="btn-secondary">Cambiar Contraseña</button>
+                    <a href="verificar-perfil.html" class="btn-secondary btn-verify-profile">Verificar Perfil</a>
                 </div>
             </div>
 
-            <div class="form-section">
+            <div class="form-section" id="social-media-section">
                 <h3>Contacto y Ubicación</h3>
                 
                 <div class="form-group">
@@ -86,49 +87,17 @@
                     <input type="text" id="sede" name="sede" placeholder="Ej: Ciudad Universitaria / San Isidro">
                 </div>
 
-                <div class="form-group">
-                    <label for="redesSociales">Enlaces de Redes Sociales (Facebook):</label>
-                    <input type="url" id="redesSociales" name="redesSociales" placeholder="https://facebook.com/tupagina">
-                </div>
-            </div>
-
-            <div class="form-section verification-section">
-                <h3>Verificación de Perfil <i class="fas fa-check-circle verified-icon"></i></h3>
-                <p>Verifica tu perfil subiendo una copia de tu carnet universitario. Esto ayuda a confirmar tu identidad y te otorga mayor credibilidad en la plataforma.</p>
-                
-                <div class="verification-status">
-                    <i class="fas fa-info-circle"></i>
-                    <span id="verificationStatusText">Tu perfil no está verificado actualmente.</span>
-                </div>
-
-                <div class="form-group id-upload-group">
-                    <label>Carnet Universitario:</label>
-                    <div class="carnet-upload-previews">
-                        <div class="carnet-side">
-                            <label for="carnetFront">Adverso del Carnet</label>
-                            <img src="assets/img/carnet_frontal.png" alt="Ejemplo Carnet Frontal" class="carnet-example">
-                            <input type="file" id="carnetFront" name="carnetFront" accept="image/*">
-                            <label for="carnetFront" class="upload-button-small"><i class="fas fa-upload"></i> Subir Adverso</label>
-                        </div>
-                        <div class="carnet-side">
-                            <label for="carnetBack">Reverso del Carnet</label>
-                            <img src="assets/img/carnet_reversa.png" alt="Ejemplo Carnet Reverso" class="carnet-example">
-                            <input type="file" id="carnetBack" name="carnetBack" accept="image/*">
-                            <label for="carnetBack" class="upload-button-small"><i class="fas fa-upload"></i> Subir Reverso</label>
+                <div class="form-group social-links-group">
+                    <label>Enlaces de Redes Sociales:</label>
+                    <div id="socialLinksContainer">
+                        <!-- Los enlaces se añadirán aquí dinámicamente -->
+                        <div class="social-link-item">
+                            <input type="text" class="social-platform" placeholder="Ej: Facebook" value="Facebook">
+                            <input type="url" class="social-url" placeholder="https://facebook.com/tupagina" value="https://facebook.com/tupagina">
+                            <button type="button" class="remove-social-link"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <small>Se requieren imágenes claras del adverso y reverso de tu carnet universitario. Formatos aceptados: JPG, PNG.</small>
-                </div>
-                
-                <button type="submit" class="btn-verify">Solicitar Verificación</button>
-                <div class="verification-message loading" style="display: none;">
-                    <i class="fas fa-spinner fa-spin"></i> Solicitando verificación...
-                </div>
-                <div class="verification-message success" style="display: none;">
-                    <i class="fas fa-check-circle"></i> ¡Solicitud enviada! Revisaremos tus documentos pronto.
-                </div>
-                <div class="verification-message error" style="display: none;">
-                    <i class="fas fa-times-circle"></i> Error al enviar la solicitud. Inténtalo de nuevo.
+                    <button type="button" id="addSocialLink" class="btn-secondary add-social-btn"><i class="fas fa-plus"></i> Añadir otro enlace</button>
                 </div>
             </div>
 
@@ -139,15 +108,59 @@
         </form>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica para la foto de perfil
+            const profilePictureInput = document.getElementById('profilePicture');
+            const currentProfilePic = document.getElementById('currentProfilePic');
+
+            profilePictureInput.addEventListener('change', function(event) {
+                if (event.target.files && event.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        currentProfilePic.src = e.target.result;
+                    };
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+            });
+
+            // Lógica para añadir/eliminar enlaces de redes sociales
+            const socialLinksContainer = document.getElementById('socialLinksContainer');
+            const addSocialLinkBtn = document.getElementById('addSocialLink');
+
+            function createSocialLinkItem(platform = '', url = '') {
+                const div = document.createElement('div');
+                div.classList.add('social-link-item');
+                div.innerHTML = `
+                    <input type="text" class="social-platform" placeholder="Nombre de la red (Ej: Instagram)" value="${platform}">
+                    <input type="url" class="social-url" placeholder="URL del perfil" value="${url}">
+                    <button type="button" class="remove-social-link"><i class="fas fa-times"></i></button>
+                `;
+                div.querySelector('.remove-social-link').addEventListener('click', () => {
+                    div.remove();
+                });
+                return div;
+            }
+
+            // Añadir un listener al botón "Añadir otro enlace"
+            addSocialLinkBtn.addEventListener('click', () => {
+                socialLinksContainer.appendChild(createSocialLinkItem());
+            });
+
+            // Asegurarse de que los botones de eliminar existentes funcionen
+            socialLinksContainer.querySelectorAll('.remove-social-link').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.target.closest('.social-link-item').remove();
+                });
+            });
+        });
+    </script>
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
-                <h4>Sobre Unego</h4>
-                <p>Conectamos emprendedores con clientes, ofreciendo una plataforma segura y eficiente para la compra y venta de productos únicos.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
                 </div>
             </div>
             <div class="footer-section links">
@@ -155,7 +168,7 @@
                 <ul>
                     <li><a href="about_us.html">Sobre Nosotros</a></li>
                     <li><a href="universities.html">Universidades Aliadas</a></li>
-                    <li><a href="q_a.html">FAQ</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
             <div class="footer-section links">
@@ -171,6 +184,11 @@
                 <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
                 <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
                 <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
             <div class="footer-section legal">
                 <h4>Políticas</h4>

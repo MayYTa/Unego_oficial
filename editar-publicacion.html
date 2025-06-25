@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Publicación - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/editar-publicacion-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <a href="perfil.html">
+                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="edit-profile-wrapper">
+        <h2>Editar Publicación</h2>
+        <form class="profile-edit-form" action="#" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h3>Información del Producto</h3>
+
+                <div class="form-group avatar-upload">
+                    <label for="productImage">Imagen del Producto</label>
+                    <div class="avatar-preview">
+                        <img id="currentProductImg" src="assets/img/polo.png" alt="Imagen del Producto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <span class="avatar-placeholder" style="display:none;">Imagen del Producto</span>
+                    </div>
+                    <input type="file" id="productImage" name="productImage" accept="image/*">
+                    <label for="productImage" class="upload-button"><i class="fas fa-camera"></i> Cambiar imagen</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcionProducto">Descripción</label>
+                    <textarea id="descripcionProducto" name="descripcionProducto" rows="3" required>Polo negro de algodón, talla M, poco uso.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="precioProducto">Precio</label>
+                    <input type="number" id="precioProducto" name="precioProducto" min="0" step="0.50" value="12.00" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriaProducto">Categoría</label>
+                    <input type="text" id="categoriaProducto" name="categoriaProducto" value="Ropa" required>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary" id="guardarCambiosBtn">Guardar Cambios</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='perfil.html';">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+// Vista previa de imagen de producto y redirección al guardar cambios
+document.addEventListener('DOMContentLoaded', function() {
+    const productImageInput = document.getElementById('productImage');
+    const currentProductImg = document.getElementById('currentProductImg');
+
+    productImageInput.addEventListener('change', function(event) {
+        if (event.target.files && event.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentProductImg.src = e.target.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    });
+
+    // Redirigir a perfil.html al guardar cambios
+    document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'perfil.html';
+    });
+});
+</script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const data = localStorage.getItem('productoEditar');
+    if (data) {
+        const producto = JSON.parse(data);
+        document.getElementById('currentProductImg').src = producto.imagen;
+        document.getElementById('descripcionProducto').value = producto.descripcion;
+        document.getElementById('precioProducto').value = producto.precio;
+        document.getElementById('categoriaProducto').value = producto.categoria;
+        document.getElementById('stockProducto').value = producto.stock;
+    }
+});
+</script>
+</body>
+</html>

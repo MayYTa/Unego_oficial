@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Producto</title>
+    <title>Stock del Producto - Unego</title>
     <link rel="stylesheet" href="css/tienda.css">
-    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/stock-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -20,9 +20,6 @@
             <i class="fas fa-search"></i>
         </div>
         <div class="user-actions">
-             <a href="carrito-de-compras.html" class="cart-icon">
-        <img src="assets/icons/carrito-compras.png" alt="Carrito">
-    </a>
             <i class="fas fa-bell"></i>
             <div class="user-profile">
                 <a href="perfil.html">
@@ -32,50 +29,63 @@
         </div>
     </header>
 
-    <div class="page-content-wrapper">
-        <main class="product-detail-layout">
-            
-            <div class="product-visuals">
-                <p class="seller-name-top">Por: <span id="product-seller-name-top"></span></p> 
-                <div class="product-image-container">
-                    <img id="product-img" src="" alt="Imagen del producto">
-                </div>
-                <h1 class="product-main-title" id="product-main-title"></h1> 
-                <button id="buy-button">Comprar</button>
-            </div>
-
-            <div class="product-info-panel">
-                <h2 class="product-info-title">Nombre del Producto: <span id="product-name-info">Cargando...</span></h2>
-                <p class="product-info-category">Categorías: <span id="product-categories"></span></p>
-                <p class="product-info-seller">Vendido por: <span id="product-seller-name-info"></span></p>
-                
-                <div class="product-info-price">Precio: <span id="product-price"></span></div>
-
-                <div class="product-info-description">
-                    <h3>Descripción del Producto:</h3>
-                    <ul id="product-description-list"></ul> </div>
-
-                <div class="product-info-rating">
-                    <h3 class="rating-label">Calificación:</h3> 
-                    <span id="product-rating-value"></span>
-                    <div class="stars" id="product-stars"></div>
-                </div>
-
-                <div class="product-info">
-                    <div class="seller-chat-module">
-                    <h4>¿Tiene otra consulta acerca del producto?</h4>
-        
-                    <button class="chat-prompt-button" id="chat-with-seller-button">
-                        <img src="assets/img/foto-perfil1-png.png" alt="Avatar Vendedor"> 
-                        <p>Hola, tengo una duda acerca de este producto.</p>
-                         <i class="fas fa-paper-plane send-icon"></i> </button>
-        
-                        <p class="chat-disclaimer">Al hacer clic se abrirá una conversación privada con el vendedor.</p>
-                    </div>
+    <div class="edit-profile-wrapper">
+        <h2>Stock del Producto</h2>
+        <div class="form-section">
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <img id="stockProductImg" src="assets/img/placeholder-product.png" alt="Imagen del Producto">
                 </div>
             </div>
-        </main>
+            <div class="form-group">
+                <label for="stockPrecio">Precio</label>
+                <input type="number" id="stockPrecio" readonly>
+            </div>
+            <div class="form-group">
+                <label for="stockVendidos">Vendidos</label>
+                <input type="number" id="stockVendidos" min="0">
+            </div>
+            <div class="form-group">
+                <label for="stockProducto">Stock</label>
+                <input type="number" id="stockProducto" min="0">
+            </div>
+            <div class="form-group">
+                <label for="stockRestante">Stock Restante</label>
+                <input type="number" id="stockRestante" readonly>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" class="btn-primary" onclick="guardarStock()">Guardar Cambios</button>
+            <button type="button" class="btn-cancel" onclick="window.location.href='perfil.html';">Cancelar</button>
+        </div>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = localStorage.getItem('productoStock');
+        if (data) {
+            const producto = JSON.parse(data);
+            document.getElementById('stockProductImg').src = producto.imagen;
+            document.getElementById('stockPrecio').value = producto.precio;
+            document.getElementById('stockVendidos').value = producto.vendidos || 0;
+            document.getElementById('stockProducto').value = producto.stock;
+            document.getElementById('stockRestante').value = (producto.stock - (producto.vendidos || 0));
+        }
+        function actualizarRestante() {
+            const vendidos = parseInt(document.getElementById('stockVendidos').value) || 0;
+            const stock = parseInt(document.getElementById('stockProducto').value) || 0;
+            document.getElementById('stockRestante').value = stock - vendidos;
+        }
+        document.getElementById('stockVendidos').addEventListener('input', actualizarRestante);
+        document.getElementById('stockProducto').addEventListener('input', actualizarRestante);
+    });
+
+    function guardarStock() {
+        // Aquí puedes guardar el nuevo stock y vendidos si tienes backend o actualizar localStorage temporalmente
+        alert('¡Stock actualizado!');
+        window.location.href = 'perfil.html';
+    }
+    </script>
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
@@ -124,9 +134,5 @@
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
     </footer>
-
-    
-
-    <script src="src/js/load_productos.js"></script>
 </body>
 </html>
