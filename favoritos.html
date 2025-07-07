@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario - Unego</title>
+    <title>favoritos - Unego</title>
     <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="css/favoritos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -48,7 +48,7 @@
         </div>
 
         <div class="perfil-tabs">
-            <a href="#" class="tab-item">Publicaciones</a>
+            <a href="perfil.html" class="tab-item">Publicaciones</a>
             <a href="#" class="tab-item tab-activo">Favoritos</a>
             <a href="#" class="tab-item">Reseñas</a>
             <a href="#" class="tab-item">Historial de Pedidos</a>
@@ -60,61 +60,11 @@
                     <div class="top-right-actions">
                         <i class="fas fa-ellipsis-h"></i>
                     </div>
-
-                    <div class="product-image">
-                        <img src="assets/img/pastelChocolate.png" alt="Polo Negro" />
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Pastel de Chocolate</h3>
-                        <p class="product-seller">Por Valeria</p>
-                        <div class="product-price" data-price="12">S/.8</div>
-                        <div class="product-rating" data-rating="3.9">
-                            <span class="rating-value">4.5</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-            <a class="product-link">
-                <div class="product-card" id="mochila-1">
-                    <div class="top-right-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-
-                    <div class="product-image">
-                        <img src="assets/img/audifonos.png" alt="Mochila" />
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Audífonos Inalámbricos</h3>
-                        <p class="product-seller">Por David Morales</p>
-                        <div class="product-price" data-price="35">S/.30</div>
-                        <div class="product-rating" data-rating="3.8">
-                            <span class="rating-value">4.1</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
                 </div>
             </a>
         </div> <!-- End of profile-products-grid -->
     </div>
+
 
     <footer>
         <div class="footer-content">
@@ -164,5 +114,7 @@
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
     </footer>
+    <!-- Añade este script antes del cierre del body -->
+<script src="src/js/favoritos.js"></script>
 </body>
 </html>

@@ -192,6 +192,48 @@ body {
     font-weight: 500;
     margin: 0;
 }
+
+/* Añade estos estilos al final del archivo */
+
+.empty-favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+    padding: 40px;
+    text-align: center;
+}
+
+.empty-favorites i {
+    font-size: 3rem;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.empty-favorites p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #e74c3c;
+    padding: 20px;
+}
+
+/* Estilo para el icono de favoritos en la página de favoritos */
+.product-actions .fa-bookmark.saved {
+    color: #3498db !important;
+    cursor: pointer;
+}
+
+.product-actions .fa-bookmark.saved:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 992px) {
     .profile-page-content-wrapper {
