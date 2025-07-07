@@ -82,55 +82,7 @@
             <div class="h-100 w-100 bg-image-signup"></div>
         </div>
     </div>
-    <script>
-        // Paso 1: Mostrar botón al ingresar correo y presionar Enter
-        const emailInput = document.getElementById('recuperar-email');
-        const enviarCodigoBtn = document.getElementById('enviar-codigo-btn');
-        const formEmail = document.getElementById('form-email');
-        const step1 = document.getElementById('step1');
-        const step2 = document.getElementById('step2');
-        const step3 = document.getElementById('step3');
-        const step4 = document.getElementById('step4');
-
-        emailInput.addEventListener('input', function() {
-            enviarCodigoBtn.style.display = emailInput.value ? 'block' : 'none';
-        });
-
-        formEmail.addEventListener('submit', function(e) {
-            e.preventDefault();
-            step1.style.display = 'none';
-            step2.style.display = 'block';
-        });
-
-        // Paso 2: Verificar código
-        document.getElementById('form-codigo').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const codigo = document.getElementById('codigo').value.trim();
-            const codigoError = document.getElementById('codigo-error');
-            if (codigo === '123456') {
-                codigoError.style.display = 'none';
-                step2.style.display = 'none';
-                step3.style.display = 'block';
-            } else {
-                codigoError.style.display = 'block';
-            }
-        });
-
-        // Validación de contraseñas en el paso 3
-        document.getElementById('form-reset').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const pass = document.getElementById('password').value;
-            const confirm = document.getElementById('confirm-password').value;
-            const errorDiv = document.getElementById('password-error');
-            if (pass !== confirm) {
-                errorDiv.style.display = 'block';
-            } else {
-                errorDiv.style.display = 'none';
-                // Mostrar pantalla de éxito y ocultar el formulario
-                step3.style.display = 'none';
-                step4.style.display = 'block';
-            }
-        });
-    </script>
+    <!-- Enlazamos el script de autenticación -->
+    <script src="src/js/auth.js" defer></script>
 </body>
 </html>

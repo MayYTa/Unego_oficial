@@ -23,11 +23,10 @@
             <a href="carrito-de-compras.html" class="cart-icon">
                 <img src="assets/icons/carrito-compras.png" alt="Carrito">
             </a>
-        <div class="user-actions">
             <i class="fas fa-bell"></i>
             <div class="user-profile">
                 <a href="perfil.html">
-                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic">
                 </a>
             </div>
         </div>
@@ -73,29 +72,57 @@
         </form>
     </div>
 
+    <script src="src/js/global.js" defer></script>
+
     <script>
-// Vista previa de imagen de producto y redirección al guardar cambios
-document.addEventListener('DOMContentLoaded', function() {
-    const productImageInput = document.getElementById('productImage');
-    const currentProductImg = document.getElementById('currentProductImg');
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Cargar datos del producto desde localStorage ---
+            // Este bloque busca si se guardó un producto para editar.
+            const data = localStorage.getItem('productoEditar');
+            if (data) {
+                const producto = JSON.parse(data);
+                document.getElementById('currentProductImg').src = producto.imagen;
+                document.getElementById('descripcionProducto').value = producto.descripcion;
+                document.getElementById('precioProducto').value = producto.precio;
+                document.getElementById('categoriaProducto').value = producto.categoria;
+            }
 
-    productImageInput.addEventListener('change', function(event) {
-        if (event.target.files && event.target.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                currentProductImg.src = e.target.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    });
+            // --- Lógica de la página ---
+            const productImageInput = document.getElementById('productImage');
+            const currentProductImg = document.getElementById('currentProductImg');
 
-    // Redirigir a perfil.html al guardar cambios
-    document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'perfil.html';
-    });
-});
-</script>
+            // Vista previa de imagen de producto
+            productImageInput.addEventListener('change', function(event) {
+                if (event.target.files && event.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        currentProductImg.src = e.target.result;
+                    };
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+            });
+
+            // Simulación de guardar cambios y redirigir
+            document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Aquí iría la lógica para guardar los datos actualizados en localStorage
+                // antes de redirigir.
+                alert('Cambios guardados (simulación).');
+                window.location.href = 'perfil.html';
+            });
+
+            // Busca el usuario logueado en localStorage
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            const headerProfilePic = document.getElementById('header-profile-pic');
+            if (headerProfilePic) {
+                if (user && user.profilePic) {
+                    headerProfilePic.src = user.profilePic;
+                } else {
+                    headerProfilePic.src = 'assets/img/default-profile.png';
+                }
+            }
+        });
+    </script>
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
@@ -144,18 +171,5 @@ document.addEventListener('DOMContentLoaded', function() {
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
     </footer>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const data = localStorage.getItem('productoEditar');
-    if (data) {
-        const producto = JSON.parse(data);
-        document.getElementById('currentProductImg').src = producto.imagen;
-        document.getElementById('descripcionProducto').value = producto.descripcion;
-        document.getElementById('precioProducto').value = producto.precio;
-        document.getElementById('categoriaProducto').value = producto.categoria;
-        document.getElementById('stockProducto').value = producto.stock;
-    }
-});
-</script>
 </body>
 </html>
