@@ -22,12 +22,11 @@
         <div class="user-actions">
              <a href="carrito-de-compras.html" class="cart-icon">
                 <img src="assets/icons/carrito-compras.png" alt="Carrito">
-            </a>       
-        <div class="user-actions">
+            </a>
             <i class="fas fa-bell"></i>
             <div class="user-profile">
                 <a href="perfil.html">
-                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic">
                 </a>
             </div>
         </div>
@@ -36,11 +35,11 @@
     <div class="profile-page-content-wrapper">
         <div class="perfil-header">
             <div class="perfil-img">
-                <img src="assets/img/foto-perfil1-png.png" alt="Foto de Perfil">
+                <img id="profile-main-pic" src="assets/img/default-profile.png" alt="Foto de Perfil">
             </div>
             <div class="perfil-info">
-                <div class="perfil-nombre">Ivan Ruben Cunyas Ramos</div>
-                <div class="perfil-estadisticas">
+                <div id="profile-header-name" class="perfil-nombre">Cargando...</div>
+                <div class="perfil-estadisticas" style="margin-bottom: 1rem;">
                     <span><span id="num-publicaciones">2</span> publicaciones</span>
                     <span>300 seguidores</span>
                     <span>10 seguidos</span>
@@ -48,12 +47,13 @@
             </div>
             <div class="perfil-acciones">
                 <a href="editar-perfil.html" class="btn btn-perfil-primary">Editar Perfil</a>
+                <button id="logout-btn" class="btn btn-perfil-primary">Cerrar Sesión</button>
             </div>
         </div>
 
         <div class="perfil-tabs">
             <a href="perfil.html" class="tab-item">Publicaciones</a>
-            <a href="#" class="tab-item tab-activo">Favoritos</a>
+            <a href="favoritos.html" class="tab-item tab-activo">Favoritos</a>
             <a href="#" class="tab-item">Reseñas</a>
             <a href="#" class="tab-item">Historial de Pedidos</a>
         </div>
@@ -168,5 +168,21 @@
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
     </footer>
+    <script src="src/js/global.js" defer></script>
+    <script src="src/js/profile.js" defer></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Busca el usuario logueado en localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const headerProfilePic = document.getElementById('header-profile-pic');
+    if (headerProfilePic) {
+        if (user && user.profilePic) {
+            headerProfilePic.src = user.profilePic;
+        } else {
+            headerProfilePic.src = 'assets/img/default-profile.png';
+        }
+    }
+});
+</script>
 </body>
 </html>
