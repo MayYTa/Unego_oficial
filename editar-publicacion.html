@@ -102,14 +102,70 @@
                 }
             });
 
+
+            //NUEVOOOOOOOO
+
+            
             // Simulación de guardar cambios y redirigir
             document.getElementById('guardarCambiosBtn').addEventListener('click', function(e) {
                 e.preventDefault();
-                // Aquí iría la lógica para guardar los datos actualizados en localStorage
-                // antes de redirigir.
-                alert('Cambios guardados (simulación).');
-                window.location.href = 'perfil.html';
-            });
+
+                // Obtén el ID del producto que se está editando
+                const productoId = localStorage.getItem('productoEditarId');
+                if (!productoId) {
+                    alert('No se encontró el producto a editar.');
+                    return;
+                }
+
+                // Obtén los valores actualizados
+                const imagen = document.getElementById('currentProductImg').src;
+                const descripcion = document.getElementById('descripcionProducto').value.trim();
+                const precio = document.getElementById('precioProducto').value.trim();
+                const categoria = document.getElementById('categoriaProducto').value.trim();
+
+                // Recupera todos los productos guardados (o usa los de ejemplo si no hay)
+                let productos = JSON.parse(localStorage.getItem('productos')) || {};
+                if (Object.keys(productos).length === 0) {
+                    // Si no hay productos en localStorage, usa los de opciones.js
+                    productos = {
+                        "polo-negro-1": {
+                            imagen: "assets/img/polo.png",
+                            descripcion: "Polo negro de algodón, talla M, poco uso.",
+                            precio: 12.00,
+                            categoria: "Ropa",
+                            vendidos: 3,
+                            stock: 15
+                        },
+                        "mochila-1": {
+                            imagen: "assets/img/mochila.png",
+                            descripcion: "Mochila resistente, color azul, varios bolsillos.",
+                            precio: 35.00,
+                            categoria: "Accesorios",
+                            vendidos: 5,
+                            stock: 20
+                        }
+                     };
+                    }
+
+                    // Actualiza el producto editado
+                    productos[productoId] = {
+                        ...productos[productoId],
+                        imagen,
+                        descripcion,
+                        precio,
+                        categoria
+                    };
+
+                    // Guarda los productos actualizados en localStorage
+                    localStorage.setItem('productos', JSON.stringify(productos));
+
+                    // Limpia los datos temporales
+                    localStorage.removeItem('productoEditar');
+                    localStorage.removeItem('productoEditarId');
+
+                    // Redirige a perfil.html
+                    window.location.href = 'perfil.html';
+                });
 
             // Busca el usuario logueado en localStorage
             const user = JSON.parse(localStorage.getItem('loggedInUser'));
