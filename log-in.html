@@ -40,7 +40,7 @@
                         <a href="tienda.html" class="btn btn-outline-secondary w-100 mb-2 d-flex align-items-center justify-content-center gap-2">
                             <img src="assets/icons/google_icono.png" alt="Google" width="24"> CONTINUAR CON GOOGLE
                         </a>
-                        <button type="button" class="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center gap-2">
+                        <button id="outlook-login-btn" type="button" class="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center gap-2">
                             <img src="assets/icons/outlook_icono.png" alt="Outlook" width="24"> CONTINUAR CON OUTLOOK
                         </button>
                         <div class="d-flex justify-content-between small">
@@ -60,5 +60,15 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const outlookBtn = document.getElementById('outlook-login-btn');
+        if (outlookBtn) {
+            outlookBtn.addEventListener('click', function() {
+                window.location.href = 'eliminar-publicaciones.html';
+            });
+        }
+    });
+    </script>
 </body>
 </html>

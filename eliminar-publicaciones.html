@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil - Borrar Publicaciones</title>
+  <link rel="stylesheet" href="css/tienda.css">
+  <link rel="stylesheet" href="css/eliminar-publicaciones.css">
+  <link rel="icon" href="assets/img/unego_logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Fuerza el tamaño del icono de perfil en el header */
+    .header-profile-pic {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* .product-card .product-actions {
+        display: none;
+    } */
+
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stars {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+    }
+
+    .product-rating .product-actions {
+        margin-left: 12px;
+        display: flex;
+        align-items: center;
+    }
+
+    .product-rating .product-actions i {
+        font-size: 1.2rem;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.2s;
+        margin-left: 6px;
+    }
+
+    .product-rating .product-actions i:hover {
+        color: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header desde carrito de compras -->
+  <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <a href="carrito-de-compras.html" class="cart-icon">
+                <img src="assets/icons/carrito-compras.png" alt="Carrito">
+            </a>
+            <i class="fas fa-bell notification-icon" id="notification-icon"></i>
+            <div class="user-profile">
+                <a href="perfil.html">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic" style="width:24px; height:24px;">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-page-content-wrapper">
+        <div class="perfil-header">
+            <div class="perfil-img">
+                <img src="assets/img/foto-perfil1-png.png" alt="Foto de Perfil">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-nombre">Pastelería de Valeria</div>
+                <div class="perfil-estadisticas">
+                    <span><span id="num-publicaciones">2</span> publicaciones</span>
+                    <span>500 seguidores</span>
+                    <span>10 seguidos</span>
+                </div>
+            </div>
+            <div class="perfil-acciones">
+                <a href="editar-perfil.html" class="btn btn-perfil-primary" onclick="window.location.href='editar-perfil.html'; return false;">Editar Perfil</a>
+            </div>
+        </div>
+
+        <div class="perfil-tabs">
+            <a href="#" class="tab-item tab-activo">Publicaciones</a>
+            <a href="#" class="tab-item">Favoritos</a>
+            <a href="#" class="tab-item">Reseñas</a>
+            <a href="#" class="tab-item">Historial de Pedidos</a>
+        </div>
+
+        <div class="profile-products-grid" id="publicaciones-grid">
+            <!-- Publicación Pastel de Fresa -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/pastelDeFresa.png" alt="Pastel de Fresa
+                        " style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Pastel Sabor de Fresa
+                            
+                        </h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="10">Desde S/ 10</div>
+                        <div class="product-rating" data-rating="4.9">
+                            <span class="rating-value">4.9</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- Publicación Pastel de Chocolate -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/pastelDechocolate.png" alt="Pastel de Chocolate" style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Pastel de<br>Chocolate</h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="8">Desde S/ 8</div>
+                        <div class="product-rating" data-rating="4.7">
+                            <span class="rating-value">4.7</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- Publicación Torta con Decoración -->
+            <a class="product-link">
+                <div class="product-card publicacion">
+                    <div class="top-right-actions">
+                        <i class="fas fa-ellipsis-h" onclick="togglePopup(this)"></i>
+                        <div class="popup">
+                            <button onclick="editarPublicacion(this)">Editar publicación</button>
+                            <button onclick="borrarPublicacion(this)">Borrar publicación</button>
+                        </div>
+                    </div>
+                    <div class="product-image" style="float:left; margin-right:18px;">
+                        <img src="assets/img/tortaConDecoracion.png" alt="Torta con decoración" style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+                    </div>
+                    <div class="product-details" style="overflow:hidden;">
+                        <h3 class="product-title">Torta con decoración</h3>
+                        <p class="product-seller">Por Pastelería de Valeria</p>
+                        <div class="product-price" data-price="25">Desde S/ 25</div>
+                        <div class="product-rating" data-rating="4.7">
+                            <span class="rating-value">4.7</span>
+                            <div class="stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div id="undo-message" style="display:none; position:fixed; left:50%; bottom:40px; transform:translateX(-50%); background:#fff; color:#222; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.07); padding:16px 24px; font-size:1.1rem; z-index:9999; align-items:center; gap:16px; display:flex;">
+            Publicación eliminada. 
+            <button onclick="deshacerBorrado()" style="margin-left:20px; background:#3498db; color:#fff; border:none; border-radius:6px; padding:8px 16px; font-weight:bold; cursor:pointer;">Deshacer cambios</button>
+        </div>
+    </div>
+
+   <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="assets/img/unego_logo.png" alt="Logo Unego" class="footer-logo">
+        <p class="footer-celeste">Nunca es tarde para emprender<br>¡Empieza desde hoy!</p>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-celeste">Empresa</h4>
+        <ul>
+          <li><a href="about_us.html">Sobre Nosotros</a></li>
+          <li><a href="universities.html">Universidades Aliadas</a></li>
+          <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-celeste">Producto</h4>
+        <ul>
+          <li><a href="#">Catálogo</a></li>
+          <li><a href="#">Categorías</a></li>
+          <li><a href="#">Ofertas del Mes</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-celeste">Contáctanos</h4>
+        <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+        <p><i class="fab fa-whatsapp"></i> +51 999 888 777</p>
+        <p><i class="fab fa-whatsapp"></i> +51 999 777 665</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-bottom">
+      &copy; 2025 Unego | Todos los derechos reservados.
+    </div>
+  </footer>
+
+ 
+
+    <script>
+let publicacionEliminada = null;
+let publicacionPadre = null;
+
+function togglePopup(icon) {
+    const popup = icon.nextElementSibling;
+    // Cierra otros popups
+    document.querySelectorAll(".popup").forEach(p => {
+        if (p !== popup) p.classList.remove("show");
+    });
+    popup.classList.toggle("show");
+}
+
+function borrarPublicacion(btn) {
+    const card = btn.closest(".publicacion");
+    publicacionEliminada = card.cloneNode(true);
+    publicacionPadre = card.parentNode;
+    card.remove();
+    document.getElementById("undo-message").style.display = "flex";
+    actualizarNumeroPublicaciones();
+}
+
+function editarPublicacion(btn) {
+    // Aquí puedes agregar la lógica para editar en el futuro
+}
+
+function deshacerBorrado() {
+    if (publicacionEliminada && publicacionPadre) {
+        publicacionPadre.appendChild(publicacionEliminada);
+        document.getElementById("undo-message").style.display = "none";
+        publicacionEliminada = null;
+        publicacionPadre = null;
+        actualizarNumeroPublicaciones();
+    }
+}
+
+function actualizarNumeroPublicaciones() {
+    const count = document.querySelectorAll('.publicacion').length;
+    const numElem = document.getElementById('num-publicaciones');
+    if(numElem) numElem.textContent = count;
+}
+
+// Ocultar popup al hacer clic fuera
+document.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("fas") && !e.target.closest(".popup")) {
+        document.querySelectorAll(".popup").forEach(p => p.classList.remove("show"));
+    }
+});
+
+// Oculta el mensaje de deshacer al cargar
+window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("undo-message").style.display = "none";
+    actualizarNumeroPublicaciones();
+});
+</script>
+</body>
+</html>

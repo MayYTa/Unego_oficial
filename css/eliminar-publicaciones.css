@@ -8,7 +8,113 @@ body {
     background-color: #F7FAFF; /* Color de fondo principal de tienda.css */
 }
 
+/* Contenedor principal de la página de perfil para alinear el contenido */
+.profile-page-content-wrapper {
+    max-width: 1200px;
+    margin: 50px auto; /* Centra el contenido y añade espacio superior/inferior */
+    padding: 0 20px; /* Padding horizontal */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre secciones del perfil */
+}
 
+/* Sección del Encabezado del Perfil (Adaptado de ft04.css y colores de tienda.css) */
+.perfil-header {
+    display: flex;
+    align-items: center;
+    background: #fff; /* Fondo blanco para recuadro tipo tarjeta */
+    padding: 32px 40px;
+    border-radius: 14px; /* Bordes más suaves */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Sombra sutil */
+    gap: 30px;
+    margin-bottom: 24px; /* Espacio inferior para separar del resto */
+}
+
+.perfil-img img {
+    content: url("../assets/img/pasteleriaDeValeria.png");
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #F7FAFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.user-profile img {
+    content: url("../assets/img/pasteleriaDeValeria.png");
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #F7FAFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.profile-header img {
+    content: url("../assets/img/pasteleriaDeValeria.png");
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #F7FAFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.perfil-info {
+    flex: 1; /* Permite que la información ocupe el espacio restante */
+}
+
+.perfil-nombre {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 8px;
+}
+
+.perfil-estadisticas {
+    color: #777; /* Color de texto más suave para estadísticas */
+    font-size: 1.1rem;
+    display: flex;
+    gap: 24px;
+}
+
+.perfil-acciones {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.btn-perfil-primary {
+    background: #3498db; /* Azul principal de tienda.css */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-decoration: none; /* Asegura que sea como un botón */
+    display: inline-flex; /* Para centrar el texto si es necesario */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-perfil-primary:hover {
+    background: #2980b9; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Pestañas de Navegación del Perfil (Adaptado de ft04.css y colores de tienda.css) */
+.perfil-tabs {
+    display: flex;
+    justify-content: center; /* Centra las pestañas */
+    background-color: #FFFFFF; /* Fondo blanco para las pestañas */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 10px 20px;
+    gap: 20px; /* Espacio entre pestañas */
+    flex-wrap: wrap; /* Permite que las pestañas se envuelvan en pantallas pequeñas */
+}
 
 .tab-item {
     color: #555; /* Color de texto para pestañas inactivas */
@@ -103,6 +209,15 @@ body {
     font-size: 1.2rem;
 }
 
+/* Mueve el icono de guardar (bookmark) 10px hacia abajo respecto a las estrellas */
+.product-rating .product-actions {
+    margin-left: 12px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    top: 10px; /* Desplaza el icono 10px hacia abajo */
+}
+
 .product-card .product-actions i {
     cursor: pointer;
     transition: color 0.2s ease;
@@ -155,7 +270,14 @@ body {
 }
 
 /* Logo Unego en el header */
-
+.logo,
+.footer-logo {
+    content: url("../assets/img/unego_logo.png");
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 
 /* Quita el subrayado de los enlaces del pie de página */
 .footer-section a,
@@ -179,6 +301,17 @@ body {
     color: #3498db !important;
 }
 
+/* Aumenta el tamaño de los iconos de redes sociales en el pie de página */
+.social-links a i.fab.fa-facebook-f,
+.social-links a i.fab.fa-instagram,
+.social-links a i.fab.fa-twitter {
+    font-size: 1.5em;
+}
+
+/* Cambia el color de fondo del pie de página */
+footer {
+    background: #edf3f7 !important;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 992px) {
@@ -356,6 +489,10 @@ body {
 .product-card .product-actions {
     flex: 0 0 auto;
     margin-left: 12px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    top: 50px; /* Desplaza el icono 10px hacia abajo */
 }
 
 @media (max-width: 600px) {
@@ -371,271 +508,175 @@ body {
     }
 }
 
-
-
-
-
-/* Estilos específicos para la página del carrito de compras */
-.carrito-page-content-wrapper {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* Hace invisible la línea divisoria debajo del header */
+header,
+.main-header {
+    border-bottom: none !important;
+    box-shadow: none !important;
 }
 
-.carrito-header {
-    background: #FFFFFF;
-    padding: 32px 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+header hr, .header-divider {
+    display: none !important;
+}
+/* HEADER */
+.main-header {
+  background-color: #F7FAFF;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 20px 40px;
 }
 
-.carrito-header h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.carrito-product-list {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.logo {
+  height: 70px;
 }
 
-.carrito-product-item {
+.search-container {
+  position: relative;
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 40px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon-img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.perfil-header-img img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #edf3f7;
+  padding: 40px 20px;
+  font-family: kanit, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-column {
+  min-width: 180px;
+  flex: 1;
+}
+
+.footer-column h4 {
+  color: #3498db;
+  margin-bottom: 18px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 16px;
+}
+
+.footer-celeste {
+  color: #3498db !important;
+}
+
+.social-links a {
+  color: #3498db;
+  margin-right: 12px;
+  font-size: 1.4rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 16px 0 8px 0;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 30px;
+}
+
+/* Cambia la calificación y estrellas de cada producto a 3.9 y 4 estrellas llenas */
+.product-rating {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    gap: 8px;
+    margin-top: 8px;
 }
 
-.carrito-product-item:last-child {
-    border-bottom: none;
-}
-
-.carrito-product-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.carrito-product-info img {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.carrito-product-details {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.carrito-product-name {
-    font-size: 1.2rem;
+.rating-value {
+    font-size: 1rem;
     font-weight: 500;
-    color: #333;
-    margin: 0;
-}
-
-.carrito-product-price {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #777;
-}
-
-.carrito-product-quantity {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.carrito-product-quantity input {
-    width: 50px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.carrito-product-remove {
-    color: #e74c3c;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.carrito-product-remove:hover {
-    color: #c0392b;
-}
-
-.carrito-summary {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.carrito-summary h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-}
-
-.carrito-summary-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
     color: #333;
 }
 
-.carrito-summary-item span {
-    font-weight: 500;
+.stars {
+    display: flex;
+    gap: 2px;
 }
 
-.carrito-checkout-btn {
-    background: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
+.stars .fa-star {
+    color: #FFD700; /* Color amarillo para las estrellas llenas */
     font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    text-align: center;
 }
 
-.carrito-checkout-btn:hover {
-    background: #2980b9;
+.stars .fa-star.filled {
+    color: #FFD700;
 }
 
-/* Responsive Adjustments for Cart Page */
-@media (max-width: 992px) {
-    .carrito-page-content-wrapper {
-        margin: 30px auto;
-        padding: 0 15px;
-    }
-
-    .carrito-header {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .carrito-header h1 {
-        font-size: 2rem;
-    }
-
-    .carrito-product-list {
-        padding: 15px;
-    }
-
-    .carrito-product-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .carrito-product-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .carrito-product-info img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .carrito-product-name {
-        font-size: 1.1rem;
-    }
-
-    .carrito-product-price {
-        font-size: 0.9rem;
-    }
-
-    .carrito-product-quantity input {
-        width: 40px;
-    }
-
-    .carrito-summary {
-        padding: 15px;
-    }
-
-    .carrito-summary h2 {
-        font-size: 1.5rem;
-    }
-
-    .carrito-summary-item {
-        font-size: 0.9rem;
-    }
-
-    .carrito-checkout-btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .carrito-header {
-        padding: 15px;
-    }
-
-    .carrito-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .carrito-product-list {
-        padding: 10px;
-    }
-
-    .carrito-product-item {
-        padding: 10px;
-    }
-
-    .carrito-product-info img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .carrito-product-name {
-        font-size: 1rem;
-    }
-
-    .carrito-product-price {
-        font-size: 0.8rem;
-    }
-
-    .carrito-product-quantity input {
-        width: 35px;
-    }
-
-    .carrito-summary {
-        padding: 10px;
-    }
-
-    .carrito-summary h2 {
-        font-size: 1.2rem;
-    }
-
-    .carrito-summary-item {
-        font-size: 0.8rem;
-    }
-
-    .carrito-checkout-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
+/* Hace invisible la línea horizontal del pie de página */
+footer hr,
+hr {
+    border: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    background: none !important;
 }
