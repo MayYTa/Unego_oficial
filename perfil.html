@@ -201,6 +201,20 @@ document.addEventListener('DOMContentLoaded', function() {
             headerProfilePic.src = 'assets/img/default-profile.png';
         }
     }
+    //NUEVO
+    const productos = JSON.parse(localStorage.getItem('productos'));
+    if (productos) {
+        Object.keys(productos).forEach(function(id) {
+            const producto = productos[id];
+            const card = document.getElementById(id);
+            if (card) {
+                card.querySelector('.product-image img').src = producto.imagen;
+                card.querySelector('.product-title').textContent = producto.descripcion;
+                card.querySelector('.product-price').textContent = 'S/.' + producto.precio;
+                // Si tienes categoría visible, actualízala aquí también
+            }
+        });
+    }
 });
 </script>
 </body>

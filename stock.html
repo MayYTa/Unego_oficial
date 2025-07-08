@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock del Producto - Unego</title>
+    <script src="src/js/opciones.js"></script>
     <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="css/stock-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -66,15 +67,34 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Carga el producto seleccionado para stock desde localStorage
         const data = localStorage.getItem('productoStock');
-        if (data) {
-            const producto = JSON.parse(data);
+        const productosLS = JSON.parse(localStorage.getItem('productos')) || {};
+        let producto = data ? JSON.parse(data) : null;
+
+        // Si existe el producto en productosLS, usa la versión actualizada
+        if (producto && productosLS) {
+            for (const id in productosLS) {
+                if (
+                    productosLS[id].imagen === producto.imagen &&
+                    productosLS[id].descripcion === producto.descripcion &&
+                    productosLS[id].precio == producto.precio &&
+                    productosLS[id].categoria === producto.categoria
+                ) {
+                    producto = productosLS[id];
+                    break;
+                }
+            }
+        }
+
+        if (producto) {
             document.getElementById('stockProductImg').src = producto.imagen;
             document.getElementById('stockPrecio').value = producto.precio;
             document.getElementById('stockVendidos').value = producto.vendidos || 0;
             document.getElementById('stockProducto').value = producto.stock;
             document.getElementById('stockRestante').value = (producto.stock - (producto.vendidos || 0));
         }
+
         function actualizarRestante() {
             const vendidos = parseInt(document.getElementById('stockVendidos').value) || 0;
             const stock = parseInt(document.getElementById('stockProducto').value) || 0;
@@ -83,7 +103,7 @@
         document.getElementById('stockVendidos').addEventListener('input', actualizarRestante);
         document.getElementById('stockProducto').addEventListener('input', actualizarRestante);
 
-        // Busca el usuario logueado en localStorage
+        // Foto de perfil en header
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
         const headerProfilePic = document.getElementById('header-profile-pic');
         if (headerProfilePic) {
@@ -94,12 +114,6 @@
             }
         }
     });
-
-    function guardarStock() {
-        // Aquí puedes guardar el nuevo stock y vendidos si tienes backend o actualizar localStorage temporalmente
-        alert('¡Stock actualizado!');
-        window.location.href = 'perfil.html';
-    }
     </script>
     <footer>
         <div class="footer-content">
