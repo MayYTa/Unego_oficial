@@ -19,9 +19,26 @@
             <i class="fas fa-search"></i>
         </div>
         <div class="user-actions">
-            <i class="fas fa-bell"></i>
+            <a href="carrito-de-compras.html" class="cart-icon">
+                <img src="assets/icons/carrito-compras.png" alt="Carrito">
+            </a>
+            <div class="notification-wrapper">
+                <i class="fas fa-bell notification-icon" id="notification-icon"></i>
+                <span class="notification-badge" id="notification-badge">0</span>
+                <div class="notification-dropdown" id="notification-dropdown">
+                    <div class="notification-header">
+                        <h4>Notificaciones</h4>
+                        <button id="clear-notifications">Limpiar</button>
+                    </div>
+                    <div class="notification-list" id="notification-list">
+                        <!-- Notificaciones aparecerán aquí -->
+                    </div>
+                </div>
+            </div>
             <div class="user-profile">
-                <img src="assets/img/perfil.jpg" alt="User Profile">
+                <a href="perfil.html">
+                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                </a>
             </div>
         </div>
     </header>
@@ -37,6 +54,18 @@
                         <option value="price-asc">Precio: Menor a Mayor</option>
                         <option value="price-desc">Precio: Mayor a Menor</option>
                         <option value="rating-desc">Puntuación: Mayor a Menor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h4>Categoría</h4>
+                <div class="category-filtering">
+                    <select id="category-filter-select">
+                        <option value="all">Todas</option>
+                        <option value="mochilas">Mochilas</option>
+                        <option value="ropa">Ropa</option>
+                        <option value="pasteles">Pasteles</option>
+                        <option value="electronicos">Electrónicos</option>
                     </select>
                 </div>
             </div>
@@ -75,170 +104,60 @@
         </aside>
 
         <main class="main-content">
-            <a href="productos.html?id=mochila-roja-1" class="product-link">
-                <div class="product-card" id="mochila-roja-1">
-                    <div class="product-image">
-                        <img src="assets/img/mochila.png" alt="Mochila roja">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Vendo está mochila con portalaptop y gran espacio</h3>
-                        <p class="product-seller">Por Jorge Guimenez</p>
-                        <div class="product-price" data-price="20">S/.20</div>
-                        <div class="product-rating" data-rating="3.5">
-                            <span class="rating-value">3.5</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="productos.html?id=polo-negro-1" class="product-link">
-                <div class="product-card" id="polo-negro-1">
-                    <div class="product-image">
-                        <img src="assets/img/polo.png" alt="Polo negro">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Polo negro en diferentes tallas</h3>
-                        <p class="product-seller">Por Ivan Ruben</p>
-                        <div class="product-price" data-price="12">S/.12</div>
-                        <div class="product-rating" data-rating="3.9">
-                            <span class="rating-value">3.9</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="productos.html?id=PastelChocolate-1" class="product-link">
-                <div class="product-card" id="PastelChocolate-1">
-                    <div class="product-image">
-                        <img src="assets/img/pastelChocolate.png" alt="Pastel de Chocolate-1">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Pastel de Chocolate</h3>
-                        <p class="product-seller">Por Pasteleria de Valeria</p>
-                        <div class="product-price" data-price="8">S/.8</div>
-                        <div class="product-rating" data-rating="4.5">
-                            <span class="rating-value">4.5</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="productos.html?id=PastelFresa-1" class="product-link">
-                <div class="product-card" id="PastelFresa-1">
-                    <div class="product-image">
-                        <img src="assets/img/pastelFresa.png" alt="PastelFresa">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Pastel de Fresa</h3>
-                        <p class="product-seller">Por Pasteleria de Valeria</p>
-                        <div class="product-price" data-price="10">S/.10</div>
-                        <div class="product-rating" data-rating="4.5">
-                            <span class="rating-value">4.5</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="productos.html?id=MochilaPorta-1" class="product-link">
-                <div class="product-card" id="MochilaPorta-1">
-                    <div class="product-image">
-                        <img src="assets/img/mochilaPorta.png" alt="MochilaPorta">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Mochila Porta</h3>
-                        <p class="product-seller">Por María Perez</p>
-                        <div class="product-price" data-price="35">S/.35</div>
-                        <div class="product-rating" data-rating="3.8">
-                            <span class="rating-value">3.8</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="productos.html?id=audifonos-1" class="product-link">
-                <div class="product-card" id="audifonos-1">
-                    <div class="product-image">
-                        <img src="assets/img/audifonos.png" alt="audifonos">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-title">Audífonos Inalámbricos</h3>
-                        <p class="product-seller">Por David Morales</p>
-                        <div class="product-price" data-price="30">S/.30</div>
-                        <div class="product-rating" data-rating="4.1">
-                            <span class="rating-value">4.1</span>
-                            <div class="stars">
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star filled"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="far fa-bookmark"></i>
-                    </div>
-                </div>
-            </a>
+            <!-- Esta sección es la parte de productos de la tienda, está siendo generada por el script productos. -->
         </main>
     </div>
 
-    <script src="assets/js/script_productos.js"></script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="src/js/notificaciones.js"></script>
+    <script src="src/js/script_productos.js"></script>
 </body>
 </html>
