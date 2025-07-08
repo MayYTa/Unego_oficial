@@ -1,0 +1,74 @@
+[
+  {
+    "nombre": "Universidad de Lima",
+    "ubicacion_principal": "Santiago de Surco, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "Reconocida por su excelencia académica y su fuerte conexión con el sector empresarial. Ofrece una amplia gama de carreras.",
+    "logo": "assets/img/UlimaLogo.png",
+    "alt_logo": "Logo Universidad de Lima",
+    "link_web":"https://www.ulima.edu.pe/"
+  },
+  {
+    "nombre": "Universidad Privada del Norte",
+    "ubicacion_principal": "Los Olivos, Lima",
+    "numero_campuses": 8,
+    "descripcion_corta": "Con múltiples sedes a nivel nacional, la UPN es una universidad con una fuerte proyección en la formación profesional y el emprendimiento.",
+    "logo": "assets/img/upnLogo.png",
+    "alt_logo": "Logo Universidad Privada del Norte",
+    "link_web":"https://www.upn.edu.pe/"
+  },
+  {
+    "nombre": "Universidad de Ingeniería y Tecnología (UTEC)",
+    "ubicacion_principal": "Barranco, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "Focada en la ingeniería, tecnología y diseño, UTEC se distingue por su enfoque innovador y sus laboratorios de vanguardia.",
+    "logo": "assets/img/utec_logo.jpg",
+    "alt_logo": "Logo UTEC",
+    "link_web":"https://utec.edu.pe/"
+  },
+  {
+    "nombre": "Universidad del Pacífico",
+    "ubicacion_principal": "San Isidro, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "Especializada en economía y negocios, la UP es una de las instituciones más prestigiosas del país en su rubro.",
+    "logo": "assets/img/UpacificoLogo.png",
+    "alt_logo": "Logo Universidad del Pacífico",
+    "link_web":"https://www.up.edu.pe/"
+  },
+  {
+    "nombre": "Universidad Nacional Mayor de San Marcos (UNMSM)",
+    "ubicacion_principal": "Cercado de Lima, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "La universidad más antigua de América, reconocida por su tradición y calidad en diversas áreas del conocimiento.",
+    "logo": "assets/img/academiaLogo.png",
+    "alt_logo": "Logo UNMSM",
+    "link_web":"https://www.unmsm.edu.pe/"
+  },
+  {
+    "nombre": "Universidad Nacional de Ingeniería (UNI)",
+    "ubicacion_principal": "Rímac, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "Líder en ingeniería y arquitectura, la UNI forma a los futuros profesionales que impulsan el desarrollo tecnológico del país.",
+    "logo": "assets/img/uNacionalIngenieriaLogo.png",
+    "alt_logo": "Logo UNI",
+    "link_web":"https://portal.uni.edu.pe/"
+  },
+  {
+    "nombre": "Universidad Nacional Agraria de la Molina (UNALM)",
+    "ubicacion_principal": "La Molina, Lima",
+    "numero_campuses": 1,
+    "descripcion_corta": "La UNALM es la principal universidad agraria del Perú, destacada en ciencias ambientales, forestales y biológicas, con amplio prestigio.",
+    "logo": "assets/img/hominemLogo.png",
+    "alt_logo": "Logo Hominem",
+    "link_web":"https://www.lamolina.edu.pe/"
+  },
+  {
+    "nombre": "Universidad Científica del Sur",
+    "ubicacion_principal": "Villa El Salvador, Lima",
+    "numero_campuses": 2,
+    "descripcion_corta": "Destaca en ciencias de la salud, medio ambiente y veterinaria, con un campus moderno y laboratorios especializados.",
+    "logo": "assets/img/uCientificaLogo.png",
+    "alt_logo": "Logo Científica del Sur",
+    "link_web":"https://www.cientifica.edu.pe/"
+  }
+]

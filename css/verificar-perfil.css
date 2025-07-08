@@ -1,0 +1,201 @@
+/* Estilos específicos para la página de verificación de perfil */
+
+/* Contenedor principal de la página de verificación */
+.verification-page-wrapper {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.verification-page-wrapper h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* Sección de Verificación de Perfil (adaptada del editar-perfil.css original) */
+.verification-section {
+    position: relative;
+    padding: 25px; /* Ajustado para ser un form-section completo */
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.verification-section h3 {
+    font-size: 1.6rem;
+    color: #007bff; /* Color de marca */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.verification-section .verified-icon {
+    color: #28a745; /* Verde para verificación */
+    font-size: 1.4rem;
+}
+
+.verification-status {
+    background-color: #f8d7da; /* Fondo rojo claro, similar a .verification-message.error */
+    border: 1px solid #f5c6cb; /* Borde rojo claro, similar a .verification-message.error */
+    color: #721c24; /* Color de texto rojo oscuro, similar a .verification-message.error */
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.verification-status i {
+    font-size: 1.2rem;
+    color: #721c24; /* Asegura que el ícono también sea rojo oscuro */
+}
+
+.verification-section small {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Estilos para la carga de carnet universitario */
+.id-upload-group {
+    margin-bottom: 20px;
+}
+
+.carnet-upload-previews {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espacio entre las dos imágenes de carnet */
+    margin-top: 15px;
+    flex-wrap: wrap; /* Permite que las imágenes bajen en pantallas pequeñas */
+}
+
+.carnet-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 280px; /* Ancho fijo para cada lado del carnet */
+}
+
+.carnet-side label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.carnet-example {
+    width: 100%; /* Ancho completo del contenedor */
+    height: auto; /* Mantener proporción */
+    max-height: 180px; /* Limitar altura para mantener consistencia */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    object-fit: contain; /* Asegura que la imagen completa sea visible */
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.carnet-side input[type="file"] {
+    display: none; /* Ocultar input original */
+}
+
+.upload-button-small {
+    background-color: #3498db; /* Un color diferente para el botón de subir carnet */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.upload-button-small:hover {
+    background-color: #2980b9;
+}
+
+.btn-verify {
+    background-color: #007bff; /* Azul para el botón de verificación */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    width: auto; /* Ancho automático */
+    display: block; /* Para que ocupe su propia línea */
+    margin-left: auto; /* Centrar el botón */
+    margin-right: auto; /* Centrar el botón */
+}
+
+.btn-verify:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.verification-message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.verification-message.loading {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+}
+
+.verification-message.success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.verification-message.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .verification-page-wrapper {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+    .carnet-upload-previews {
+        flex-direction: column; /* Apila las imágenes de carnet en móvil */
+        align-items: center;
+        gap: 20px;
+    }
+    .carnet-side {
+        width: 200px; /* Ajusta el ancho para móvil */
+    }
+        .carnet-example {
+        max-height: 120px; /* Ajusta la altura máxima para móvil */
+    }
+}

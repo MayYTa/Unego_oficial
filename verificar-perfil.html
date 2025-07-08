@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Perfil - Unego</title>
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/verificar-perfil.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="tienda.html">
+                <img class="logo" src="assets/img/unego.png" alt="Unego Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="user-actions">
+            <a href="carrito-de-compras.html" class="cart-icon">
+                <img src="assets/icons/carrito-compras.png" alt="Carrito">
+            </a>
+        <div class="user-actions">
+            <i class="fas fa-bell"></i>
+            <div class="user-profile">
+                <a href="perfil.html">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="verification-page-wrapper">
+        <h2>Verificación de Perfil</h2>
+        
+        <form class="verification-section" action="#" method="post" enctype="multipart/form-data">
+            <h3>Verifica tu cuenta <i class="fas fa-check-circle verified-icon"></i></h3>
+            <p>Verifica tu perfil subiendo una copia de tu carnet universitario. Esto ayuda a confirmar tu identidad y te otorga mayor credibilidad en la plataforma.</p>
+            
+            <div class="verification-status">
+                <i class="fas fa-info-circle"></i>
+                <span id="verificationStatusText">Tu perfil no está verificado actualmente.</span>
+            </div>
+
+            <div class="form-group id-upload-group">
+                <label>Carnet Universitario</label>
+                <div class="carnet-upload-previews">
+                    <div class="carnet-side">
+                        <label for="carnetFront">Adverso del Carnet</label>
+                        <img src="assets/img/carnet_frontal.png" alt="Ejemplo Carnet Frontal" class="carnet-example">
+                        <input type="file" id="carnetFront" name="carnetFront" accept="image/*">
+                        <label for="carnetFront" class="upload-button-small"><i class="fas fa-upload"></i> Subir Adverso</label>
+                    </div>
+                    <div class="carnet-side">
+                        <label for="carnetBack">Reverso del Carnet</label>
+                        <img src="assets/img/carnet_reversa.png" alt="Ejemplo Carnet Reverso" class="carnet-example">
+                        <input type="file" id="carnetBack" name="carnetBack" accept="image/*">
+                        <label for="carnetBack" class="upload-button-small"><i class="fas fa-upload"></i> Subir Reverso</label>
+                    </div>
+                </div>
+                <small>Se requieren imágenes claras del adverso y reverso de tu carnet universitario. Formatos aceptados: JPG, PNG.</small>
+            </div>
+            
+            <button type="submit" class="btn-verify">Solicitar Verificación</button>
+            <div class="verification-message loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i> Solicitando verificación...
+            </div>
+            <div class="verification-message success" style="display: none;">
+                <i class="fas fa-check-circle"></i> ¡Solicitud enviada! Revisaremos tus documentos pronto.
+            </div>
+            <div class="verification-message error" style="display: none;">
+                <i class="fas fa-times-circle"></i> Error al enviar la solicitud. Inténtalo de nuevo.
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="assets/img/unego.png" alt="Unego Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>Nunca es tarde para emprender ¡Empieza desde hoy!</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="about_us.html">Sobre Nosotros</a></li>
+                    <li><a href="universities.html">Universidades Aliadas</a></li>
+                    <li><a href="q_a.html">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Ofertas del Mes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p><i class="fas fa-phone"></i> Teléfono: 01 2111111</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 888 777</p>
+                <p><i class="fab fa-whatsapp"></i> Whatsapp: +51 999 777 665</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section legal">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Configuración de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Unego | Todos los derechos reservados.
+        </div>
+    </footer>
+    <script>
+        // JavaScript para manejar la lógica de carga de imágenes y mensajes de verificación
+        document.addEventListener('DOMContentLoaded', () => {
+            const carnetFrontInput = document.getElementById('carnetFront');
+            const carnetBackInput = document.getElementById('carnetBack');
+            const carnetFrontExample = document.querySelector('.carnet-side label[for="carnetFront"] + img');
+            const carnetBackExample = document.querySelector('.carnet-side label[for="carnetBack"] + img');
+            const verificationForm = document.querySelector('.verification-section');
+            const loadingMessage = document.querySelector('.verification-message.loading');
+            const successMessage = document.querySelector('.verification-message.success');
+            const errorMessage = document.querySelector('.verification-message.error');
+            const verificationStatusText = document.getElementById('verificationStatusText');
+            const verificationStatusDiv = document.querySelector('.verification-status');
+
+            // Función para previsualizar la imagen seleccionada
+            function previewImage(input, imgElement) {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imgElement.src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            carnetFrontInput.addEventListener('change', (event) => previewImage(event.target, carnetFrontExample));
+            carnetBackInput.addEventListener('change', (event) => previewImage(event.target, carnetBackExample));
+
+            // Simulación de envío de formulario
+            verificationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Ocultar mensajes anteriores
+                loadingMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Mostrar mensaje de carga
+                loadingMessage.style.display = 'flex';
+
+                // Simular una llamada a la API
+                setTimeout(() => {
+                    const success = Math.random() > 0.5; // 50% de probabilidad de éxito
+
+                    loadingMessage.style.display = 'none';
+
+                    if (success) {
+                        successMessage.style.display = 'flex';
+                        verificationStatusText.textContent = '¡Tu perfil está pendiente de verificación!';
+                        verificationStatusDiv.className = 'verification-status success'; // Cambiar clase para estilo verde
+                        verificationStatusDiv.querySelector('i').className = 'fas fa-check-circle';
+                    } else {
+                        errorMessage.style.display = 'flex';
+                        verificationStatusText.textContent = 'Error al enviar la solicitud. Inténtalo de nuevo.';
+                        verificationStatusDiv.className = 'verification-status error'; // Cambiar clase para estilo rojo
+                        verificationStatusDiv.querySelector('i').className = 'fas fa-times-circle';
+                    }
+                }, 2000); // Simula 2 segundos de carga
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Busca el usuario logueado en localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const headerProfilePic = document.getElementById('header-profile-pic');
+    if (headerProfilePic) {
+        if (user && user.profilePic) {
+            headerProfilePic.src = user.profilePic;
+        } else {
+            headerProfilePic.src = 'assets/img/default-profile.png';
+        }
+    }
+});
+    </script>
+</body>
+</html>

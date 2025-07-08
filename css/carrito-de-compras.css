@@ -1,0 +1,641 @@
+/* Importaciones y estilos base de tienda.css */
+/* Solo los elementos estructurales y de color base son relevantes aquí para evitar duplicación.
+   El header y footer usarán sus estilos de tienda.css */
+
+body {
+    font-family: kanit, sans-serif;
+    margin: 0;
+    background-color: #F7FAFF; /* Color de fondo principal de tienda.css */
+}
+
+
+
+.tab-item {
+    color: #555; /* Color de texto para pestañas inactivas */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.tab-item:hover {
+    color: #3498db; /* Azul al pasar el ratón */
+    background-color: #F7FAFF; /* Fondo muy ligero al pasar el ratón */
+}
+
+.tab-activo {
+    color: #3498db; /* Azul para la pestaña activa */
+    font-weight: bold;
+    border-bottom: 2px solid #3498db; /* Indicador azul de pestaña activa */
+    background-color: transparent; /* Asegura que no tenga fondo extra */
+    border-radius: 0; /* Desactiva el radio para el borde inferior */
+}
+
+/* Contenedor de Productos Publicados (Similar a main-content de tienda.css) */
+.profile-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid responsivo */
+    gap: 60px; /* Mantener el espacio aumentado entre las tarjetas */
+    background-color: #FFFFFF; /* Fondo blanco para el área de productos */
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 60px; /* Padding interno */
+}
+
+/* perfil.css */
+
+/* ... (tu código CSS anterior, la mayoría se mantiene igual) ... */
+
+/* Estilos para .product-card */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+    position: relative; /* Esencial para los elementos absolutamente posicionados */
+    padding: 15px; /* Mantener el padding base de tienda.css para la tarjeta */
+}
+
+/* Ajusta el tamaño de la imagen dentro de la tarjeta de publicación */
+.product-card .product-image img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 12px auto;
+}
+
+/* ESTILOS PARA EL ICONO DE 3 PUNTOS (ELLIPSIS) - ESQUINA SUPERIOR DERECHA */
+.top-right-actions {
+    position: absolute;
+    top: 15px; /* Distancia desde la parte superior de la tarjeta */
+    /* AJUSTADO: Mueve el contenedor más a la DERECHA.
+       Calculo: Queremos que el icono esté a 15px del borde,
+       y como el contenedor tiene un padding-right de 8px,
+       el 'right' del contenedor debe ser 15px - 8px = 7px. */
+    right: 7px;
+    color: #888;
+    font-size: 1.2rem;
+    z-index: 10; /* Asegura que esté por encima de la imagen y otros elementos */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para visibilidad */
+    border-radius: 5px;
+    padding: 5px 8px; /* Este padding de 8px a la derecha es clave */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.top-right-actions i:hover {
+    color: #3498db;
+}
+
+/* ESTILOS PARA EL ICONO DE GUARDAR (FAVORITOS) - ESQUINA INFERIOR DERECHA */
+.product-card .product-actions {
+    /* Fluye con el contenido, no es absoluto */
+    display: flex;
+    justify-content: flex-end; /* Alinea el icono de guardar a la derecha dentro de su contenedor */
+    margin-top: 15px; /* Espacio superior para separarlo de la información del producto */
+    /* Mantener el padding-right de 15px. El icono estará a 15px del borde de la tarjeta. */
+    padding-right: 0px;
+    padding-bottom: 5px; /* Pequeño padding inferior para el icono */
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.product-card .product-actions i {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.product-card .product-actions i:hover {
+    color: #3498db;
+}
+
+
+/* Estilos para la tarjeta de "Añadir nueva publicación" */
+.add-product-link {
+    text-decoration: none;
+    display: block;
+}
+
+.add-product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 15px;
+    /* AJUSTADO: Reduce la altura mínima para que coincida mejor con las tarjetas de producto.
+       Podrías necesitar ajustar este valor (ej. 250px, 270px) según la altura real de tus otras tarjetas. */
+    min-height: 120px; /* Reducido de 280px */
+    color: #888;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.add-product-card:hover {
+    border-color: #3498db;
+    color: #3498db;
+    background-color: #F7FAFF;
+}
+
+.add-product-card .fas.fa-plus-circle {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.add-product-card p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Logo Unego en el header */
+
+
+/* Quita el subrayado de los enlaces del pie de página */
+.footer-section a,
+.footer-bottom a,
+.social-links a {
+    text-decoration: none !important;
+    color: inherit; /* Opcional: mantiene el color del texto heredado */
+}
+
+/* Cambia el color de las estrellas a amarillo */
+.stars .fa-star.filled {
+    color: #FFD700;
+}
+
+/* Iconos de contacto y redes sociales en el pie de página en celeste */
+.footer-section .fa-phone,
+.footer-section .fa-whatsapp,
+.footer-section .fab.fa-facebook-f,
+.footer-section .fab.fa-instagram,
+.footer-section .fab.fa-twitter {
+    color: #3498db !important;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .profile-page-content-wrapper {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .perfil-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .perfil-img img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .perfil-estadisticas {
+        justify-content: center; /* Centra las estadísticas en vista de columna */
+    }
+
+    .perfil-acciones {
+        flex-direction: column;
+        width: 100%;
+        max-width: 200px; /* Limita el ancho de los botones en columna */
+    }
+    .btn-perfil-primary {
+        width: 100%;
+    }
+
+    .perfil-tabs {
+        flex-direction: column;
+        align-items: center; /* Centra las pestañas cuando están en columna */
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
+    .profile-products-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas más pequeñas */
+        padding: 60px;
+        gap: 30px; /* Ajuste el gap para pantallas pequeñas también */
+    }
+
+    .product-card {
+        padding: 15px; /* Mantener el padding original en responsive */
+    }
+    .add-product-card {
+        padding: 15px;
+        /* AJUSTADO: Mantener la nueva min-height para responsive también, para consistencia */
+        min-height: 120px; /* Unificado con el valor para pantallas grandes */
+    }
+}
+
+@media (max-width: 480px) {
+    .perfil-header {
+        padding: 15px;
+    }
+
+    .perfil-nombre {
+        font-size: 1.6rem;
+    }
+
+    .perfil-estadisticas {
+        font-size: 1rem;
+        gap: 15px;
+    }
+
+    .tab-item {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Importación de estilos específicos para la página de borrar publicación */
+@import url("css/borrar-publicacion.css");
+
+/* Oculta el popup por defecto */
+.popup {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    z-index: 100;
+    min-width: 160px;
+    padding: 8px 0;
+}
+
+/* Muestra el popup solo cuando tiene la clase .show */
+.popup.show {
+    display: block;
+}
+
+/* Botón Editar publicación en el popup */
+.popup button:first-child {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 6px;
+    width: 90%;
+    display: block;
+    margin: 8px auto 4px auto;
+    transition: background 0.2s;
+}
+.popup button:first-child:hover {
+    background: #2980b9;
+}
+
+/* Botón Borrar publicación en el popup */
+.popup button:last-child {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 90%;
+    display: block;
+    margin: 4px auto 8px auto;
+    transition: background 0.2s;
+}
+.popup button:last-child:hover {
+    background: #c0392b;
+}
+
+.footer-celeste {
+    color: #3498db !important;
+}
+
+/* Unifica el tamaño de todos los recuadros de publicaciones */
+.product-card.publicacion {
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    padding: 18px 18px 18px 0;
+    box-sizing: border-box;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.product-card .product-image {
+    flex: 0 0 auto;
+    margin-left: 18px;
+}
+
+.product-card .product-details {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.product-card .product-actions {
+    flex: 0 0 auto;
+    margin-left: 12px;
+}
+
+@media (max-width: 600px) {
+    .product-card.publicacion {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 180px;
+        padding: 16px 8px;
+    }
+    .product-card .product-image {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+
+/* Estilos específicos para la página del carrito de compras */
+.carrito-page-content-wrapper {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.carrito-header {
+    background: #FFFFFF;
+    padding: 32px 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.carrito-header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.carrito-product-list {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrito-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.carrito-product-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.carrito-product-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.carrito-product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.carrito-product-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+}
+
+.carrito-product-price {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #777;
+}
+
+.carrito-product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrito-product-quantity input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.carrito-product-remove {
+    color: #e74c3c;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.carrito-product-remove:hover {
+    color: #c0392b;
+}
+
+.carrito-summary {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrito-summary h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.carrito-summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: #333;
+}
+
+.carrito-summary-item span {
+    font-weight: 500;
+}
+
+.carrito-checkout-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+}
+
+.carrito-checkout-btn:hover {
+    background: #2980b9;
+}
+
+/* Responsive Adjustments for Cart Page */
+@media (max-width: 992px) {
+    .carrito-page-content-wrapper {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .carrito-header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .carrito-header h1 {
+        font-size: 2rem;
+    }
+
+    .carrito-product-list {
+        padding: 15px;
+    }
+
+    .carrito-product-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .carrito-product-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .carrito-product-info img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .carrito-product-name {
+        font-size: 1.1rem;
+    }
+
+    .carrito-product-price {
+        font-size: 0.9rem;
+    }
+
+    .carrito-product-quantity input {
+        width: 40px;
+    }
+
+    .carrito-summary {
+        padding: 15px;
+    }
+
+    .carrito-summary h2 {
+        font-size: 1.5rem;
+    }
+
+    .carrito-summary-item {
+        font-size: 0.9rem;
+    }
+
+    .carrito-checkout-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrito-header {
+        padding: 15px;
+    }
+
+    .carrito-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .carrito-product-list {
+        padding: 10px;
+    }
+
+    .carrito-product-item {
+        padding: 10px;
+    }
+
+    .carrito-product-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .carrito-product-name {
+        font-size: 1rem;
+    }
+
+    .carrito-product-price {
+        font-size: 0.8rem;
+    }
+
+    .carrito-product-quantity input {
+        width: 35px;
+    }
+
+    .carrito-summary {
+        padding: 10px;
+    }
+
+    .carrito-summary h2 {
+        font-size: 1.2rem;
+    }
+
+    .carrito-summary-item {
+        font-size: 0.8rem;
+    }
+
+    .carrito-checkout-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,176 +1,503 @@
-/* General Product Detail Styles */
-.main-content-product {
-    flex-grow: 1;
+/* Contenedor principal del detalle del producto */
+.page-content-wrapper {
+    max-width: 1200px; /* Ancho máximo general para el contenido */
+    margin: 20px auto; /* Centrar el wrapper */
+    padding: 0 20px; /* Espaciado lateral */
+}
+
+/* Flexbox para el layout de dos columnas */
+.product-detail-layout {
+    display: flex; /* Habilitar Flexbox para las columnas */
+    gap: 40px; /* Espacio entre las columnas */
+    padding: 30px;
+    background-color: #e0f0ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 20px auto; /* Centrar el contenedor del producto */
+    max-width: 900px; /* Ancho máximo para el layout del producto */
+    align-items: flex-start; /* Alinear las columnas en la parte superior */
+}
+
+/* Columna Izquierda: Visuales (Imagen, Título Principal, Botón) */
+.product-visuals {
+    flex-basis: 350px; /* Ancho base para la columna izquierda */
+    flex-shrink: 0; /* Evita que la columna se encoja */
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto */
     padding: 20px;
     border-radius: 8px;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    background-color: #fcfcfc; /* Fondo suave para esta columna */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.product-detail-card {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 900px;
+.seller-name-top {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
     width: 100%;
-    align-items: center;
 }
 
-@media (min-width: 768px) {
-    .product-detail-card {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+.product-image-container {
+    width: 100%;
+    max-width: 300px; /* Tamaño máximo para la imagen dentro de su contenedor */
+    margin-bottom: 20px;
 }
 
-.product-image-large {
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
-    text-align: center;
-}
-
-.product-image-large img {
-    max-width: 100%;
+.product-image-container img {
+    width: 100%;
     height: auto;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.product-info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-info h1 {
-    font-size: 2.2em;
-    color: #333;
-}
-
-.product-seller {
-    font-size: 1.1em;
-    color: #666;
-}
-
-.product-price-detail {
+.product-main-title {
     font-size: 1.8em;
-    color: #000000;
-    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.product-rating-detail {
+#buy-button {
+    width: 90%; /* Ancho del botón */
+    padding: 15px 30px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#buy-button:hover {
+    background-color: #333;
+}
+
+/* Columna Derecha: Panel de Información */
+.product-info-panel {
+    flex-grow: 1; /* Permite que ocupe el espacio restante */
+    padding: 20px;
     display: flex;
-    flex-direction: row; /* Organiza en una fila */
-    justify-content: space-between; /* Espacio entre elementos */
-    align-items: flex-start; /* Alinear al inicio */
-    width: 100%;
+    flex-direction: column; /* Apila el contenido verticalmente */
+}
+
+.product-info-title {
+    font-size: 2.2em;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+#product-name-info {
+    font-weight: normal; /* El "Nombre del Producto:" será bold, el span no tanto */
+    color: #000;
+}
+
+.product-info-category,
+.product-info-seller {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.product-info-price {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000000; /* Color distintivo para el precio */
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-top: 1px solid #eee;
     padding-top: 20px;
 }
 
-.description-info {
-    flex: 1; /* Ocupa espacio a la izquierda */
+.product-info-description {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.product-info-description h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-info-description ul { /* Estilo para la lista de descripción */
+    list-style: disc inside; /* Viñetas */
+    padding-left: 0; /* Asegura que no haya padding extra */
+    margin: 0;
+}
+
+.product-info-description ul li {
     font-size: 1em;
+    color: #555;
     line-height: 1.6;
-    color: #444;
-    margin-right: 20px; /* Espacio entre descripción y calificación */
+    margin-bottom: 5px;
 }
 
-.rating-info {
-    flex: 1; /* Ocupa espacio a la derecha */
+
+/* Sección de Calificación */
+.product-info-rating {
     display: flex;
-    flex-direction: column; /* Organiza en columna */
-    align-items: flex-start; /* Alinear elementos a la izquierda */
-    margin-left: 100px;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
 }
 
-
-.product-description{
-    padding: 0;
-    margin: 0;
-}
-
-.detail{
-    padding: 0;
-    margin: 0;
-}
-
-
-/* Estilos para las estrellas */
-#product-stars .fa-star {
-    font-size: 30px;
-    color: #ccc;
-    cursor: pointer;
-    margin-right: 5px;
-    transition: color 0.2s ease-in-out;
-}
-
-#product-stars .fa-star.filled {
-    color: #ffc107;
+.rating-label {
+    font-size: 1.3em;
+    color: #333;
+    margin-right: 15px;
 }
 
 #product-rating-value {
     font-weight: bold;
-    margin-left: 50px;
-    font-size: 20px;
+    font-size: 1.3em;
+    color: #000;
+    margin-right: 10px;
 }
 
-.title-container {
+.stars {
     display: flex;
-    align-items: center; 
-    gap: 100px; 
-    width: 100%;
-}
-
-#buy-button {
-    width: 120px;
-    height: 45px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    position: relative; 
-    top: 50px; 
-}
-
-#buy-button:hover {
-    background-color: #3a3c3b;
-}
-
-
-.product-container {
-    display: flex;
-    justify-content: center; /* Centra el botón */
     align-items: center;
-    margin-top: 20px; /* Espaciado superior */
 }
 
-#product-title {
-    width: 8em;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+.stars .fa-star,
+.stars .fa-star-half-alt {
+    color: #fadb14; /* Color dorado para las estrellas */
+    font-size: 24px;
+    margin-right: 3px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .main-content-product {
-        margin: 10px;
+.stars .fa-star:not(.filled):not(.fa-star-half-alt) {
+    color: #ccc; /* Color para estrellas vacías */
+}
+
+/* --- Estilos para el botón flotante de chat --- */
+.chat-float-btn {
+    position: fixed; /* Lo fija en la pantalla */
+    bottom: 30px;    /* Distancia desde abajo */
+    right: 30px;     /* Distancia desde la derecha */
+    background-color: #007bff; /* Color de fondo */
+    color: white;    /* Color del icono */
+    border-radius: 50%; /* Lo hace circular */
+    width: 60px;     /* Ancho del círculo */
+    height: 60px;    /* Alto del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em; /* Tamaño del icono */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para que destaque */
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    transition: transform 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.chat-float-btn:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+}
+
+/* --- Estilos para el globo de texto (tooltip) --- */
+.chat-tooltip {
+    visibility: hidden; /* Oculto por defecto */
+    width: 220px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Posiciona el tooltip encima del botón */
+    left: 50%;
+    margin-left: -110px; /* Centra el tooltip */
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 0.9em;
+    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Flecha del tooltip */
+.chat-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* En la parte inferior del tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Mostrar el tooltip al pasar el mouse sobre el botón flotante */
+.chat-float-btn:hover .chat-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- Estilos para la ventana modal de chat --- */
+.chat-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece en su lugar incluso al hacer scroll */
+    z-index: 1001;   /* Por encima del botón flotante */
+    left: 0;
+    top: 0;
+    width: 100%;     /* Ancho completo */
+    height: 100%;    /* Alto completo */
+    overflow: auto;  /* Habilita el scroll si es necesario */
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+    display: flex; /* Usar flex para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Centra la modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo para pantallas grandes */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+}
+
+.chat-modal-content h4 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.chat-header h4 {
+    margin: 0; /* Elimina el margen por defecto del h4 */
+    flex-grow: 1; /* Permite que el título ocupe espacio, empujando seller-info */
+    text-align: right; /* Alinea el título a la derecha */
+    padding-right: 30px; /* Espacio para el botón de cerrar */
+}
+
+.chat-header .seller-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre los elementos del vendedor */
+}
+
+.seller-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.seller-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc; /* Color por defecto */
+    border: 1px solid white; /* Borde blanco para visibilidad */
+}
+
+.status-indicator.active {
+    background-color: #28a745; /* Verde para activo */
+}
+
+.status-indicator.inactive {
+    background-color: #dc3545; /* Rojo para inactivo */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat-messages {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 300px; /* Altura fija para el área de mensajes */
+    overflow-y: auto; /* Scroll si hay muchos mensajes */
+    margin-bottom: 10px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    flex-grow: 1; /* Permite que ocupe el espacio disponible */
+}
+
+.chat-messages .message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    word-wrap: break-word; /* Para mensajes largos */
+}
+
+.chat-messages .message.received {
+    background-color: #dcf8c6; /* Verde claro para mensajes recibidos */
+    align-self: flex-start;
+    float: left; /* Para alinear a la izquierda */
+    clear: both; /* Para asegurar que cada mensaje esté en una nueva línea */
+}
+
+.chat-messages .message.sent {
+    background-color: #007bff; /* Azul para mensajes enviados */
+    color: white;
+    align-self: flex-end;
+    float: right; /* Para alinear a la derecha */
+    clear: both;
+}
+
+
+#chatInput {
+    width: calc(100% - 22px); /* Ancho completo menos padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+#sendMessageBtn {
+    background-color: #28a745; /* Color del botón de envío */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    align-self: flex-end; /* Alinea a la derecha */
+}
+
+#sendMessageBtn:hover {
+    background-color: #218838;
+}   
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.chat-disclaimer {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 850px) {
+    .product-detail-layout {
+        flex-direction: column; /* Apila las columnas en pantallas más pequeñas */
+        align-items: center; /* Centra los elementos apilados */
+        gap: 30px;
+        padding: 25px;
+    }
+    .product-visuals {
+        width: 100%;
+        max-width: 400px; /* Limita el ancho de la imagen */
+    }
+    .product-info-panel {
+        width: 100%;
         padding: 15px;
     }
-
-    .product-info h1 {
+    .product-main-title {
+        font-size: 1.6em;
+    }
+    .product-info-title {
         font-size: 1.8em;
     }
+    #buy-button {
+        width: 80%;
+    }
+}
 
-    .product-price-detail {
+@media (max-width: 500px) {
+    .product-detail-layout {
+        padding: 15px;
+        gap: 20px;
+    }
+    .product-visuals,
+    .product-info-panel {
+        padding: 10px;
+    }
+    .product-main-title {
+        font-size: 1.4em;
+    }
+    .product-info-title {
         font-size: 1.5em;
     }
+    .product-info-price {
+        font-size: 1.6em;
+    }
+    .product-info-description h3,
+    .product-info-rating .rating-label {
+        font-size: 1.1em;
+    }
+    .stars .fa-star,
+    .stars .fa-star-half-alt {
+        font-size: 20px;
+    }
+    .chat-prompt p {
+        font-size: 0.9em;
+    }
+    .chat-prompt img {
+        width: 30px;
+        height: 30px;
+    }
+    /* Media queries para el chat flotante */
+    .floating-chat-container {
+        bottom: 10px;
+        left: 10px;
+        max-width: calc(100% - 40px); /* Ocupa casi todo el ancho con márgenes */
+        right: 10px;
+        margin: 0;
+    }
+}
+.cart-icon {
+    display: inline-block;
+    width: 50px; 
+    height: 50px;
+    margin-right: 30px; /* Espacio entre carrito y campana */
+}
+
+.cart-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
