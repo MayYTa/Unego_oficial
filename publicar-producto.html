@@ -24,10 +24,10 @@
                 <img src="assets/icons/carrito-compras.png" alt="Carrito">
             </a>
         <div class="user-actions">
-            <i class="fas fa-bell"></i>
+            <i class="fas fa-bell notification-icon" id="notification-icon"></i>
             <div class="user-profile">
                 <a href="perfil.html">
-                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic">
                 </a>
             </div>
         </div>
@@ -114,6 +114,19 @@
             }
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // Busca el usuario logueado en localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const headerProfilePic = document.getElementById('header-profile-pic');
+    if (headerProfilePic) {
+        if (user && user.profilePic) {
+            headerProfilePic.src = user.profilePic;
+        } else {
+            headerProfilePic.src = 'assets/img/default-profile.png';
+        }
+    }
+});
     </script>
 
     <footer>
@@ -163,3 +176,6 @@
         <div class="footer-bottom">
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
+    </footer>
+</body>
+</html>

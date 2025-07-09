@@ -19,13 +19,25 @@
             <i class="fas fa-search"></i>
         </div>
         <div class="user-actions">
-             <a href="carrito-de-compras.html" class="cart-icon">
-        <img src="assets/icons/carrito-compras.png" alt="Carrito">
-    </a>
-            <i class="fas fa-bell"></i>
+            <a href="carrito-de-compras.html" class="cart-icon">
+                <img src="assets/icons/carrito-compras.png" alt="Carrito">
+            </a>
+            <div class="notification-wrapper">
+                <i class="fas fa-bell notification-icon" id="notification-icon"></i>
+                <span class="notification-badge" id="notification-badge">0</span>
+                <div class="notification-dropdown" id="notification-dropdown">
+                    <div class="notification-header">
+                        <h4>Notificaciones</h4>
+                        <button id="clear-notifications">Limpiar</button>
+                    </div>
+                    <div class="notification-list" id="notification-list">
+                        <!-- Notificaciones aparecerán aquí -->
+                    </div>
+                </div>
+            </div>
             <div class="user-profile">
                 <a href="perfil.html">
-                    <img src="assets/img/foto-perfil1-png.png" alt="User Profile">
+                    <img id="header-profile-pic" src="assets/img/default-profile.png" alt="User Profile" class="header-profile-pic">
                 </a>
             </div>
         </div>
@@ -92,7 +104,8 @@
         </aside>
 
         <main class="main-content">
-            </main>  <!--Esta sección es la parte de productos de la tienda, esta siendo generada por el script productos.-->
+            <!-- Esta sección es la parte de productos de la tienda, está siendo generada por el script productos. -->
+        </main>
     </div>
 
     <footer>
@@ -128,7 +141,6 @@
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-
                 </div>
             </div>
             <div class="footer-section legal">
@@ -145,6 +157,21 @@
         </div>
     </footer>
 
+    <script src="src/js/notificaciones.js"></script>
     <script src="src/js/script_productos.js"></script>
+    <script src="src/js/global.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+        const headerProfilePic = document.getElementById('header-profile-pic');
+        if (headerProfilePic) {
+            if (user && user.profilePic) {
+                headerProfilePic.src = user.profilePic;
+            } else {
+                headerProfilePic.src = 'assets/img/default-profile.png';
+            }
+        }
+    });
+    </script>
 </body>
 </html>

@@ -33,7 +33,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         return starsHtml;
     }
 
-    // --- 2. Función para renderizar todos los productos en el DOM (NO CAMBIA) ---
+    // --- Utilidad: Saber si un producto está guardado ---
+    function isProductSaved(productId) {
+        const savedProducts = JSON.parse(localStorage.getItem('savedProducts')) || [];
+        return savedProducts.some(item => item.id === productId.toString());
+    }
+
+    // --- Utilidad: Guardar/quitar producto de favoritos ---
+    function toggleSaveProduct(product) {
+        let savedProducts = JSON.parse(localStorage.getItem('savedProducts')) || [];
+        const exists = savedProducts.some(item => item.id === product.id.toString());
+        if (exists) {
+            savedProducts = savedProducts.filter(item => item.id !== product.id.toString());
+        } else {
+            savedProducts.push({ id: product.id.toString(), savedAt: new Date().toISOString() });
+        }
+        localStorage.setItem('savedProducts', JSON.stringify(savedProducts));
+    }
+
+    // --- 2. Función para renderizar todos los productos en el DOM (MODIFICADA) ---
     function renderProducts(productsToRender) {
         mainContent.innerHTML = '';
 
@@ -50,6 +68,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
             productCard.id = product.id;
+
+            const isSaved = isProductSaved(product.id);
 
             productCard.innerHTML = `
                 <div class="product-image">
@@ -69,11 +89,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <div class="product-actions">
                     <i class="fas fa-ellipsis-h"></i>
-                    <i class="far fa-bookmark"></i>
+                    <i class="fa-bookmark bookmark-icon ${isSaved ? 'fas saved' : 'far'}" data-product-id="${product.id}"></i>
                 </div>
             `;
             productLink.appendChild(productCard);
             mainContent.appendChild(productLink);
+        });
+
+        // Añadir listeners a los iconos de favoritos
+        document.querySelectorAll('.bookmark-icon').forEach(icon => {
+            icon.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                const productId = this.getAttribute('data-product-id');
+                const product = productsToRender.find(p => p.id.toString() === productId);
+                toggleSaveProduct(product);
+                this.classList.toggle('fas');
+                this.classList.toggle('far');
+                this.classList.toggle('saved');
+            });
         });
     }
 
@@ -317,16 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.bookmark-icon').forEach(icon => {
-        icon.addEventListener('click', (event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            icon.classList.toggle('fas');
-            icon.classList.toggle('far');
-            icon.classList.toggle('bookmarked');
-        });
-    });
-});
+// Eliminar el bloque redundante de listeners al final
 
 

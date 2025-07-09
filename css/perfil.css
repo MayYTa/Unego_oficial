@@ -137,7 +137,7 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    overflow: hidden;
+    overflow: visible;
     position: relative; /* Esencial para los elementos absolutamente posicionados */
     padding: 15px; /* Mantener el padding base de tienda.css para la tarjeta */
 }
