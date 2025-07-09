@@ -74,6 +74,7 @@
                     <div class="product-actions-menu" style="display:none;">
                         <button class="menu-edit" data-producto-id="polo-negro-1">Editar</button>
                         <button class="menu-stock" data-producto-id="polo-negro-1">Stock</button>
+                        <button class="menu-delete" data-producto-id="polo-negro-1">Eliminar publicación</button>
                     </div>
                 </div>
 
@@ -107,6 +108,7 @@
                         <div class="product-actions-menu" style="display:none;">
                             <button class="menu-edit" data-producto-id="mochila-1">Editar</button>
                             <button class="menu-stock" data-producto-id="mochila-1">Stock</button>
+                            <button class="menu-delete" data-producto-id="mochila-1">Eliminar publicación</button>
                         </div>
                     </div>
 
@@ -136,6 +138,10 @@
             
 
         </div>
+    </div>
+
+    <div id="undo-message" style="display:none; position:fixed; bottom:32px; left:50%; transform:translateX(-50%); background:#fff; color:#222; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.12); padding:18px 32px; z-index:9999; font-size:1.1rem;">
+        Eliminaste una publicación. <button id="undo-btn" style="margin-left:18px; background:#3498db; color:#fff; border:none; border-radius:5px; padding:6px 18px; cursor:pointer;">Deshacer</button>
     </div>
 
     <footer>
@@ -214,6 +220,125 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Si tienes categoría visible, actualízala aquí también
             }
         });
+    }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar/ocultar menú de acciones
+    document.querySelectorAll('.top-right-actions .fa-ellipsis-h').forEach(function(icon) {
+        icon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Cierra otros menús abiertos
+            document.querySelectorAll('.product-actions-menu').forEach(function(menu) {
+                if (menu !== icon.nextElementSibling) menu.style.display = 'none';
+            });
+            // Abre/cierra el menú actual
+            const menu = icon.nextElementSibling;
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        });
+    });
+
+    // Eliminar publicación
+    document.querySelectorAll('.menu-delete').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const productId = btn.getAttribute('data-producto-id');
+            const card = document.getElementById(productId);
+            if (card) {
+                // Guarda referencias para restaurar
+                lastDeletedCard = card;
+                lastDeletedParent = card.parentNode;
+                lastDeletedNext = card.nextSibling;
+                card.style.display = 'none'; // Oculta la tarjeta (no la elimina aún)
+                // Guarda en localStorage
+                let eliminados = getEliminados();
+                if (!eliminados.includes(productId)) eliminados.push(productId);
+                setEliminados(eliminados);
+                // Muestra el mensaje de deshacer
+                const undoMsg = document.getElementById('undo-message');
+                undoMsg.style.display = 'block';
+                if (undoTimeout) clearTimeout(undoTimeout);
+                undoTimeout = setTimeout(function() {
+                    undoMsg.style.display = 'none';
+                    if (lastDeletedCard) {
+                        lastDeletedParent.removeChild(lastDeletedCard);
+                        lastDeletedCard = null;
+                    }
+                }, 10000);
+            }
+        });
+    });
+
+    // Cierra el menú si se hace clic fuera
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.product-actions-menu').forEach(function(menu) {
+            menu.style.display = 'none';
+        });
+    });
+});
+</script>
+<script>
+let lastDeletedCard = null;
+let lastDeletedParent = null;
+let lastDeletedNext = null;
+let undoTimeout = null;
+
+// Utilidad para manejar el listado en localStorage
+function getEliminados() {
+    return JSON.parse(localStorage.getItem('publicacionesEliminadas') || '[]');
+}
+function setEliminados(arr) {
+    localStorage.setItem('publicacionesEliminadas', JSON.stringify(arr));
+}
+
+// Al eliminar publicación
+document.querySelectorAll('.menu-delete').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const productId = btn.getAttribute('data-producto-id');
+        const card = document.getElementById(productId);
+        if (card) {
+            // Guarda referencias para restaurar
+            lastDeletedCard = card;
+            lastDeletedParent = card.parentNode;
+            lastDeletedNext = card.nextSibling;
+            card.style.display = 'none'; // Oculta la tarjeta (no la elimina aún)
+            // Guarda en localStorage
+            let eliminados = getEliminados();
+            if (!eliminados.includes(productId)) eliminados.push(productId);
+            setEliminados(eliminados);
+            // Muestra el mensaje de deshacer
+            const undoMsg = document.getElementById('undo-message');
+            undoMsg.style.display = 'block';
+            if (undoTimeout) clearTimeout(undoTimeout);
+            undoTimeout = setTimeout(function() {
+                undoMsg.style.display = 'none';
+                if (lastDeletedCard) {
+                    lastDeletedParent.removeChild(lastDeletedCard);
+                    lastDeletedCard = null;
+                }
+            }, 10000);
+        }
+    });
+});
+
+// Botón deshacer
+document.getElementById('undo-btn').addEventListener('click', function() {
+    if (lastDeletedCard && lastDeletedParent) {
+        lastDeletedCard.style.display = '';
+        if (lastDeletedNext) {
+            lastDeletedParent.insertBefore(lastDeletedCard, lastDeletedNext);
+        } else {
+            lastDeletedParent.appendChild(lastDeletedCard);
+        }
+        // Quita del localStorage
+        let eliminados = getEliminados();
+        const idx = eliminados.indexOf(lastDeletedCard.id);
+        if (idx !== -1) eliminados.splice(idx, 1);
+        setEliminados(eliminados);
+
+        lastDeletedCard = null;
+        document.getElementById('undo-message').style.display = 'none';
+        if (undoTimeout) clearTimeout(undoTimeout);
     }
 });
 </script>
