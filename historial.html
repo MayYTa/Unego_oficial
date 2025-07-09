@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>favoritos - Unego</title>
+    <title>Historial de Pedidos - Unego</title>
     <link rel="stylesheet" href="css/tienda.css">
-    <link rel="stylesheet" href="css/favoritos.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -53,19 +53,17 @@
 
         <div class="perfil-tabs">
             <a href="perfil.html" class="tab-item">Publicaciones</a>
-            <a href="favoritos.html" class="tab-item tab-activo">Favoritos</a>
+            <a href="favoritos.html" class="tab-item">Favoritos</a>
             <a href="resenas.html" class="tab-item">Reseñas</a>
-            <a href="historial.html" class="tab-item">Historial de Pedidos</a>
+            <a href="#" class="tab-item tab-activo">Historial de Pedidos</a>
         </div>
 
-        <div class="profile-products-grid">
-            <a class="product-link">
-                <div class="product-card" id="polo-negro-1">
-                    <div class="top-right-actions">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                </div>
-            </a>
+        <!-- Centrado vertical y horizontal -->
+        <div class="profile-products-grid" style="display: flex; justify-content: center; align-items: center; min-height: 300px;">
+            <div class="empty-message" style="text-align:center; color: #888; font-size: 1.2rem;">
+                <i class="fas fa-box-open" style="font-size:2.5rem; margin-bottom:10px;"></i>
+                <p>No tienes historial de pedidos.</p>
+            </div>
         </div>
     </div>
 
@@ -117,22 +115,8 @@
             &copy; 2025 Unego | Todos los derechos reservados.
         </div>
     </footer>
-
-    <script src="src/js/favoritos.js"></script>
     <script src="src/js/global.js" defer></script>
     <script src="src/js/profile.js" defer></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const user = JSON.parse(localStorage.getItem('loggedInUser'));
-        const headerProfilePic = document.getElementById('header-profile-pic');
-        if (headerProfilePic) {
-            if (user && user.profilePic) {
-                headerProfilePic.src = user.profilePic;
-            } else {
-                headerProfilePic.src = 'assets/img/default-profile.png';
-            }
-        }
-    });
-    </script>
+
 </body>
 </html>
