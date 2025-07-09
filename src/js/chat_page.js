@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const productIdFromUrl = urlParams.get('id'); // Usamos 'id' para el ID del producto, como en tu load_productos.js
 
     let currentSeller = null; 
+    let typingTimeout = null;
 
     // Función para añadir un mensaje al chat
     function addMessage(text, type, time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })) {
@@ -135,17 +136,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // --- Manejar el envío de mensajes (simulado) ---
-    // Asegurarse de que el input y el botón existan
+    // --- Minimize/Maximize Chat Modal ---
+    // Add a minimize button logic (assumes a button with id 'minimizeChatModal' exists in your modal header)
+    
+
+    // --- Typing Indicator ---
+    function showTypingIndicator() {
+        let typingDiv = document.getElementById('typing-indicator');
+        if (!typingDiv) {
+            typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'message received typing-indicator';
+            typingDiv.innerHTML = '<p>Vendedor está escribiendo...</p>';
+            chatMessagesContainer.appendChild(typingDiv);
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+    }
+    function hideTypingIndicator() {
+        const typingDiv = document.getElementById('typing-indicator');
+        if (typingDiv) typingDiv.remove();
+    }
+
     if (sendMessageBtn && chatMessageInput) { 
         sendMessageBtn.addEventListener('click', () => {
             const messageText = chatMessageInput.value.trim();
             if (messageText) {
                 addMessage(messageText, 'sent');
                 chatMessageInput.value = '';
-
+                hideTypingIndicator();
                 // Simular respuesta del vendedor después de un tiempo
+                showTypingIndicator();
                 setTimeout(() => {
+                    hideTypingIndicator();
                     let sellerResponse = 'Gracias por tu mensaje. Te responderemos pronto.';
                     if (currentSeller && !currentSeller.isActive) {
                         sellerResponse = 'Gracias por tu mensaje. El vendedor está inactivo en este momento, pero te responderá a la brevedad.';
@@ -158,6 +180,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         chatMessageInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 sendMessageBtn.click();
+            } else {
+                // Simular indicador de escritura del vendedor cuando el usuario escribe
+                showTypingIndicator();
+                clearTimeout(typingTimeout);
+                typingTimeout = setTimeout(hideTypingIndicator, 1200);
             }
         });
     }

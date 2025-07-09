@@ -185,6 +185,30 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 });
 
+// --- CHAT MODAL: Mostrar solo al hacer click ---
+const chatFloatBtn = document.getElementById('chatFloatBtn'); // Botón flotante de chat
+const chatModal = document.getElementById('chatModal'); // Modal de chat
+const closeChatModalBtn = document.getElementById('closeChatModal'); // Botón para cerrar la modal
+
+if (chatFloatBtn && chatModal) {
+    chatFloatBtn.addEventListener('click', () => {
+        chatModal.style.display = 'flex'; // Muestra la modal solo al hacer click
+    });
+}
+if (closeChatModalBtn && chatModal) {
+    closeChatModalBtn.addEventListener('click', () => {
+        chatModal.style.display = 'none'; // Oculta la modal al cerrar
+    });
+}
+// Opcional: cerrar la modal al hacer click fuera del contenido
+if (chatModal) {
+    chatModal.addEventListener('click', (e) => {
+        if (e.target === chatModal) {
+            chatModal.style.display = 'none';
+        }
+    });
+}
+
 // Nota: Todo tu código anterior para cargar la información del producto (imagen, título, etc.)
 // debe existir por separado en detalle_producto.js pero FUERA DE ESTA FUNCIÓN SIMPLE DE REDIRECCIÓN,
 // si aún lo necesitas para otras partes de la página de detalles del producto.
