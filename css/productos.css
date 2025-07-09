@@ -211,11 +211,13 @@
     text-align: center;
     border-radius: 6px;
     padding: 10px 0;
-    position: absolute;
+    position: absolute; /* Posicionamiento absoluto relativo al botón */
     z-index: 1;
     bottom: 100%; /* Posiciona el tooltip encima del botón */
-    left: 50%;
-    margin-left: -110px; /* Centra el tooltip */
+    left: auto;
+    right: 0;
+    margin-left: 0;
+    transform: none;
     opacity: 0;
     transition: opacity 0.3s, visibility 0.3s;
     font-size: 0.9em;
@@ -227,9 +229,10 @@
 .chat-tooltip::after {
     content: "";
     position: absolute;
-    top: 100%; /* En la parte inferior del tooltip */
-    left: 50%;
-    margin-left: -5px;
+    top: 100%;
+    right: 20px; /* flecha alineada con el botón, ajusta si es necesario */
+    left: auto;
+    margin-left: 0;
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
@@ -243,7 +246,7 @@
 
 /* --- Estilos para la ventana modal de chat --- */
 .chat-modal {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed; /* Permanece en su lugar incluso al hacer scroll */
     z-index: 1001;   /* Por encima del botón flotante */
     left: 0;
@@ -252,7 +255,6 @@
     height: 100%;    /* Alto completo */
     overflow: auto;  /* Habilita el scroll si es necesario */
     background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
-    display: flex; /* Usar flex para centrar el contenido */
     justify-content: center;
     align-items: center;
 }
@@ -466,7 +468,7 @@
         font-size: 1.6em;
     }
     .product-info-description h3,
-    .product-info-rating .rating-label {
+    .product-info_rating .rating-label {
         font-size: 1.1em;
     }
     .stars .fa-star,
